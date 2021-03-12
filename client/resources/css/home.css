@@ -55,6 +55,7 @@ nav .row {
 }
 .nav-btns li {
     display: inline-block;
+    margin: 0 100px;
 }
 
 .nav-btns li i {
