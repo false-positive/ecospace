@@ -41,6 +41,12 @@ nav .row {
     text-align: center;
 }
 
+nav i {
+    display: inline-block;
+    color: #7ab214;
+    font-size: 130%;
+}
+
 .logo {
     height: 60px;
     width: auto;
@@ -56,15 +62,11 @@ nav .row {
 .nav-btns li {
     display: inline-block;
     margin: 0 100px;
-}
-
-.nav-btns li i {
-    display: inline-block;
     color: #7ab214;
-    font-size: 120%;
 }
 
 .nav-btns li a {
+    color: inherit;
     text-decoration: none;
     display: inline-block;
     margin-right: 30px;
@@ -72,5 +74,9 @@ nav .row {
 
 .profile-btn {
     float: right;
-    margin-top: 15px;
+    margin-top: 19px;
+}
+.profile-btn a {
+    color: #7ab214;
+    text-decoration: none;
 }
