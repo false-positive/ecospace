@@ -46,8 +46,8 @@ h1 {
 }
 
 h1:first-of-type {
-    font-size: 270%;
-    top: 30%;
+    font-size: 500%;
+    top: 24%;
 }
 
 h1 span {
@@ -57,7 +57,7 @@ h1 span {
 h1:last-of-type {
     top: 40%;
     text-align: center;
-    font-size: 230%;
+    font-size: 200%;
 }
 
 header {
@@ -77,14 +77,14 @@ nav {
 }
 
 .nav-btn {
-    margin-top: 35px;
+    margin-top: 40px;
     float: right;
 }
 
 .nav-btn a {
     color: white;
     text-decoration: none;
-    margin-left: 10px;
+    margin-left: 13px;
     display: inline-block;
     padding: 5px 12px;
     font-size: 120%;
@@ -95,7 +95,7 @@ nav {
     transition: background 0.3s;
 }
 .nav-btn a:first-child:hover {
-    background: #70a312;
+    background: #85c215;
 }
 
 .nav-btn a:last-child {
