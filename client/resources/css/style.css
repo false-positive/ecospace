@@ -181,8 +181,20 @@ nav {
 footer {
     height: 200px;
     background: #2d3436;
+    color: #fff;
 }
 
 footer h3 {
-    color: #fff;
+    margin-top: 30px;
+    margin-left: 1%;
+}
+
+footer ul {
+    margin-left: 1%;
+    font-size: 90%;
+    margin-top: 10px;
+    list-style: none;
+}
+footer ul li {
+    margin-bottom: 8px;
 }
