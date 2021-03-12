@@ -11,13 +11,9 @@ html {
     font-weight: 300;
     font-size: 20px;
     text-rendering: optimizeLegibility;
-}
-
-.box {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/background.login.jpg);
     background-size: cover;
     background-position: center;
-    height: 100vh;
 }
 
 .box form {
@@ -64,8 +60,7 @@ html {
 
 .box h2 {
     color: #fff;
-    margin: 0;
-    margin-top: 50px;
+    margin: 50px 0;
     text-align: center;
 }
 
