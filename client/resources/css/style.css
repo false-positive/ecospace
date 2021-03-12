@@ -51,7 +51,7 @@ h1:first-of-type {
 }
 
 h1 span {
-    color: #329f5e;
+    color: #85c215;
 }
 
 h1:last-of-type {
@@ -95,14 +95,14 @@ nav {
     transition: background 0.3s;
 }
 .nav-btn a:first-child:hover {
-    background: #0984e3;
+    background: #70a312;
 }
 
 .nav-btn a:last-child {
     border-radius: 50px;
-    background: #0984e3;
+    background: #70a312;
     transition: background 0.3s;
 }
 .nav-btn a:last-child:hover {
-    background: #3097ff;
+    background: #85c215;
 }
