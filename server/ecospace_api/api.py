@@ -79,3 +79,9 @@ class Organization(Resource):
             'data': organizations[id],
             'message': 'organization successfully found',
         }
+
+
+api.add_resource(UserList, '/users')
+api.add_resource(OrganizationList, '/organizations')
+api.add_resource(User, '/users/<string:username>')
+api.add_resource(Organization, '/organizations/<string:id>')

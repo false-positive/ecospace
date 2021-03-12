@@ -28,12 +28,8 @@ def create_app():
 
     from .api import User, UserList, Organization, OrganizationList
 
-    api = Api(app)
     api.init_app(app)
-    api.add_resource(UserList, '/users')
-    api.add_resource(OrganizationList, '/organizations')
-    api.add_resource(User, '/users/<string:username>')
-    api.add_resource(Organization, '/organizations/<string:id>')
+
 
     return app
 
