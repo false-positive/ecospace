@@ -46,7 +46,7 @@ h1 {
 }
 
 h1:first-of-type {
-    font-size: 240%;
+    font-size: 270%;
     top: 30%;
 }
 
@@ -57,7 +57,7 @@ h1 span {
 h1:last-of-type {
     top: 40%;
     text-align: center;
-    font-size: 200%;
+    font-size: 230%;
 }
 
 header {
