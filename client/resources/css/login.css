@@ -73,7 +73,7 @@ html {
 .box h2 a:visited {
     text-decoration: none;
     color: #7ab214;
-    transition: color 0.3s;
+    transition: color 0.2s;
 }
 
 .box h2 a:hover,
