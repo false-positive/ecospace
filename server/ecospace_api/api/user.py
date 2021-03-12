@@ -24,10 +24,15 @@ def pass_user(view):
 class UserList(Resource):
     def get(self):
         users = UserModel.query.all()
+        result = {}
+        for user in users:
+            response = user.get_response()
+            result[response['username']] = {}
+            result[response['username']]['full_name'] = response['full_name']
         return {
-            'data': [user.get_response() for user in users],
+            'data': result,
             'message': 'users listed successfully',
-        }
+        },
 
 
 class User(Resource):

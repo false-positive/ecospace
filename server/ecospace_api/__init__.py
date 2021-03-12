@@ -1,6 +1,5 @@
 import os
 from contextlib import suppress
-
 from flask import Flask, jsonify
 
 __version__ = '0.0.1'
@@ -12,7 +11,7 @@ def create_app():
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
             # TODO: Configure linter to not complaina about long lines
-            SQLALCHEMY_DATABASE_URI=f'sqlite:////{os.path.join(app.instance_path, "ecospace.sqlite")}',
+            SQLALCHEMY_DATABASE_URI=f'sqlite:///{os.path.join(app.instance_path, "ecospace.sqlite")}',
     )
 
     with suppress(OSError):

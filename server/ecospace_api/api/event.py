@@ -1,3 +1,4 @@
+
 from flask_restful import abort, Resource
 
 events = {
@@ -27,4 +28,3 @@ class Event(Resource):
             'data': events[id],
             'message': 'event successfully found',
         }
-
