@@ -20,13 +20,17 @@ html {
     height: 100vh;
 }
 
+.box form {
+    padding-top: 10%;
+}
+
 .box label {
     text-align: center;
     padding-top: 50px;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
     display: block;
     height: 10%;
-    font-size: 150%;
+    font-size: 250%;
     color: #fff;
 }
 
@@ -40,15 +44,15 @@ html {
 
 .box input[type="text"],
 .box input[type="password"] {
-    height: 30px;
-    width: 50%;
+    font-size: 140%;
+    height: 60px;
+    width: 30%;
 }
 .box input[type="submit"] {
     cursor: pointer;
-    font-size: 130%;
+    font-size: 210%;
     margin-top: 60px;
-    height: 35px;
-    width: 110px;
+    padding: 8px 35px;
     color: #fff;
     background: #7ab214;
     transition: background 0.3s;
@@ -56,4 +60,10 @@ html {
 
 .box input[type="submit"]:hover {
     background: #85c215;
+}
+
+.box h2 {
+    margin: 0;
+    margin-top: 50px;
+    text-align: center;
 }
