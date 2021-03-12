@@ -27,3 +27,55 @@ html {
     height: 0;
     visibility: hidden;
 }
+
+.row {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background.webp);
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+}
+
+nav {
+    padding-top: 10px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.nav-btn {
+    margin-top: 25px;
+    float: right;
+}
+
+.nav-btn a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 120%;
+}
+
+.nav-btn a:first-child {
+    border-radius: 50px;
+    transition: background 0.3s;
+}
+.nav-btn a:first-child:hover {
+    background: #0984e3;
+}
+
+.nav-btn a:last-child {
+    border-radius: 50px;
+    background: #0984e3;
+    transition: background 0.3s;
+}
+.nav-btn a:last-child:hover {
+    background: #3097ff;
+}
