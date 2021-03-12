@@ -39,6 +39,12 @@ class Event(db.Model):
     name = db.Column(db.String(50), nullable=False)
     participants = db.relationship('User', secondary=events)
 
+    def get_response(self):
+        return {
+            'name': self.name,
+            'participants': None,  # TODO: Make this actually do the stuff
+        }
+
     def __str__(self):
         return f'<Event: {self.id}>'
 

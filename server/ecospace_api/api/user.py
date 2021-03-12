@@ -13,7 +13,7 @@ user_form_parser.add_argument('password', required=True)
 
 
 def pass_user(view):
-    """Decorator to pass a user a a parameter to a view"""
+    """Decorator to pass a user a parameter to a view"""
 
     @functools.wraps(view)
     def wrapped_view(*args, **kwargs):
