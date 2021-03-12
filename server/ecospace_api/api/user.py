@@ -27,8 +27,8 @@ class UserList(Resource):
         result = {}
         for user in users:
             response = user.get_response()
-            result[response['username']] = {}
-            result[response['username']]['full_name'] = response['full_name']
+            username = response.pop('username')
+            result[username] = response
         return {
             'data': result,
             'message': 'users listed successfully',
