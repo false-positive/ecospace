@@ -16,6 +16,10 @@ html {
     background-position: center;
 }
 
+.box form {
+    padding-top: 30px;
+}
+
 .box label {
     text-align: center;
     padding-top: 40px;
