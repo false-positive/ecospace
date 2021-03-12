@@ -43,6 +43,12 @@ span {
     color: #7ab214;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
 /* HEADINGS */
 
 h1,
@@ -226,4 +232,9 @@ footer ul {
 }
 footer ul li {
     margin-bottom: 8px;
+}
+
+nav {
+    z-index: 1;
+    transition: background 0.5s, border-bottom 0.5s;
 }
