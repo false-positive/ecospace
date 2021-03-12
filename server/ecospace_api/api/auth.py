@@ -36,6 +36,7 @@ class Auth(Resource):
         }
 
 
+
 def auth_token(view):
 
     @functools.wraps(view)

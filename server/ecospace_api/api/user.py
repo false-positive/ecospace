@@ -1,13 +1,13 @@
 import functools
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 from flask_restful import abort, Resource, reqparse
 from ..models import User as UserModel, db  # TODO: Maybe rename the models to prevent collisions like this
 from .auth import auth_token
 
 user_form_parser = reqparse.RequestParser()
-user_form_parser.add_argument('username', required=True)
-user_form_parser.add_argument('full_name', required=True)
-user_form_parser.add_argument('password', required=True)
+user_form_parser.add_argument('username')
+user_form_parser.add_argument('full_name')
+user_form_parser.add_argument('password')
 
 
 def pass_user(view):
@@ -48,6 +48,31 @@ class UserList(Resource):
             'message': 'user registered successfully',
         }
 
+    def put(self):
+        args = user_form_parser.parse_args()
+        username = args.get('username')
+        user = UserModel.query.filter_by(username=username).first()
+        if user is None:
+            abort(404, f'user with username {username} doesnt exist')
+        full_name = args.get('full_name') or user.full_name
+        password = args.get('password') or user.password
+        user.full_name = full_name
+        user.password = generate_password_hash(password)
+        db.session.commit()
+        return {
+            'message': 'edited successfully'
+        }
+
+    def delete(self):
+        args = user_form_parser.parse_args()
+        username = args.get('username')
+        password = args.get('password')
+        user = UserModel.query.filter_by(username=username).first()
+        db.session.delete(user)
+        db.session.commit()
+        return {
+            'message': 'user deleted successfully, did you really hated him that much?'
+        },204
 
 class User(Resource):
     @pass_user
