@@ -39,16 +39,16 @@ section {
     padding-top: 60px;
 }
 
+span {
+    color: #7ab214;
+}
+
 /* HEADINGS */
 
 h1,
 h2,
 h3 {
     font-weight: 300;
-}
-
-span {
-    color: #7ab214;
 }
 
 h2 {
@@ -59,6 +59,13 @@ h2 {
     font-size: 200%;
 }
 
+h3 {
+    font-weight: 300;
+    font-size: 120%;
+    margin-bottom: 15px;
+}
+
+/* PARAGRAPHS */
 p {
     font-size: 120%;
     line-height: 145%;
@@ -66,22 +73,6 @@ p {
     margin-left: 15%;
     text-align: center;
     margin-bottom: 30px;
-}
-
-.section-entry h2::after {
-    display: block;
-    height: 2px;
-    background-color: #7ab214;
-    content: " ";
-    width: 150px;
-    margin: 0 auto;
-    margin-top: 30px;
-}
-
-h3 {
-    font-weight: 300;
-    font-size: 120%;
-    margin-bottom: 15px;
 }
 
 /* HEADER */
@@ -102,12 +93,12 @@ nav {
     height: auto;
 }
 
-.nav-btn {
+.nav-btns {
     margin-top: 40px;
     float: right;
 }
 
-.nav-btn a {
+.nav-btns a {
     color: white;
     text-decoration: none;
     margin-left: 13px;
@@ -116,20 +107,24 @@ nav {
     font-size: 120%;
 }
 
-.nav-btn a:first-child {
+.nav-btns a:first-child:link,
+.nav-btns a:first-child:visited {
     border-radius: 50px;
     transition: background 0.3s;
 }
-.nav-btn a:first-child:hover {
+.nav-btns a:first-child:hover,
+.nav-btns a:first-child:active {
     background: #85c215;
 }
 
-.nav-btn a:last-child {
+.nav-btns a:last-child:link,
+.nav-btns a:last-child:visited {
     border-radius: 50px;
     background: #7ab214;
     transition: background 0.3s;
 }
-.nav-btn a:last-child:hover {
+.nav-btns a:last-child:hover,
+.nav-btns a:last-child:active {
     background: #85c215;
 }
 
@@ -153,7 +148,17 @@ nav {
     margin-top: 0;
     font-size: 200%;
 }
-/* ENTRY */
+/* ENTRY SECTION */
+
+.section-entry h2::after {
+    display: block;
+    height: 2px;
+    background-color: #7ab214;
+    content: " ";
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
 
 .feature {
     text-align: center;
@@ -175,7 +180,7 @@ nav {
     margin-top: 12px;
 }
 
-/* SIGNUP */
+/* SIGNUP SECTION */
 
 .section-signup {
     text-align: center;
@@ -184,7 +189,8 @@ nav {
 .section-signup h2 {
     margin-bottom: 60px;
 }
-.section-signup a {
+.section-signup a:link,
+.section-signup a:visited {
     padding: 10px 20px;
     border-radius: 50px;
     color: #fff;
