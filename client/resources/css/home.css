@@ -48,12 +48,25 @@ nav .row {
 }
 
 .nav-btns {
+    font-size: 110%;
     margin-top: 15px;
     list-style: none;
     display: inline-block;
 }
 .nav-btns li {
     display: inline-block;
+}
+
+.nav-btns li i {
+    display: inline-block;
+    color: #7ab214;
+    font-size: 120%;
+}
+
+.nav-btns li a {
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 30px;
 }
 
 .profile-btn {
