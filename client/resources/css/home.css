@@ -35,7 +35,18 @@ html {
     margin: 0 auto;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
 /* HEADER */
+
+nav {
+    z-index: 1;
+    transition: background 0.5s, border-bottom 0.5s;
+}
 
 nav .row {
     text-align: center;
@@ -64,7 +75,7 @@ nav i {
     display: inline-block;
     margin: 0 100px;
     color: #7ab214;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     padding: 4px 12px;
     border-radius: 10px;
     transition: border 0.3s;
@@ -83,7 +94,7 @@ nav i {
 .profile-btn {
     float: right;
     margin-top: 19px;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     padding: 4px 12px;
     border-radius: 10px;
     transition: border 0.3s;
