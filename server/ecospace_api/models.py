@@ -29,7 +29,7 @@ class User(db.Model):
         }
 
     def __str__(self):
-        return f'<User: @{self.handle} ({self.public_id})>'
+        return f'<User @{self.username} ({self.public_id})>'
 
 
 class Event(db.Model):
@@ -46,5 +46,5 @@ class Event(db.Model):
         }
 
     def __str__(self):
-        return f'<Event: {self.id}>'
+        return f'<Event {self.id}>'
 
