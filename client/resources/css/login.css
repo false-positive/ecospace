@@ -14,10 +14,10 @@ html {
 }
 
 .box {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/background.login.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/background.login.jpg);
     background-size: cover;
     background-position: center;
-    border: 2px solid black;
+    border: 2px solid transparent;
     border-radius: 50px;
     margin: 5% auto;
     height: 50vh;
@@ -36,6 +36,25 @@ html {
 .box input {
     margin: 0 auto;
     display: block;
+    border: none;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.box input[type="text"],
+.box input[type="password"] {
     height: 5vh;
     width: 50%;
+}
+.box input[type="submit"] {
+    cursor: pointer;
+    font-size: 130%;
+    margin-top: 60px;
+    height: 5vh;
+    width: 100px;
+    color: #fff;
+    background: #7ab214;
+}
+
+.box input[type="submit"]:hover {
 }
