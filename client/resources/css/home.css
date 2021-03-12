@@ -1,0 +1,62 @@
+/* ----------------------- */
+/* BASIC SETUP */
+/* ----------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #fff;
+    color: #555;
+    font-family: "Lato", "Arial", sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* REUSABLE CONTENT */
+
+.row {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+nav .row {
+    text-align: center;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+    float: left;
+}
+
+.nav-btns {
+    margin-top: 15px;
+    list-style: none;
+    display: inline-block;
+}
+.nav-btns li {
+    display: inline-block;
+}
+
+.profile-btn {
+    float: right;
+    margin-top: 15px;
+}

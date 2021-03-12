@@ -92,6 +92,8 @@ header {
 
 nav {
     padding-top: 10px;
+    z-index: 1;
+    transition: background 0.5s, border-bottom 0.5s;
 }
 
 .logo {
@@ -232,9 +234,4 @@ footer ul {
 }
 footer ul li {
     margin-bottom: 8px;
-}
-
-nav {
-    z-index: 1;
-    transition: background 0.5s, border-bottom 0.5s;
 }
