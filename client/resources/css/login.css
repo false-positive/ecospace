@@ -63,7 +63,20 @@ html {
 }
 
 .box h2 {
+    color: #fff;
     margin: 0;
     margin-top: 50px;
     text-align: center;
+}
+
+.box h2 a:link,
+.box h2 a:visited {
+    text-decoration: none;
+    color: #7ab214;
+    transition: color 0.3s;
+}
+
+.box h2 a:hover,
+.box h2 a:active {
+    color: #85c215;
 }
