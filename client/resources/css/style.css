@@ -81,6 +81,7 @@ h2 {
 }
 
 p {
+    font-size: 120%;
     line-height: 145%;
     width: 70%;
     margin-left: 15%;
@@ -100,7 +101,7 @@ h2::after {
 
 h3 {
     font-weight: 300;
-    font-size: 110%;
+    font-size: 120%;
     margin-bottom: 15px;
 }
 
