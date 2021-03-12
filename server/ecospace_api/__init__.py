@@ -14,6 +14,8 @@ def create_app():
             SQLALCHEMY_DATABASE_URI=f'sqlite:///{os.path.join(app.instance_path, "ecospace.sqlite")}',
     )
 
+    app.config.from_pyfile('config.cfg', silent=True)
+
     with suppress(OSError):
         # Create the `scifedium/server/instance` folder where the db is
         os.makedirs(app.instance_path)

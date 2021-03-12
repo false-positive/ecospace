@@ -1,10 +1,8 @@
 import functools
-import uuid
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_restful import abort, Resource, reqparse
-
 from ..models import User as UserModel, db  # TODO: Maybe rename the models to prevent collisions like this
-
+from .auth import auth_token
 
 user_form_parser = reqparse.RequestParser()
 user_form_parser.add_argument('username', required=True)
@@ -40,6 +38,7 @@ class UserList(Resource):
             'data': result,
             'message': 'users listed successfully',
         },
+
     def post(self):
         args = user_form_parser.parse_args()
         new_user = UserModel(id = None, username=args.get('username'), full_name=args.get('full_name'), password=generate_password_hash(args.get('password')))
