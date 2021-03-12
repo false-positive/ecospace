@@ -1,36 +1,33 @@
 from flask_restful import Api, abort, Resource
 
-api = Api
+api = Api()
 
 users = {
-    '123e4567-e89b-12d3-a456-426614174000': {
-        'username':  'test',
+    'test': {
         'password': 'rozovi_rozi',
         'full_name': 'Joe',
-        'organizations_ids': [],
+        'organizations_ids': ['6a2ddadc-8327-11eb-8dcd-0242ac130003'],
     },
-    '123e4568-e89b-12d3-a456-426614174000': {
-        'username':  'test1',
+    'test1': {
         'password': 'rozovi_rozi',
         'full_name': 'Bob',
-        'organizations_ids': [],
+        'organizations_ids': ['6a2ddadc-8327-11eb-8dcd-0242ac130003'],
     },
-    '123e4569-e89e-12d3-a456-426614174000': {
-        'username':  'test2',
+    'test2': {
         'password': 'rozovi_rozi',
         'full_name': 'Ben',
-        'organizations_ids': [],
+        'organizations_ids': ['6a2ddadc-8327-11eb-8dcd-0242ac130003'],
     },
 }
 
 organizations = {
     '6a2ddadc-8327-11eb-8dcd-0242ac130003': {
-        'name': 'Ecospace',
+        'name': 'ECOspace',
         'description': 'an api to the Ecospace project',
         'goal': 'lets finnish this api!',
-        'owner': '123e4567-e89b-12d3-a456-426614174000',
-        'admins': ['123e4568-e89b-12d3-a456-426614174000'],
-        'members': [],
+        'owner': 'test1',
+        'admins': ['test1'],
+        'members': ['test', 'test2'],
     }
 }
 
@@ -38,12 +35,11 @@ organizations = {
 class UserList(Resource):
     def get(self):
         result = []
-        for id in users:
+        for name in users:
             result.append({
-                'id': id,
-                'username': users[id]['username'],
-                'full_name': users[id]['full_name'],
-                'organizations_ids': users[id]['organizations_ids'],
+                'username': name,
+                'full_name': users[name]['full_name'],
+                'organizations_ids': users[name]['organizations_ids'],
             })
         return {
             'data': result,
@@ -52,21 +48,15 @@ class UserList(Resource):
 
 
 class User(Resource):
-    def get(self, handle):
-        id = None
-        for i in users:
-            if handle == users[i]['username']:
-                id = i
-            if id is not None:
-                break
-        if id is None:
-            abort(404, message=f'user with handle {handle} doesnt exist')
+    def get(self, username):
+        if username not in users:
+            abort(404, message=f'user with username {username} doesnt exist')
+        user = users[username]
         return {
                 'data': {
-                    'id': id,
-                    'username': users[id]['username'],
-                    'full_name': users[id]['full_name'],
-                    'organizations_ids': users[id]['organizations_ids'],
+                    'username': username,
+                    'full_name': user['full_name'],
+                    'organizations_ids': user['organizations_ids'],
 
                 },
                 'message': 'user found successfully',
@@ -82,15 +72,9 @@ class OrganizationList(Resource):
 
 
 class Organization(Resource):
-    def get(self, handle):
-        id = None
-        for i in organizations:
-            if handle == organizations[i]['name']:
-                id = i
-            if id is not None:
-                break
-        if id is None:
-            abort(404, message=f'organization with handle {handle} doesnt exist')  # noqa
+    def get(self, id):
+        if id not in organizations:
+            abort(404, message=f'organization with id {id} doesnt exist')
         return {
             'data': organizations[id],
             'message': 'organization successfully found',

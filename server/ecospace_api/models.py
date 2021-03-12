@@ -6,7 +6,6 @@ db = SQLAlchemy()
 class User(db.Model):
     # TODO: Add docstring
     id = db.Column(db.Integer, primary_key=True)
-    public_id = db.Column(db.String(36), unique=True)
     handle = db.Column(db.String(15), unique=True)
     password = db.Column(db.String(80), nullable=False)
 

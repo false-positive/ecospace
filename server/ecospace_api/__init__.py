@@ -32,8 +32,8 @@ def create_app():
     api.init_app(app)
     api.add_resource(UserList, '/users')
     api.add_resource(OrganizationList, '/organizations')
-    api.add_resource(User, '/users/<string:handle>')
-    api.add_resource(Organization, '/organizations/<string:handle>')
+    api.add_resource(User, '/users/<string:username>')
+    api.add_resource(Organization, '/organizations/<string:username>')
 
     return app
 
