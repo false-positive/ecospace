@@ -48,6 +48,7 @@ nav i {
 }
 
 .logo {
+    margin-top: 10px;
     height: 60px;
     width: auto;
     float: left;
@@ -63,18 +64,32 @@ nav i {
     display: inline-block;
     margin: 0 100px;
     color: #7ab214;
+    border: 1px solid transparent;
+    padding: 4px 12px;
+    border-radius: 7px;
+    transition: border 0.3s;
+}
+
+.nav-btns li:hover {
+    border: 1px solid #7ab214;
 }
 
 .nav-btns li a {
     color: inherit;
     text-decoration: none;
     display: inline-block;
-    margin-right: 30px;
 }
 
 .profile-btn {
     float: right;
     margin-top: 19px;
+    border: 1px solid transparent;
+    padding: 4px 12px;
+    border-radius: 7px;
+    transition: border 0.3s;
+}
+.profile-btn:hover {
+    border: 1px solid #7ab214;
 }
 .profile-btn a {
     color: #7ab214;
