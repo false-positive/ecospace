@@ -6,6 +6,6 @@ api = Api()
 
 
 api.add_resource(UserList, '/users')
-api.add_resource(OrganizationList, '/organizations')
+api.add_resource(OrganizationList, '/events')
 api.add_resource(User, '/users/<string:username>')
-api.add_resource(Organization, '/organizations/<string:id>')
+api.add_resource(Organization, '/events/<string:id>')
