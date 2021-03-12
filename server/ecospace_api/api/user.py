@@ -25,7 +25,7 @@ class UserList(Resource):
     def get(self):
         users = UserModel.query.all()
         return {
-            'data': bool(users),  # TODO: Serialize to response json
+            'data': [user.get_response() for user in users],
             'message': 'users listed successfully',
         }
 
@@ -35,9 +35,9 @@ class User(Resource):
     def get(self, user):
         return {
             'data': {
-                'username': user.name,  # XXX: will crash unless Kaloyan fixes
+                'username': user.name,
                 'full_name': user.full_name,
-                'organizations_ids': None,  # user['organizations_ids'],
+                # 'organizations_ids': None,  # user['organizations_ids'],
 
             },
             'message': 'user found successfully',

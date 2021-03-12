@@ -11,7 +11,7 @@ events = {
 }
 
 
-class EventsList(Resource):
+class EventList(Resource):
     def get(self):
         return {
             'data': events,
@@ -22,9 +22,9 @@ class EventsList(Resource):
 class Event(Resource):
     def get(self, id):
         if id not in events:
-            abort(404, message=f'organization with id {id} doesnt exist')
+            abort(404, message=f'event with id {id} doesnt exist')
         return {
             'data': events[id],
-            'message': 'organization successfully found',
+            'message': 'event successfully found',
         }
 
