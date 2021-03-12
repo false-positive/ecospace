@@ -16,17 +16,13 @@ html {
     background-position: center;
 }
 
-.box form {
-    padding-top: 6%;
-}
-
 .box label {
     text-align: center;
-    padding-top: 50px;
+    padding-top: 40px;
     margin: 0 auto 20px auto;
     display: block;
     height: 10%;
-    font-size: 250%;
+    font-size: 220%;
     color: #fff;
 }
 
@@ -41,7 +37,7 @@ html {
 .box input[type="text"],
 .box input[type="password"] {
     font-size: 140%;
-    height: 60px;
+    height: 45px;
     width: 30%;
 }
 .box input[type="submit"] {
@@ -59,6 +55,7 @@ html {
 }
 
 .box h2 {
+    font-size: 110%;
     color: #fff;
     margin: 50px 0;
     text-align: center;
