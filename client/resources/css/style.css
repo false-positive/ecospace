@@ -47,29 +47,8 @@ h3 {
     font-weight: 300;
 }
 
-h1 {
-    text-transform: uppercase;
-    color: #fff;
-    position: absolute;
-    left: 50%;
-    word-spacing: 4px;
-    letter-spacing: 1px;
-    transform: translate(-50%, -50%);
-}
-
-h1:first-of-type {
-    font-size: 500%;
-    top: 24%;
-}
-
 span {
     color: #7ab214;
-}
-
-h1:last-of-type {
-    top: 40%;
-    text-align: center;
-    font-size: 200%;
 }
 
 h2 {
@@ -154,6 +133,26 @@ nav {
     background: #85c215;
 }
 
+.titles {
+    top: 30%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+    transform: translate(-50%, -50%);
+}
+
+.titles h1:first-of-type {
+    margin-bottom: 10px;
+    font-size: 500%;
+}
+.titles h1:last-of-type {
+    margin-top: 0;
+    font-size: 200%;
+}
 /* ENTRY */
 
 .feature {
@@ -180,6 +179,9 @@ nav {
 
 .section-signup {
     text-align: center;
+    margin-bottom: 60px;
+}
+.section-signup h2 {
     margin-bottom: 60px;
 }
 .section-signup a {
