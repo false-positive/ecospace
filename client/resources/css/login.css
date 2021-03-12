@@ -20,15 +20,15 @@ html {
     border: 2px solid transparent;
     border-radius: 50px;
     margin: 5% auto;
-    height: 50vh;
-    width: 50vw;
+    height: 300px;
+    width: 40%;
 }
 
 .box label {
     text-align: center;
     margin: 20px auto 0 auto;
     display: block;
-    height: 5vh;
+    height: 10%;
     font-size: 150%;
     color: #fff;
 }
@@ -43,18 +43,20 @@ html {
 
 .box input[type="text"],
 .box input[type="password"] {
-    height: 5vh;
+    height: 30px;
     width: 50%;
 }
 .box input[type="submit"] {
     cursor: pointer;
     font-size: 130%;
     margin-top: 60px;
-    height: 5vh;
-    width: 100px;
+    height: 35px;
+    width: 110px;
     color: #fff;
     background: #7ab214;
+    transition: background 0.3s;
 }
 
 .box input[type="submit"]:hover {
+    background: #85c215;
 }
