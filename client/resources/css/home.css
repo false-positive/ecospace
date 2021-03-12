@@ -64,9 +64,9 @@ nav i {
     display: inline-block;
     margin: 0 100px;
     color: #7ab214;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     padding: 4px 12px;
-    border-radius: 7px;
+    border-radius: 10px;
     transition: border 0.3s;
 }
 
@@ -83,9 +83,9 @@ nav i {
 .profile-btn {
     float: right;
     margin-top: 19px;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     padding: 4px 12px;
-    border-radius: 7px;
+    border-radius: 10px;
     transition: border 0.3s;
 }
 .profile-btn:hover {
