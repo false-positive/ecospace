@@ -80,8 +80,9 @@ class OrganizationList(Resource):
             'message': 'organizations listed successfully',
         }
 
+
 class Organization(Resource):
-    def get(self,handle):
+    def get(self, handle):
         id = None
         for i in organizations:
             if handle == organizations[i]['name']:
@@ -89,7 +90,7 @@ class Organization(Resource):
             if id is not None:
                 break
         if id is None:
-            abort(404, message=f'organization with handle {handle} doesnt exist')
+            abort(404, message=f'organization with handle {handle} doesnt exist')  # noqa
         return {
             'data': organizations[id],
             'message': 'organization successfully found',
