@@ -12,12 +12,12 @@ var loginBtn = document.querySelector(".nav-btns a:first-child");
 
 var sticky = navbar.offsetTop;
 
-loginBtn.addEventListener("mouseover", function (event) {
+loginBtn.addEventListener("mouseover", function () {
     mouseOver = true;
     loginBtn.style.background = "#85c215";
 });
 
-loginBtn.addEventListener("mouseout", function (event) {
+loginBtn.addEventListener("mouseout", function () {
     mouseOver = false;
     if (isNavSticky) loginBtn.style.background = "#7ab214";
     else loginBtn.style.background = "none";
