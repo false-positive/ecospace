@@ -2,7 +2,7 @@ import os
 from contextlib import suppress
 
 from flask import Flask, jsonify
-from flask_restful import Api
+
 __version__ = '0.0.1'
 __author__ = 'FalsePositive'
 
@@ -26,10 +26,8 @@ def create_app():
     def hello():
         return jsonify({'message': 'flask seems to work, congrats!'})
 
-    from .api import User, UserList, Organization, OrganizationList
-
+    from .api import api
     api.init_app(app)
-
 
     return app
 
