@@ -17,16 +17,13 @@ html {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/background.login.jpg);
     background-size: cover;
     background-position: center;
-    border: 2px solid transparent;
-    border-radius: 50px;
-    margin: 5% auto;
-    height: 300px;
-    width: 40%;
+    height: 100vh;
 }
 
 .box label {
     text-align: center;
-    margin: 20px auto 0 auto;
+    padding-top: 50px;
+    margin: 0 auto;
     display: block;
     height: 10%;
     font-size: 150%;
