@@ -1,8 +1,15 @@
 import functools
+import uuid
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_restful import abort, Resource, reqparse
 
-from flask_restful import abort, Resource
+from ..models import User as UserModel, db  # TODO: Maybe rename the models to prevent collisions like this
 
-from ..models import User as UserModel  # TODO: Maybe rename the models to prevent collisions like this
+
+user_form_parser = reqparse.RequestParser()
+user_form_parser.add_argument('username', required=True)
+user_form_parser.add_argument('full_name', required=True)
+user_form_parser.add_argument('password', required=True)
 
 
 def pass_user(view):
@@ -33,6 +40,14 @@ class UserList(Resource):
             'data': result,
             'message': 'users listed successfully',
         },
+    def post(self):
+        args = user_form_parser.parse_args()
+        new_user = UserModel(id = None, username=args.get('username'), full_name=args.get('full_name'), password=generate_password_hash(args.get('password')))
+        db.session.add(new_user)
+        db.session.commit()
+        return {
+            'message': 'user registered successfully',
+        }
 
 
 class User(Resource):
@@ -40,8 +55,8 @@ class User(Resource):
     def get(self, user):
         return {
             'data': {
-                'username': user.username,
-                'full_name': user.full_name,
+                'username': user.get_response()['username'],
+                'full_name': user.get_response()['full_name'],
                 # 'organizations_ids': None,  # user['organizations_ids'],
 
             },
