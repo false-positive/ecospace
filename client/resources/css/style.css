@@ -103,7 +103,7 @@ nav {
     text-decoration: none;
     margin-left: 13px;
     display: inline-block;
-    padding: 5px 12px;
+    padding: 8px 17px;
     font-size: 120%;
 }
 
@@ -191,7 +191,7 @@ nav {
 }
 .section-signup a:link,
 .section-signup a:visited {
-    padding: 10px 20px;
+    padding: 11px 24px;
     border-radius: 50px;
     color: #fff;
     background: #7ab214;
