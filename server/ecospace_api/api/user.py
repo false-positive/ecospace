@@ -40,7 +40,7 @@ class User(Resource):
     def get(self, user):
         return {
             'data': {
-                'username': user.name,
+                'username': user.username,
                 'full_name': user.full_name,
                 # 'organizations_ids': None,  # user['organizations_ids'],
 
