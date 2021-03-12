@@ -28,17 +28,29 @@ html {
     visibility: hidden;
 }
 
+/* REUSABLE CONTENT */
+
 .row {
     max-width: 1200px;
     margin: 0 auto;
 }
 
+section {
+    padding-top: 60px;
+}
+
 /* HEADINGS */
 
+h1,
+h2,
+h3 {
+    font-weight: 300;
+}
+
 h1 {
+    text-transform: uppercase;
     color: #fff;
     position: absolute;
-    text-transform: uppercase;
     left: 50%;
     word-spacing: 4px;
     letter-spacing: 1px;
@@ -50,7 +62,7 @@ h1:first-of-type {
     top: 24%;
 }
 
-h1 span {
+span {
     color: #7ab214;
 }
 
@@ -59,6 +71,40 @@ h1:last-of-type {
     text-align: center;
     font-size: 200%;
 }
+
+h2 {
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    font-size: 200%;
+}
+
+p {
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2::after {
+    display: block;
+    height: 2px;
+    background-color: #7ab214;
+    content: " ";
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+h3 {
+    font-weight: 300;
+    font-size: 110%;
+    margin-bottom: 15px;
+}
+
+/* HEADER */
 
 header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background.webp);
@@ -105,4 +151,37 @@ nav {
 }
 .nav-btn a:last-child:hover {
     background: #85c215;
+}
+
+/* ENTRY */
+
+.feature {
+    text-align: center;
+}
+
+.feature i {
+    font-size: 400%;
+    color: #7ab214;
+}
+
+.feature:nth-of-type(2) {
+    padding-top: 10px;
+}
+
+.feature:nth-of-type(2) i {
+    font-size: 300%;
+}
+.feature:nth-of-type(2) h3 {
+    margin-top: 12px;
+}
+
+/* FOOTER */
+
+footer {
+    height: 200px;
+    background: #2d3436;
+}
+
+footer h3 {
+    color: #fff;
 }
