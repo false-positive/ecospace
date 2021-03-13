@@ -127,6 +127,7 @@ h5 {
 }
 
 p {
+    line-height: 145%;
     display: block;
     margin: 0 auto;
     width: 70%;
