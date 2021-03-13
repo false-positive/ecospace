@@ -126,7 +126,7 @@ nav i {
     text-decoration: none;
 }
 
-/* NEAR ME SECTION */
+/* EVENTS SECTION */
 
 .section-nearme {
     margin-top: 150px;
@@ -177,11 +177,25 @@ h5 {
     margin-top: 10px;
 }
 
-.section-nearme .event .third-part a {
+.coming-btn {
     border-radius: 7px;
     text-decoration: none;
     color: #fff;
-    background: #7ab214;
     padding: 5px 10px;
     float: right;
+}
+
+.coming {
+    background: #7ab214;
+    transition: background 0.3s;
+}
+.coming:hover {
+    background: #85c215;
+}
+.not-coming {
+    background: #dc3545;
+    transition: background 0.3s;
+}
+.not-coming:hover {
+    background: #e15260;
 }
