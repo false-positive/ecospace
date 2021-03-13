@@ -68,7 +68,7 @@ nav i {
     list-style: none;
     display: inline-block;
 }
-.nav-btns li {
+.nav-btns a {
     display: inline-block;
     margin: 0 100px;
     color: #7ab214;
@@ -78,14 +78,32 @@ nav i {
     transition: border 0.3s;
 }
 
-.nav-btns li:hover {
+.nav-btns a:hover {
     border: 1px solid #7ab214;
 }
 
-.nav-btns li a {
+.nav-btns a li {
     color: inherit;
     text-decoration: none;
     display: inline-block;
+}
+
+.nav-btns a.active {
+    color: #fff;
+    background: #7ab214;
+    transition: color 0.3s, background 0.3s;
+}
+.nav-btns a.active i {
+    color: #fff;
+    transition: color 0.3s, background 0.3s;
+}
+
+.nav-btns a.active:hover {
+    color: #7ab214;
+    background: #fff;
+}
+.nav-btns a.active:hover i {
+    color: #7ab214;
 }
 
 .profile-btn {

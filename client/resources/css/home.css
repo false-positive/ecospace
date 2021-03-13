@@ -78,6 +78,24 @@ nav i {
     transition: border 0.3s;
 }
 
+.nav-btns a.active {
+    color: #fff;
+    background: #7ab214;
+    transition: color 0.3s, background 0.3s;
+}
+.nav-btns a.active i {
+    color: #fff;
+    transition: color 0.3s, background 0.3s;
+}
+
+.nav-btns a.active:hover {
+    color: #7ab214;
+    background: #fff;
+}
+.nav-btns a.active:hover i {
+    color: #7ab214;
+}
+
 .nav-btns a:hover {
     border: 1px solid #7ab214;
 }
