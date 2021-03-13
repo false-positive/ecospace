@@ -73,7 +73,8 @@ nav i {
 }
 .nav-btns a {
     display: inline-block;
-    /* margin: 0 100px; */
+    margin-left: 107px;
+    margin-right: 50px;
     color: #7ab214;
     border: 1px solid transparent;
     padding: 4px 12px;
