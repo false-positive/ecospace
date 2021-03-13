@@ -9,7 +9,10 @@
 }
 
 html {
-    background-color: #fff;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/arborct_homeslider_10.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
     color: #555;
     font-family: "Lato", "Arial", sans-serif;
     font-weight: 300;
