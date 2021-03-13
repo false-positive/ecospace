@@ -1,13 +1,4 @@
-let firstnameInput = document.querySelector("#firstname");
-let lastnameInput = document.querySelector("#lastname");
-let passwordInput = document.querySelector("#password");
-let submit = document.querySelector("#submit");
-
-submit.addEventListener("click", async () => {
-    let firstname = firstnameInput.value.trim();
-    let lastname = lastnameInput.value.trim();
-    let password = passwordInput.value;
-
+async function register(firstname, lastname, username, password) {
     let response = await fetch(`${URL}/auth`, {
         method: "POST",
         mode: "cors",
@@ -15,12 +6,30 @@ submit.addEventListener("click", async () => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
+            username,
             full_name: firstname + " " + lastname,
             password,
         }),
     });
     let data = await response.json();
     if (response.ok) {
-        // console.log(data);
+        login(username, password);
     }
-});
+    return data;
+}
+
+async function login(username, password) {
+    let response = await fetch(`${URL}/auth`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            Authorization: `Basic ${btoa(`${username}:${password}`)}`,
+        },
+    });
+    let { data } = await response.json();
+
+    let now = new Date();
+    now.setMonth(now.getMonth() + 1);
+    document.cookie = `token=${data}; expires=${now.toUTCString()}; SameSite=Strict`;
+    window.location.replace("index.html");
+}

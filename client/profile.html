@@ -42,11 +42,18 @@
                         <h2>Name: John Smith</h2>
                     </div>
                     <div class="col span-1-of-2">
-                        <h3><a href="index.html" class="logout-btn">Log out</a></h3>
+                        <h3><a href="#" class="logout-btn" onclick="logout()">Log out</a></h3>
                     </div>
                 </div>
             </div>
         </section>
         <script src="resources/js/stickynav.js"></script>
+        <script>
+            function logout() {
+                document.cookie = "token=; expires= Thu, 21 Aug 2014 20:00:00 UTC; SameSite=Strict";
+                // console.log(document.cookie);
+                window.location.replace("index.html");
+            }
+        </script>
     </body>
 </html>
