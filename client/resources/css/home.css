@@ -42,7 +42,7 @@ html {
 
 nav {
     z-index: 1;
-    transition: background 0.5s, border-bottom 0.5s;
+    transition: background 0.3s, border-bottom 0.3s;
     position: fixed;
     top: 0;
     width: 100%;
