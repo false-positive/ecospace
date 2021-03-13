@@ -103,3 +103,49 @@ nav i {
     color: #7ab214;
     text-decoration: none;
 }
+
+/* EVENT CONTENT */
+
+section {
+    margin-top: 120px;
+    text-align: left;
+}
+
+h1,
+h5 {
+    margin: 0 15%;
+    font-weight: 300;
+}
+
+h1 {
+    margin-bottom: 5px;
+    font-size: 240%;
+}
+
+h5 {
+    margin-bottom: 30px;
+}
+
+p {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.extra {
+    margin-top: 40px;
+}
+
+h3 {
+    display: inline-block;
+    font-weight: 300;
+}
+
+h3:first-child {
+    margin-left: 15%;
+    float: left;
+}
+h3:last-child {
+    margin-right: 15%;
+    float: right;
+}
