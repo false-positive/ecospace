@@ -63,6 +63,29 @@ class EventList(Resource):
             'message': 'event created successfully',
         }
 
+class EventManageUsers(Resource):
+    @pass_event
+    @auth_token
+    def put(self, current_user, event):
+        if event.organizer_id == current_user.id:
+            abort(401, message=f'you are already in this event dum dum')
+        current_user.events.append(event)
+        db.session.commit()
+        return {
+            'data': current_user.get_response(),
+            'message': 'successfully started event participation',
+        }
+
+    @pass_event
+    @auth_token
+    def delete(self, current_user, event):
+        event.participants.remove(current_user)
+        db.session.commit()
+        return {
+            'data': current_user.get_response(),
+            'message': 'successfully removed event participation',
+        }
+
 
 class Event(Resource):
     @pass_event

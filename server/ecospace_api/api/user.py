@@ -42,26 +42,6 @@ class UserList(Resource):
             'message': 'users listed successfully',
         }
 
-    def post(self):
-        """Register a new user"""
-        args = user_form_parser.parse_args()
-
-        # Check if username is unique
-        username = args.get('username')
-        if UserModel.query.filter_by(username=username).first() is not None:
-            abort(401, message=f'user {username} already registered')
-
-        new_user = UserModel(
-            username=username,
-            full_name=args.get('full_name'),
-            password=generate_password_hash(args.get('password'))
-        )
-        db.session.add(new_user)
-        db.session.commit()
-        return {
-            'data': {new_user.username: new_user.get_response()},
-            'message': 'user registered successfully',
-        }
 
 
 class User(Resource):

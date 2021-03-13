@@ -29,6 +29,7 @@ class UserModel(db.Model):
             'full_name': self.full_name,
             'description': self.description,
             'organized_events': {event.public_id: event.get_response() for event in self.organized_events},
+            'events': {event.public_id: event.get_response() for event in self.events},
         }
 
     def __str__(self):
