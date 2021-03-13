@@ -1,32 +1,33 @@
 import functools
 import datetime as dt
 
-from flask import current_app
-from flask_restful import abort, Resource, reqparse, request
+from flask import current_app, make_response
+from flask_restful import abort, Resource, request
 from werkzeug.security import check_password_hash
 import jwt
 
 from ..models import UserModel
 
-user_form_parser = reqparse.RequestParser()
-user_form_parser.add_argument('username', required=True)
-user_form_parser.add_argument('password', required=True)
-
 
 class AuthResource(Resource):
     """Endpoint for user authentication with JWTs"""
     def get(self):
-        args = user_form_parser.parse_args()
-        username = args.get('username')
-        password = args.get('password')
-        user = UserModel.query.filter_by(username=username).first()
-        if user and check_password_hash(user.password, password):
+        # Get username and password from HTTP Basic authentication
+        # https://www.youtube.com/watch?v=VW8qJxy4XcQ
+        auth = request.authorization
+        if not auth or not auth.password or not auth.username:
+            return make_response(
+                'missing username and password', 401,
+                {'WWW-Authenticate': 'Basic realm="Login required!"'}
+            )
+        user = UserModel.query.filter_by(username=auth.username).first()
+        if user and check_password_hash(user.password, auth.password):
             token = jwt.encode({
-                'username': username,
+                'username': auth.username,
                 'exp': dt.datetime.utcnow() + dt.timedelta(hours=1),
             }, current_app.config['SECRET_KEY'], algorithm="HS256")
             return {
-                'data': token,
+                'data': token.decode('utf-8'),
                 'message': 'successfully logged',
             }
         return {
