@@ -8,7 +8,7 @@ from ..models import EventModel, UserModel, db
 from .auth import auth_token
 
 event_form_parser = reqparse.RequestParser()
-event_form_parser.add_argument('name')
+event_form_parser.add_argument('name', required=True)
 event_form_parser.add_argument('location')
 event_form_parser.add_argument('date', type=dt.datetime.fromisoformat)
 
@@ -33,9 +33,8 @@ def pass_event(view):
 class EventList(Resource):
     def get(self):
         events = EventModel.query.all()
-        results = {event.public_id: event.get_response() for event in events}
         return {
-            'data': results,
+            'data': {event.public_id: event.get_response() for event in events},
             'message': 'events listed successfully',
         }
 
@@ -59,7 +58,7 @@ class EventList(Resource):
         db.session.add(new_event)
         db.session.commit()
         return {
-            'data': new_event.get_response(),
+            'data': {new_event.public_id: new_event.get_response()},
             'message': 'event created successfully',
         }
 
@@ -85,7 +84,7 @@ class EventManageUsers(Resource):
         return {
             'data': current_user.get_response(),
             'message': 'successfully removed event participation',
-        }
+        }, 204
 
 
 class Event(Resource):
@@ -105,7 +104,7 @@ class Event(Resource):
         event.date = args.get('date') or event.date
         db.session.commit()
         return {
-            'data': event.get_response(),
+            'data': {event.id: event.get_response()},
             'message': 'edited event successfully',
         }
 
