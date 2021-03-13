@@ -35,17 +35,14 @@ html {
     margin: 0 auto;
 }
 
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
 /* HEADER */
 
 nav {
     z-index: 1;
     transition: background 0.5s, border-bottom 0.5s;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 nav .row {
@@ -110,7 +107,7 @@ nav i {
 /* NEAR ME SECTION */
 
 .section-nearme {
-    /* margin-top: 80px; */
+    margin-top: 150px;
     text-align: center;
 }
 .section-nearme .event {
@@ -119,10 +116,6 @@ nav i {
     margin: 0 auto 40px auto;
     border-radius: 10px;
     width: 50%;
-}
-
-.section-nearme {
-    padding-top: 100px;
 }
 
 h4,
