@@ -55,6 +55,6 @@ def auth_token(view):
             abort(401, message='expired token')
         except jwt.InvalidTokenError:
             abort(401, message='invalid token, pls dont try to bruteforce')
-        return wrapped_view(*args, **kwargs)
+        return view(*args, **kwargs)
 
     return wrapped_view
