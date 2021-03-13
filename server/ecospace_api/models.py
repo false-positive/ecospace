@@ -16,16 +16,12 @@ class User(db.Model):
     full_name = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80), nullable=False)
     # https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/#many-to-many-relationships
-    events = db.relationship(
-        'Event', secondary=events,
-        lazy='subquery', backref=db.backref('users', lazy=True),
-    )
+
 
     def get_response(self):
         return {
             'username': self.username,
             'full_name': self.full_name,
-            # 'events': self.events,
         }
 
     def __str__(self):
@@ -40,9 +36,13 @@ class Event(db.Model):
     participants = db.relationship('User', secondary=events)
 
     def get_response(self):
+        list = []
+        for user in self.participants:
+            list.append(user.username)
         return {
             'name': self.name,
-            'participants': None,  # TODO: Make this actually do the stuff
+            'public_id': self.public_id,
+            'participants': list,
         }
 
     def __str__(self):

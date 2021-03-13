@@ -1,7 +1,7 @@
 import functools
 from werkzeug.security import generate_password_hash
 from flask_restful import abort, Resource, reqparse
-from ..models import User as UserModel, db  # TODO: Maybe rename the models to prevent collisions like this
+from ..models import User as UserModel, db, Event  
 from .auth import auth_token
 
 user_form_parser = reqparse.RequestParser()
@@ -29,11 +29,20 @@ def pass_user(view):
 class UserList(Resource):
     def get(self):
         users = UserModel.query.all()
+        events = Event.query.all()
         result = {}
         for user in users:
+            list = {}
             response = user.get_response()
             username = response.pop('username')
-            result[username] = response
+            result[username] = {}
+            result[username]['full_name'] = response
+            for event in events:
+                if user.username in event.get_response()['participants']:
+                    id = event.get_response()['public_id']
+                    list[id] = {}
+                    list[id]['name'] = (event.get_response()['name'])
+            result[username]['events'] = list
         return {
             'data': result,
             'message': 'users listed successfully',
@@ -45,6 +54,7 @@ class UserList(Resource):
         db.session.add(new_user)
         db.session.commit()
         return {
+            'data': new_user.get_response(),
             'message': 'user registered successfully',
         }
 
@@ -60,6 +70,7 @@ class UserList(Resource):
         user.password = generate_password_hash(password)
         db.session.commit()
         return {
+            'data': user.get_response(),
             'message': 'edited successfully'
         }
 
