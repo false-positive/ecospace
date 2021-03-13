@@ -1,13 +1,16 @@
 import functools
 from uuid import uuid4
+import datetime as dt
+
 from flask_restful import abort, Resource, reqparse
+
 from ..models import EventModel, UserModel, db
+from .auth import auth_token
 
 event_form_parser = reqparse.RequestParser()
-event_form_parser.add_argument('event_id')
 event_form_parser.add_argument('name')
-event_form_parser.add_argument('participants', action='append')
-event_form_parser.add_argument('operation', type=str)
+event_form_parser.add_argument('location')
+event_form_parser.add_argument('date', type=dt.datetime.fromisoformat)
 
 
 def pass_event(view):
@@ -36,55 +39,27 @@ class EventList(Resource):
             'message': 'events listed successfully',
         }
 
-    def post(self):
+    @auth_token
+    def post(self, current_user):
         args = event_form_parser.parse_args()
-        event_id = uuid4()
-        name = args.get('name')
+        new_event = EventModel(
+           public_id=str(uuid4()),
+           author_id=current_user.id,
+           name=args.get('name'),
+           location=args.get('location'),
+           date=args.get('date'),
+        )
         participants = args.get('participants')
-        list = []
         for username in participants:
-            list.append(UserModel.query.filter_by(username=username).first())
-        new_event = EventModel(id=None, public_id=str(event_id), name=name, participants=list)
+            user = UserModel.query.filter_by(username=username).first()
+            if not user:
+                abort(404, f'user {user} not found')
+            new_event.participants.append(user)
         db.session.add(new_event)
         db.session.commit()
         return {
             'data': new_event.get_response(),
             'message': 'event created successfully',
-        }
-
-    def put(self):
-        args = event_form_parser.parse_args()
-        event_id = args.get('event_id')
-        event = EventModel.query.filter_by(id=event_id).first()
-        operation = args.get('operation')
-        if event is None:
-            abort(404, message=f'event with id{event_id} not found, maybe create one?')
-        event.name = args.get('name') or event.name
-        if args.get('participants') is not None:
-            for username in args.get('participants'):
-                if operation == 'add':
-                    event.participants.append(UserModel.query.filter_by(username=username).first())
-                elif operation == 'remove':
-                    event.participants.remove(UserModel.query.filter_by(username=username).first())
-                else:
-                    print('>>>>>>>> Operation', operation)
-                    abort(401, message=f'invalid {operation}operation')
-        db.session.commit()
-        return {
-            'data': event.get_response(),
-            'message': 'edited event successfully',
-        }
-
-    def delete(self):
-        args = event_form_parser.parse_args()
-        event_id = args.get('event_id')
-        event = EventModel.query.filter_by(public_id=event_id).first()
-        if event is None:
-            abort(404, message=f'event with {event_id} doesnt exist')
-        db.session.delete(event)
-        db.session.commit()
-        return {
-            'message': 'event successfully deleted',
         }
 
 
@@ -95,3 +70,26 @@ class Event(Resource):
             'data': event.get_response(),
             'message': 'event successfully found',
         }
+
+    @pass_event
+    @auth_token
+    def put(self, current_user, event):
+        args = event_form_parser.parse_args()
+        event.name = args.get('name') or event.name
+        event.location = args.get('location') or event.location
+        event.date = args.get('date') or event.date
+        db.session.commit()
+        return {
+            'data': event.get_response(),
+            'message': 'edited event successfully',
+        }
+
+    @pass_event
+    @auth_token
+    def delete(self, current_user, event):
+        db.session.delete(event)
+        db.session.commit()
+        return {
+            'message': 'event successfully deleted',
+        }, 204
+
