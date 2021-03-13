@@ -17,7 +17,8 @@ def pass_event(view):
     def wrapped_view(*args, **kwargs):
         if 'event_id' in kwargs:
             event_id = kwargs.pop('event_id')
-            event = EventModel.query.filter_by(id=event_id).first()
+            event = EventModel.query.filter_by(public_id=event_id).first()
+            print(event_id)
             if not event:
                 abort(404, message=f'event with id {event_id} not found')
             kwargs['event'] = event
@@ -29,9 +30,7 @@ def pass_event(view):
 class EventList(Resource):
     def get(self):
         events = EventModel.query.all()
-        results = {}
-        for event in events:
-            results[event.public_id] = event.get_response()
+        results = {event.public_id: event.get_response() for event in events}
         return {
             'data': results,
             'message': 'events listed successfully',
