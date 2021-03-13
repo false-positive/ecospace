@@ -63,12 +63,13 @@ class EventList(Resource):
             'message': 'event created successfully',
         }
 
+
 class EventManageUsers(Resource):
     @pass_event
     @auth_token
     def put(self, current_user, event):
         if event.organizer_id == current_user.id:
-            abort(401, message=f'you are already in this event dum dum')
+            abort(401, message='you are already in this event dum dum')
         current_user.events.append(event)
         db.session.commit()
         return {
@@ -116,4 +117,3 @@ class Event(Resource):
         return {
             'message': 'event successfully deleted',
         }, 204
-

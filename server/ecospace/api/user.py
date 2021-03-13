@@ -43,7 +43,6 @@ class UserList(Resource):
         }
 
 
-
 class User(Resource):
     @pass_user
     def get(self, user):
@@ -65,7 +64,7 @@ class User(Resource):
         password = args.get('password')
         if password:
             user.password = generate_password_hash(password)
-        user.description = args.get('description') or description
+        user.description = args.get('description') or user.description
         db.session.commit()
         return {
             'data': {user.username: user.get_response()},
@@ -83,6 +82,3 @@ class User(Resource):
         return {
             'message': 'user deleted successfully, did you really hated him that much?'
         }, 204
-
-
-

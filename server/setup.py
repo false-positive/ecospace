@@ -6,4 +6,3 @@ All the configuration is in `setup.cfg`
 from setuptools import setup
 
 setup()
-

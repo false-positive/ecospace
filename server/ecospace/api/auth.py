@@ -13,6 +13,7 @@ user_form_parser.add_argument('username')
 user_form_parser.add_argument('full_name')
 user_form_parser.add_argument('password')
 
+
 class AuthResource(Resource):
     """Endpoint for user authentication with JWTs"""
     def get(self):
@@ -58,9 +59,6 @@ class AuthResource(Resource):
             'data': {new_user.username: new_user.get_response()},
             'message': 'user registered successfully',
         }
-
-
-
 
 
 def auth_token(view):
