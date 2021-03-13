@@ -17,7 +17,7 @@ $ . venv/bin/activate
 ## Running
 
 ```shell
-(venv) $ export FLASK_APP=ecospace_api
+(venv) $ export FLASK_APP=ecospace
 (venv) $ export FLASK_ENV=development
 (venv) $ flask run
 ```
