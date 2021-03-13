@@ -134,9 +134,9 @@ Example response:
 
 The POST request is used to register a new user.
 Required arguments:
-- username
-- full_name
-- password
+- `username`
+- `full_name`
+- `password`
 
 Status codes:
 - `201 Created` - the user was registered
@@ -159,11 +159,12 @@ Example response:
 The PUT request is used to edit a user's information such as full name and password.
 
 Required arguments:
-- username
+- `username`
+- `x-access-token`
 
 Optional arguments:
-- full_name
-- password
+- `full_name`
+- `password`
 
 
 Status codes:
@@ -187,7 +188,8 @@ Example response:
 Delete a certain user.
 
 Required arguments:
-- username
+- `username`
+- `x-access-token`
 
 Status codes:
 - `204 No Content` - the user was deleted successfully
@@ -252,8 +254,8 @@ Example response:
 
 The POST request is used to register a new event.
 Required arguments:
-- name
-- participants
+- `name`
+- `participants`
 
 Status codes:
 - `201 Created` - the event was registered
@@ -278,11 +280,12 @@ Example response:
 The PUT request is used to edit an event's information such as name and its participants.
 
 Required arguments:
-- public_id
+- `public_id`
+- `x-access-token`
 
 Optional arguments:
-- name
-- participants
+- `name`
+- `participants`
 
 
 Status codes:
@@ -311,13 +314,29 @@ Example response:
 Delete a certain event.
 
 Required arguments:
-- public_id
+- `public_id`
+- `x-access-token`
 
 Status codes:
 - `204 No Content` - the event was deleted successfully
 - `403 Forbidden` - unathourized attempt at deleting event
 
 ### Authentication
+
+#### `GET /login`
+
+Login to selected account with `username` and `password`. After the login it returns a `x-access-token`.
+
+Example response:
+
+```json
+{
+  "data": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImdyaXNobyIsImV4cCI6MTYxNTY0Njk4OH0.sHpYjTukwcVzpMZGFovALLrOYhGRi6hRCWpdedc7A88",
+  "message": "successfully logged"
+
+}
+```
+The `data` returned is the `x-access-token`
 
 <!-- TODO: Document more stuff -->
 
