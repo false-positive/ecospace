@@ -2,7 +2,7 @@ import functools
 import datetime as dt
 
 from flask import current_app
-from flask_restful import abort, Resource, reqparse
+from flask_restful import abort, Resource, reqparse, request
 from werkzeug.security import check_password_hash
 import jwt
 
@@ -43,9 +43,11 @@ def auth_token(view):
 
     @functools.wraps(view)
     def wrapped_view(*args, **kwargs):
-        args = user_form_parser.parse_args()
+        token = request.headers.get('x-access-token')
+        if not token:
+            abort(401, message='token is missing .-.')
         try:
-            payload = jwt.decode(args.get('token'), current_app.config['SECRET_KEY'], algorithm="HS256")
+            payload = jwt.decode(token, current_app.config['SECRET_KEY'], algorithm="HS256")
             user = UserModel.query.filter_by(username=payload['username']).first()
             kwargs['current_user'] = user
         except jwt.ExpiredSignatureError:
