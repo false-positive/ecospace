@@ -126,97 +126,47 @@ nav i {
     text-decoration: none;
 }
 
-/* EVENTS SECTION */
+/* USER INFO SECTION */
 
-.create-event-btn {
-    margin-bottom: 70px;
-}
-
-.create-event-btn a:link,
-.create-event-btn a:visited {
-    padding: 11px 24px;
-    border-radius: 50px;
-    color: #fff;
-    background: #7ab214;
-    text-decoration: none;
-    font-size: 200%;
+section {
     text-align: center;
-    transition: background 0.3s;
+    margin-top: 120px;
 }
 
-.create-event-btn a:hover,
-.create-event-btn a:active {
-    background: #85c215;
+section .row {
+    border-radius: 25px;
+    background: #fff;
 }
 
-.section-nearme {
-    margin-top: 150px;
-    text-align: center;
-}
-.section-nearme .event {
-    border: 2px solid #7ab214;
-    background-color: #fff;
-    padding: 10px 20px;
-    box-shadow: 3px 3px 3px -1px gray;
-    margin: 0 auto 40px auto;
-    border-radius: 10px;
-    width: 50%;
-}
-
-h4,
-h5 {
+section h1,
+h2 {
     font-weight: 300;
 }
 
-.section-nearme .event h4 {
-    font-size: 150%;
-    float: left;
+h1 {
+    margin-bottom: 40px;
 }
 
-.section-nearme .event .first-part a:link,
-.section-nearme .event .first-part a:visited {
-    border-radius: 7px;
-    text-decoration: none;
-    border: 1px solid transparent;
-    color: #7ab214;
-    padding: 5px 10px;
-    float: right;
-    transition: border 0.3s;
+h2 {
+    margin-bottom: 20px;
 }
 
-.section-nearme .event .first-part a:hover,
-.section-nearme .event .first-part a:active {
-    border: 1px solid #7ab214;
+h3 {
+    margin-top: 190px;
+    margin-bottom: 30px;
+    /* margin-right: 10px; */
+    /* text-align: right; */
 }
 
-.section-nearme .event h5 {
-    margin-top: 15px;
-    float: left;
-}
-
-.section-nearme .event .third-part h5 {
-    margin-top: 10px;
-}
-
-.section-nearme .event .third-part a {
-    border-radius: 7px;
+.logout-btn {
+    padding: 8px 15px;
+    font-size: 100%;
+    border-radius: 20px;
     text-decoration: none;
     color: #fff;
-    padding: 5px 10px;
-    float: right;
-}
-
-.coming {
-    background: #7ab214;
-    transition: background 0.3s;
-}
-.coming:hover {
-    background: #85c215;
-}
-.not-coming {
     background: #dc3545;
     transition: background 0.3s;
 }
-.not-coming:hover {
+.logout-btn:hover {
     background: #e15260;
 }
