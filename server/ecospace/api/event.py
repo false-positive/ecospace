@@ -111,6 +111,8 @@ class Event(Resource):
     @pass_event
     @auth_token
     def delete(self, current_user, event):
+        if event.organizer_id != current_user.id:
+            abort(403, message='you cannot do that')
         db.session.delete(event)
         db.session.commit()
         return {
