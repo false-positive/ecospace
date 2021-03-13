@@ -39,13 +39,17 @@ An user's data looks like this:
 
 ```json
 {
-    "username": "test",
-    "full_name": "testing",
-    "events": {
-      "d9de17d1-fc3e-497f-8586-c234058a767c": {
-          "name": "another test 4 the api"
-      }
-    }
+    "full_name": "grisho the og one",
+    "description": "",
+    "organized_events": {
+        "fca3aaac-c9cd-4da5-be80-fabd5c5a4794": {
+            "name": "test",
+            "date": "2021-03-13T00:00:00",
+            "location": "sofia",
+            "organizer_username": "grisho"
+        }
+    },
+    "events": {}
 }
 ```
 
@@ -53,11 +57,10 @@ An event's data looks like this:
 
 ```json
 {
-    "public_id": "b03160df-d421-4de8-80d1-ada67cc45667",
     "name": "test2",
-    "participants": [
-        "test"
-    ]
+    "date": "2021-03-13T00:00:00",
+    "location": "sofia",
+    "organizer_username": "grisho2"
 }
 ```
 
@@ -76,32 +79,28 @@ Example response:
 
 ```json
 {
-      "data": {
-          "user2": {
-              "full_name": "Full name",
-              "events": {
-                  "d9de17d1-fc3e-497f-8586-c234058a767c": {
-                      "name": "another test 4 the api"
-                  }
-              }
-          },
-          "user3": {
-              "full_name": "Foo Bar",
-              "events": {
-                  "b03160df-d421-4de8-80d1-ada67cc45667": {
-                      "name": "test2"
-                  },
-                  "d9de17d1-fc3e-497f-8586-c234058a767c": {
-                      "name": "another test 4 the api"
-                  }
-              }
-          },
-          "user4": {
-              "full_name": "Sample text",
-              "events": {}
-          }
-      },
-      "message": "users listed successfully"
+    "data": {
+        "grisho": {
+            "full_name": "grisho the og one",
+            "description": "",
+            "organized_events": {
+                "fca3aaac-c9cd-4da5-be80-fabd5c5a4794": {
+                    "name": "test",
+                    "date": "2021-03-13T00:00:00",
+                    "location": "sofia",
+                    "organizer_username": "grisho"
+                }
+            },
+            "events": {}
+        },
+        "grisho2": {
+            "full_name": "grisho #2",
+            "description": "",
+            "organized_events": {},
+            "events": {}
+        }
+    },
+    "message": "users listed successfully"
 }
 ```
 
@@ -118,39 +117,19 @@ Example response:
 ```json
 {
   "data": {
-      "username": "test",
-      "full_name": "testing",
-      "events": {
-        "d9de17d1-fc3e-497f-8586-c234058a767c": {
-            "name": "another test 4 the api"
-        }
-      }
-  },
-  "message": "user found successfully"
-}
-```
-
-#### `POST /users`
-
-The POST request is used to register a new user.
-Required arguments:
-- `username`
-- `full_name`
-- `password`
-
-Status codes:
-- `201 Created` - the user was registered
-- `401 Conflict` - a user with that username already exists 
-
-Example response:
-
-```json
-{
-  "data": {
-      "username": "test",
-      "full_name": "testing"
-  },
-  "message": "user registered successfully"
+        "full_name": "grisho the og one",
+        "description": "",
+        "organized_events": {
+            "fca3aaac-c9cd-4da5-be80-fabd5c5a4794": {
+                "name": "test",
+                "date": "2021-03-13T00:00:00",
+                "location": "sofia",
+                "organizer_username": "grisho"
+            }
+        },
+        "events": {}
+    },
+    "message": "user found successfully"
 }
 ```
 
@@ -165,6 +144,7 @@ Required arguments:
 Optional arguments:
 - `full_name`
 - `password`
+- `description`
 
 
 Status codes:
@@ -175,13 +155,16 @@ Status codes:
 Example response:
 
 ```json
-{
-  "data": {
-      "username": "test",
-      "full_name": "testing"
-  },
-  "message": "user edited successfully"
-}
+ "data": {
+        "grisho2": {
+            "full_name": "grisho #2",
+            "description": "time to finish that documentation(not tommorow)",
+            "organized_events": {},
+            "events": {}
+        }
+    },
+ "message": "edited successfully"
+
 ```
 #### `DELETE /users`
 
@@ -209,18 +192,17 @@ Example response:
 ```json
 {
     "data": {
-        "b03160df-d421-4de8-80d1-ada67cc45667": {
-            "name": "test2",
-            "participants": [
-                "grisho"
-            ]
+        "fca3aaac-c9cd-4da5-be80-fabd5c5a4794": {
+            "name": "test",
+            "date": "2021-03-13T00:00:00",
+            "location": "sofia",
+            "organizer_username": "grisho"
         },
-        "d9de17d1-fc3e-497f-8586-c234058a767c": {
-            "name": "another test 4 the api",
-            "participants": [
-                "grisho2",
-                "grisho"
-            ]
+        "b6f6af57-8742-4acd-b1fd-5cc881c109be": {
+            "name": "test2",
+            "date": "2021-03-13T00:00:00",
+            "location": "sofia",
+            "organizer_username": "grisho2"
         }
     },
     "message": "events listed successfully"
@@ -240,26 +222,27 @@ Example response:
 ```json
 {
   "data": {
-          "public_id": "b03160df-d421-4de8-80d1-ada67cc45667",
-          "name": "test2",
-          "participants": [
-              "grisho"
-          ]
-      },
-      "message": "event found successfully"
+        "name": "test2",
+        "date": "2021-03-13T00:00:00",
+        "location": "sofia",
+        "organizer_username": "grisho2"
+   },
+   "message": "event successfully found"
 }
 ```
 
-#### `POST /users`
+#### `POST /event` 
 
 The POST request is used to register a new event.
 Required arguments:
 - `name`
 - `participants`
+- `location`
+- `date`
 
 Status codes:
 - `201 Created` - the event was registered
-
+- `403 Forbidden` - can't create an event without an account
 Example response:
 
 ```json
@@ -275,7 +258,7 @@ Example response:
 }
 ```
 
-#### `PUT /users`
+#### `PUT /event`
 
 The PUT request is used to edit an event's information such as name and its participants.
 
@@ -286,7 +269,8 @@ Required arguments:
 Optional arguments:
 - `name`
 - `participants`
-
+- `location`
+- `date`
 
 Status codes:
 - `201 Created` - the event was edited
@@ -298,12 +282,10 @@ Example response:
 ```json
 }
     "data": {
-        "public_id": "c0a2b040-8990-4aeb-bb20-b5c00efab393",
-        "name": "testing 2:electric boogaloo",
-        "participants": [
-            "grisho",
-            "grisho2"
-        ]
+        "name": "test2",
+        "date": "2021-03-14T00:00:00",
+        "location": "sofia",
+        "organizer_username": "grisho2"
     },
     "message": "edited event successfully"
 }
@@ -323,7 +305,7 @@ Status codes:
 
 ### Authentication
 
-#### `GET /login`
+#### `GET /auth`
 
 Login to selected account with `username` and `password`. After the login it returns a `x-access-token`.
 
@@ -338,5 +320,35 @@ Example response:
 ```
 The `data` returned is the `x-access-token`
 
-<!-- TODO: Document more stuff -->
+#### `POST /auth`
+
+The POST request is used to register a new user.
+Required arguments:
+- `username`
+- `full_name`
+- `password`
+
+Optional arguments:
+- `description`
+
+Status codes:
+- `201 Created` - the user was registered
+- `401 Conflict` - a user with that username already exists 
+
+Example response:
+
+```json
+{
+  "data": {
+        "grisho2": {
+            "full_name": "grisho #2",
+            "description": "",
+            "organized_events": {}
+        }
+    },
+    "message": "user registered successfully"
+}
+```
+
+<!-- TODO: Document even more stuff -->
 
