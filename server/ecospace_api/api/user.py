@@ -85,6 +85,7 @@ class User(Resource):
         password = args.get('password')
         if password:
             user.password = generate_password_hash(password)
+        user.description = args.get('description') or description
         db.session.commit()
         return {
             'data': {user.username: user.get_response()},

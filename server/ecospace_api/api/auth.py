@@ -48,7 +48,7 @@ def auth_token(view):
         if not token:
             abort(401, message='token is missing .-.')
         try:
-            payload = jwt.decode(token, current_app.config['SECRET_KEY'], algorithm="HS256")
+            payload = jwt.decode(token, current_app.config['SECRET_KEY'], algorithms=["HS256"])
             user = UserModel.query.filter_by(username=payload['username']).first()
             kwargs['current_user'] = user
         except jwt.ExpiredSignatureError:

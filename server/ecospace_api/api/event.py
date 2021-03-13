@@ -44,17 +44,18 @@ class EventList(Resource):
         args = event_form_parser.parse_args()
         new_event = EventModel(
            public_id=str(uuid4()),
-           author_id=current_user.id,
+           organizer_id=current_user.id,
            name=args.get('name'),
            location=args.get('location'),
            date=args.get('date'),
         )
         participants = args.get('participants')
-        for username in participants:
-            user = UserModel.query.filter_by(username=username).first()
-            if not user:
-                abort(404, f'user {user} not found')
-            new_event.participants.append(user)
+        if participants:
+            for username in participants:
+                user = UserModel.query.filter_by(username=username).first()
+                if not user:
+                    abort(404, f'user {user} not found')
+                new_event.participants.append(user)
         db.session.add(new_event)
         db.session.commit()
         return {
