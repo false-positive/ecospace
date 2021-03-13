@@ -37,28 +37,26 @@
 
         <section>
             <form>
-                <div class="row">
+                <div class="row name">
                     <label>Event name</label>
                     <input type="text" />
                 </div>
                 <div class="row">
-                        <label>Event date</label>
+                    <div class="location">
+                        <label>Location</label>
+                        <input type="text" />
+                    </div>
+                    <div class="date">
+                        <label>Date</label>
                         <input type="date" />
-                </div>
-                <div class="row">
-                    <div class="latitude">
-                        <label>Latitude</label>
-                        <input type="number" />
-                    </div>
-                    <div class="longitude">
-                        <label>Longitude</label>
-                        <input type="number" />
                     </div>
                 </div>
-
                 <div class="row">
                     <label>Event description</label>
                     <textarea rows="10" cols="50"></textarea>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Create event" />
                 </div>
             </form>
         </section>

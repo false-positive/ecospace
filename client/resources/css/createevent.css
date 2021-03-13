@@ -125,6 +125,8 @@ nav i {
     text-decoration: none;
 }
 
+/* INPUT SECTION */
+
 section {
     margin-top: 120px;
     text-align: center;
@@ -142,28 +144,48 @@ textarea {
     padding: 5px 15px;
     border: 1px solid black;
 }
-.latitude {
+
+.location {
     margin-left: 25%;
+    margin-right: 3%;
     float: left;
-}
-.longitude {
-    margin-right: 25%;
-    float: right;
+    width: 27%;
 }
 
-/* 
-.date input,
-.date label {
-    float: left;
-    margin-left: 25%;
-} */
+.location input {
+    width: 100%;
+}
+
+.date {
+    margin-right: 25%;
+    float: right;
+    width: 20%;
+}
+
+.date input {
+    width: 100%;
+}
 
 input[type="date"] {
     text-align: center;
     padding-right: 0;
 }
 
-input[type="text"],
+.name input,
 textarea {
     width: 50%;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    font-size: 210%;
+    margin-top: 60px;
+    padding: 8px 35px;
+    color: #fff;
+    background: #7ab214;
+    transition: background 0.3s;
+}
+
+input[type="submit"]:hover {
+    background: #85c215;
 }
