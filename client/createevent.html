@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="vendors/css/Grid.css" />
         <link rel="stylesheet" type="text/css" href="vendors/css/ionicons.min.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/myevents.css" />
+        <link rel="stylesheet" type="text/css" href="resources/css/createevent.css" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet" />
     </head>
@@ -35,127 +35,32 @@
             </nav>
         </header>
 
-        <section class="section-nearme">
-            <div class="row">
-                <div class="event">
-                    <div class="clearfix first-part">
-                        <h4>Cleaning trash</h4>
-                        <a href="#">More info</a>
+        <section>
+            <form>
+                <div class="row">
+                    <label>Event name</label>
+                    <input type="text" />
+                </div>
+                <div class="row">
+                        <label>Event date</label>
+                        <input type="date" />
+                </div>
+                <div class="row">
+                    <div class="latitude">
+                        <label>Latitude</label>
+                        <input type="number" />
                     </div>
-                    <div class="clearfix second-part">
-                        <h5>Location: Sofia, Bulgaria</h5>
-                    </div>
-                    <div class="third-part clearfix">
-                        <h5>Date: 10.03.2020</h5>
-                        <a href="#">I'm coming!</a>
+                    <div class="longitude">
+                        <label>Longitude</label>
+                        <input type="number" />
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="event">
-                    <div class="clearfix first-part">
-                        <h4>Cleaning trash</h4>
-                        <a href="#">More info</a>
-                    </div>
-                    <div class="clearfix second-part">
-                        <h5>Location: Sofia, Bulgaria</h5>
-                    </div>
-                    <div class="third-part clearfix">
-                        <h5>Date: 10.03.2020</h5>
-                        <a href="#">I'm coming!</a>
-                    </div>
+
+                <div class="row">
+                    <label>Event description</label>
+                    <textarea rows="10" cols="50"></textarea>
                 </div>
-            </div>
-            <div class="row">
-                <div class="event">
-                    <div class="clearfix first-part">
-                        <h4>Cleaning trash</h4>
-                        <a href="#">More info</a>
-                    </div>
-                    <div class="clearfix second-part">
-                        <h5>Location: Sofia, Bulgaria</h5>
-                    </div>
-                    <div class="third-part clearfix">
-                        <h5>Date: 10.03.2020</h5>
-                        <a href="#">I'm coming!</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="event">
-                    <div class="clearfix first-part">
-                        <h4>Cleaning trash</h4>
-                        <a href="#">More info</a>
-                    </div>
-                    <div class="clearfix second-part">
-                        <h5>Location: Sofia, Bulgaria</h5>
-                    </div>
-                    <div class="third-part clearfix">
-                        <h5>Date: 10.03.2020</h5>
-                        <a href="#">I'm coming!</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="event">
-                    <div class="clearfix first-part">
-                        <h4>Cleaning trash</h4>
-                        <a href="#">More info</a>
-                    </div>
-                    <div class="clearfix second-part">
-                        <h5>Location: Sofia, Bulgaria</h5>
-                    </div>
-                    <div class="third-part clearfix">
-                        <h5>Date: 10.03.2020</h5>
-                        <a href="#">I'm coming!</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="event">
-                    <div class="clearfix first-part">
-                        <h4>Cleaning trash</h4>
-                        <a href="#">More info</a>
-                    </div>
-                    <div class="clearfix second-part">
-                        <h5>Location: Sofia, Bulgaria</h5>
-                    </div>
-                    <div class="third-part clearfix">
-                        <h5>Date: 10.03.2020</h5>
-                        <a href="#">I'm coming!</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="event">
-                    <div class="clearfix first-part">
-                        <h4>Cleaning trash</h4>
-                        <a href="#">More info</a>
-                    </div>
-                    <div class="clearfix second-part">
-                        <h5>Location: Sofia, Bulgaria</h5>
-                    </div>
-                    <div class="third-part clearfix">
-                        <h5>Date: 10.03.2020</h5>
-                        <a href="#">I'm coming!</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="event">
-                    <div class="clearfix first-part">
-                        <h4>Cleaning trash</h4>
-                        <a href="#">More info</a>
-                    </div>
-                    <div class="clearfix second-part">
-                        <h5>Location: Sofia, Bulgaria</h5>
-                    </div>
-                    <div class="third-part clearfix">
-                        <h5>Date: 10.03.2020</h5>
-                        <a href="#">I'm coming!</a>
-                    </div>
-                </div>
-            </div>
+            </form>
         </section>
         <script src="resources/js/stickynav.js"></script>
     </body>
