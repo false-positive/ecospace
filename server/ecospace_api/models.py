@@ -11,15 +11,16 @@ class UserModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), unique=True)
-    full_name = db.Column(db.String(50), unique=True)
-    description = db.Column(db.String(250))
+    full_name = db.Column(db.String(50))  # TODO: Get `username` by default
+    description = db.Column(db.String(250), default='', nullable=False)
     password = db.Column(db.String(80), nullable=False)
-    posts = db.relationship('EventModel', backref='organizer', lazy=True)
+    organized_events = db.relationship('EventModel', backref='organizer', lazy=True)
 
     def get_response(self):
         return {
             'full_name': self.full_name,
-            'posts': None,
+            'description': self.description,
+            'organized_events': {event.public_id: event.get_response() for event in self.organized_events},
         }
 
     def __str__(self):
