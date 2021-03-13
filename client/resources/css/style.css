@@ -187,6 +187,10 @@ nav {
 .feature:nth-of-type(2) h3 {
     margin-top: 12px;
 }
+.feature img {
+    height: 87px;
+    width: auto;
+}
 
 /* SIGNUP SECTION */
 
