@@ -12,7 +12,7 @@ var sticky = navbar.offsetTop;
 function stickyNav() {
     if (window.pageYOffset > sticky) {
         navbar.style.background = "#fff";
-        navbar.style.borderBottom = "1px solid black";
+        navbar.style.borderBottom = "1px solid #7ab214";
     } else {
         navbar.style.background = "none";
         navbar.style.borderBottom = "1px solid transparent";
