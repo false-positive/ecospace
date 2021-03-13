@@ -1,6 +1,7 @@
 import os
 from contextlib import suppress
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 __version__ = '0.1.0'
 __author__ = 'FalsePositive'
@@ -15,6 +16,8 @@ def create_app():
     )
 
     app.config.from_pyfile('config.cfg', silent=True)
+
+    CORS(app)
 
     with suppress(OSError):
         # Create the `scifedium/server/instance` folder where the db is
