@@ -50,7 +50,7 @@ class UserList(Resource):
 
     def post(self):
         args = user_form_parser.parse_args()
-        new_user = UserModel(id = None, username=args.get('username'), full_name=args.get('full_name'), password=generate_password_hash(args.get('password')))
+        new_user = UserModel(id=None, username=args.get('username'), full_name=args.get('full_name'), password=generate_password_hash(args.get('password')))
         db.session.add(new_user)
         db.session.commit()
         return {
