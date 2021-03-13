@@ -8,6 +8,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="vendors/css/Grid.css" />
+        <meta charset="UTF-8" />
         <style>
             html {
                 background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(resources/img/background.signup2.png);
@@ -18,17 +19,19 @@
         <section class="box">
             <form action="">
                 <label>First name</label>
-                <input type="text" />
+                <input type="text" id="firstname" required />
                 <label>Last name</label>
-                <input type="text" />
+                <input type="text" id="lastname" required />
                 <label>Username</label>
-                <input type="text" />
+                <input type="text" id="password" required />
                 <label>Password</label>
                 <input type="password" />
-                <input type="submit" value="Register" />
+                <input type="submit" value="Register" id="submit" />
             </form>
 
             <h2>Already have an account?<a href="login.html"> Log in!</a></h2>
         </section>
+        <script src="resources/js/constants.js"></script>
+        <script src="resources/js/api.js"></script>
     </body>
 </html>
