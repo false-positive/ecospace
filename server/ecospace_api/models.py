@@ -1,48 +1,48 @@
+import datetime as dt
+
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-events = db.Table(
-    'events',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-    db.Column('event_id', db.Integer, db.ForeignKey('event.id'), primary_key=True),
-)
 
+class UserModel(db.Model):
+    """Database model for a registered user."""
+    __tablename__ = 'user'
 
-class User(db.Model):
-    # TODO: Add docstring
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), unique=True)
     full_name = db.Column(db.String(50), unique=True)
+    description = db.Column(db.String(250))
     password = db.Column(db.String(80), nullable=False)
-    # https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/#many-to-many-relationships
-
+    posts = db.relationship('EventModel', backref='organizer', lazy=True)
 
     def get_response(self):
         return {
-            'username': self.username,
             'full_name': self.full_name,
+            'posts': None,
         }
 
     def __str__(self):
         return f'<User @{self.username} ({self.public_id})>'
 
 
-class Event(db.Model):
-    # TODO: Add docstring
+class EventModel(db.Model):
+    """Database model for an event, organized by a user, in which other users can participate."""
+    __tablename__ = 'event'
+
     id = db.Column(db.Integer, primary_key=True)
     public_id = db.Column(db.String(36), unique=True)
     name = db.Column(db.String(50), nullable=False)
-    participants = db.relationship('User', secondary=events)
+    date = db.Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
+    location = db.Column(db.String(50), nullable=True)  # TODO: Maybe store coords?
+    organizer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
 
     def get_response(self):
-        list = []
-        for user in self.participants:
-            list.append(user.username)
         return {
             'name': self.name,
-            'public_id': self.public_id,
-            'participants': list,
+            'date': self.date.isoformat(),
+            'location': self.location,
+            'organizer': self.organizer_id,
         }
 
     def __str__(self):

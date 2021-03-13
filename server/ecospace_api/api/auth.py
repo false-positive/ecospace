@@ -6,7 +6,7 @@ from flask_restful import abort, Resource, reqparse, request
 from werkzeug.security import check_password_hash
 import jwt
 
-from ..models import User as UserModel
+from ..models import UserModel
 
 user_form_parser = reqparse.RequestParser()
 user_form_parser.add_argument('username', required=True)

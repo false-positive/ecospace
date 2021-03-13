@@ -1,7 +1,7 @@
 import functools
 from uuid import uuid4
 from flask_restful import abort, Resource, reqparse
-from ..models import Event as EventModel, User, db
+from ..models import EventModel, UserModel, db
 
 event_form_parser = reqparse.RequestParser()
 event_form_parser.add_argument('event_id')
@@ -44,7 +44,7 @@ class EventList(Resource):
         participants = args.get('participants')
         list = []
         for username in participants:
-            list.append(User.query.filter_by(username=username).first())
+            list.append(UserModel.query.filter_by(username=username).first())
         new_event = EventModel(id=None, public_id=str(event_id), name=name, participants=list)
         db.session.add(new_event)
         db.session.commit()
@@ -64,9 +64,9 @@ class EventList(Resource):
         if args.get('participants') is not None:
             for username in args.get('participants'):
                 if operation == 'add':
-                    event.participants.append(User.query.filter_by(username=username).first())
+                    event.participants.append(UserModel.query.filter_by(username=username).first())
                 elif operation == 'remove':
-                    event.participants.remove(User.query.filter_by(username=username).first())
+                    event.participants.remove(UserModel.query.filter_by(username=username).first())
                 else:
                     print('>>>>>>>> Operation', operation)
                     abort(401, message=f'invalid {operation}operation')

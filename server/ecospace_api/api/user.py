@@ -1,13 +1,13 @@
 import functools
 from werkzeug.security import generate_password_hash
 from flask_restful import abort, Resource, reqparse
-from ..models import User as UserModel, db, Event  
+from ..models import UserModel, db, EventModel
 from .auth import auth_token
 
 user_form_parser = reqparse.RequestParser()
-user_form_parser.add_argument('username')
+user_form_parser.add_argument('username', required=True)
 user_form_parser.add_argument('full_name')
-user_form_parser.add_argument('password')
+user_form_parser.add_argument('password', required=True)
 
 
 def pass_user(view):
@@ -29,7 +29,7 @@ def pass_user(view):
 class UserList(Resource):
     def get(self):
         users = UserModel.query.all()
-        events = Event.query.all()
+        events = EventModel.query.all()
         result = {}
         for user in users:
             list = {}
