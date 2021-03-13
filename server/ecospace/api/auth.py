@@ -9,9 +9,9 @@ import jwt
 from ..models import UserModel, db
 
 user_form_parser = reqparse.RequestParser()
-user_form_parser.add_argument('username')
+user_form_parser.add_argument('username', required=True)
 user_form_parser.add_argument('full_name')
-user_form_parser.add_argument('password')
+user_form_parser.add_argument('password', required=True)
 
 
 class AuthResource(Resource):
