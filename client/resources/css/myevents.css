@@ -125,7 +125,28 @@ nav i {
     text-decoration: none;
 }
 
-/* NEAR ME SECTION */
+/* EVENTS SECTION */
+
+.create-event-btn {
+    margin-bottom: 70px;
+}
+
+.create-event-btn a:link,
+.create-event-btn a:visited {
+    padding: 11px 24px;
+    border-radius: 50px;
+    color: #fff;
+    background: #7ab214;
+    text-decoration: none;
+    font-size: 200%;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.create-event-btn a:hover,
+.create-event-btn a:active {
+    background: #85c215;
+}
 
 .section-nearme {
     margin-top: 150px;
