@@ -27,7 +27,7 @@ class AuthResource(Resource):
                 'exp': dt.datetime.utcnow() + dt.timedelta(hours=1),
             }, current_app.config['SECRET_KEY'], algorithm="HS256")
             return {
-                'data': token.decode('utf-8'),
+                'data': token,
                 'message': 'successfully logged',
             }
         return {
