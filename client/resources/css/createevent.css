@@ -184,6 +184,7 @@ input[type="submit"] {
     padding: 8px 35px;
     color: #fff;
     background: #7ab214;
+    border: 1px solid #7ab214;
     transition: background 0.3s;
 }
 
