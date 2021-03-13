@@ -106,3 +106,54 @@ nav i {
     color: #7ab214;
     text-decoration: none;
 }
+
+/* NEAR ME SECTION */
+
+.section-nearme {
+    margin-top: 80px;
+    text-align: center;
+}
+.section-nearme .event {
+    padding: 10px 20px;
+    box-shadow: 10px 10px 10px grey;
+    margin: 0 auto 40px auto;
+    border-radius: 10px;
+    width: 50%;
+}
+
+h4,
+h5 {
+    font-weight: 300;
+}
+
+.section-nearme .event h4 {
+    font-size: 150%;
+    float: left;
+}
+
+.section-nearme .event .first-part a {
+    border-radius: 7px;
+    text-decoration: none;
+    color: #fff;
+    background: #7ab214;
+    padding: 5px 10px;
+    float: right;
+}
+
+.section-nearme .event h5 {
+    margin-top: 15px;
+    float: left;
+}
+
+.section-nearme .event .third-part h5 {
+    margin-top: 10px;
+}
+
+.section-nearme .event a {
+    border-radius: 7px;
+    text-decoration: none;
+    color: #fff;
+    background: #7ab214;
+    padding: 5px 10px;
+    float: right;
+}
