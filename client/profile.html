@@ -37,9 +37,9 @@
             <div class="content">
                 <div class="row">
                     <div class="col span-1-of-2">
-                        <h1>Username: JohnyMan</h1>
-                        <h2>Password: **********</h2>
-                        <h2>Name: John Smith</h2>
+                        <h1 id="username">Username: JohnyMan</h1>
+                        <h2>Password: <span style="color: transparent">********</span></h2>
+                        <h2 id="fullname">Name: John Smith</h2>
                     </div>
                     <div class="col span-1-of-2">
                         <h3><a href="#" class="logout-btn" onclick="logout()">Log out</a></h3>
@@ -48,12 +48,9 @@
             </div>
         </section>
         <script src="resources/js/stickynav.js"></script>
-        <script>
-            function logout() {
-                document.cookie = "token=; expires= Thu, 21 Aug 2014 20:00:00 UTC; SameSite=Strict";
-                // console.log(document.cookie);
-                window.location.replace("index.html");
-            }
-        </script>
+        <script src="resources/js/constants.js"></script>
+        <script src="vendors/js/jwt-decode.js"></script>
+        <script src="resources/js/api.js"></script>
+        <script src="resources/js/profile.js"></script>
     </body>
 </html>

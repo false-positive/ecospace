@@ -33,3 +33,18 @@ async function login(username, password) {
     document.cookie = `token=${data}; expires=${now.toUTCString()}; SameSite=Strict`;
     window.location.replace("index.html");
 }
+
+async function getUserInfo(username) {
+    let response = await fetch(`${URL}/users/${username}`, {
+        method: "GET",
+        mode: "cors",
+    });
+    let { data } = await response.json();
+
+    return data;
+}
+
+function logout() {
+    document.cookie = "token=; expires= Thu, 21 Aug 2014 20:00:00 UTC; SameSite=Strict";
+    window.location.replace("index.html");
+}
