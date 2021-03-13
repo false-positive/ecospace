@@ -129,9 +129,10 @@ nav i {
     text-align: center;
 }
 .section-nearme .event {
+    border: 2px solid #7ab214;
     background-color: #fff;
     padding: 10px 20px;
-    box-shadow: 10px 10px 10px grey;
+    box-shadow: 3px 3px 3px -1px gray;
     margin: 0 auto 40px auto;
     border-radius: 10px;
     width: 50%;
