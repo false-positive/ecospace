@@ -5,14 +5,13 @@ let { username } = jwt_decode(token);
 
 getUserInfo(`/${username}`).then(({ organized_events: response}) => {
     for (const [id, event] of Object.entries(response)) {
+        if (event.organiser_username === username) continue;
         let name = DOMPurify.sanitize(event.name);
-        console.log(name);
         let location = DOMPurify.sanitize(event.location);
         let date = new Date(DOMPurify.sanitize(event.date));
 
         date = date.getFullYear() + "." + date.getMonth() + "." + date.getDate();
 
-        console.log(event);
 
         let eventBoxHtml = `
             <div class="row">
@@ -32,7 +31,7 @@ getUserInfo(`/${username}`).then(({ organized_events: response}) => {
             </div>
             `;
 
-        section.insertAdjacentHTML("afterbegin", eventBoxHtml);
+        section.insertAdjacentHTML("beforeend", eventBoxHtml);
     }
 });
 
