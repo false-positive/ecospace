@@ -98,6 +98,8 @@ class Event(Resource):
     @pass_event
     @auth_token
     def put(self, current_user, event):
+        if current_user.id != event.organizer_id:
+            abort(403, message='you cannot do that')
         args = event_form_parser.parse_args()
         event.name = args.get('name') or event.name
         event.location = args.get('location') or event.location
@@ -111,8 +113,6 @@ class Event(Resource):
     @pass_event
     @auth_token
     def delete(self, current_user, event):
-        if event.organizer_id != current_user.id:
-            abort(403, message='you cannot do that')
         db.session.delete(event)
         db.session.commit()
         return {
