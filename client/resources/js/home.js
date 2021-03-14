@@ -1,14 +1,14 @@
 let section = document.querySelector("section");
 
 getEvents().then((response) => {
-    // console.log(response);
     for (const [id, event] of Object.entries(response)) {
         let name = DOMPurify.sanitize(event.name);
         let location = DOMPurify.sanitize(event.location);
         let date = new Date(DOMPurify.sanitize(event.date));
 
         date = date.getFullYear() + "." + date.getMonth() + "." + date.getDate();
-        // date;
+
+        console.log(event);
 
         let eventBoxHtml = `
             <div class="row">

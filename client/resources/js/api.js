@@ -1,7 +1,7 @@
 async function register(firstname, lastname, username, password) {
     let response = await fetch(`${URL}/auth`, {
         method: "POST",
-        mode: "cors",
+        mode: "no-cors",
         headers: {
             "Content-Type": "application/json",
         },
@@ -21,23 +21,26 @@ async function register(firstname, lastname, username, password) {
 async function login(username, password) {
     let response = await fetch(`${URL}/auth`, {
         method: "GET",
-        mode: "cors",
+        mode: "no-cors",
         headers: {
             Authorization: `Basic ${btoa(`${username}:${password}`)}`,
         },
     });
     let { data } = await response.json();
 
-    let now = new Date();
-    now.setMonth(now.getMonth() + 1);
-    document.cookie = `token=${data}; expires=${now.toUTCString()}; SameSite=Strict`;
-    window.location.replace("index.html");
+    if (response.ok) {
+        console.log(response.status);
+        let now = new Date();
+        now.setMonth(now.getMonth() + 1);
+        document.cookie = `token=${data}; expires=${now.toUTCString()}; SameSite=Strict`;
+        // window.location.replace("index.html");
+    }
 }
 
 async function getUserInfo(username) {
     let response = await fetch(`${URL}/users/${username}`, {
         method: "GET",
-        mode: "cors",
+        mode: "no-cors",
     });
     let { data } = await response.json();
 
@@ -47,7 +50,7 @@ async function getUserInfo(username) {
 async function getEvents() {
     let response = await fetch(`${URL}/events`, {
         method: "GET",
-        mode: "cors",
+        mode: "no-cors",
     });
     let { data } = await response.json();
 
