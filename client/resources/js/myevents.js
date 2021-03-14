@@ -18,14 +18,13 @@ getUserInfo(`/${username}`).then(({ organized_events: response}) => {
                 <div class="event">
                     <div class="clearfix first-part">
                         <h4>${name}</h4>
-                        <a href="moreinfo.html?${id}">More info</a>
                     </div>
                     <div class="clearfix second-part">
                         <h5>Location: ${location}</h5>
                     </div>
                     <div class="third-part clearfix">
                         <h5>Date: ${date}</h5>
-                        <a href="#" class="coming-btn coming" onclick="changeBtn(this, '${id}')">I'm coming :)</a>
+                        <a href="moreinfo.html?${id}" class="coming-btn coming">More info</a>
                     </div>
                 </div>
             </div>
