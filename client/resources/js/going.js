@@ -3,7 +3,7 @@ let section = document.querySelector("section");
 // let token = document.cookie.split(";")[0].split("=")[1];
 // let { username } = jwt_decode(token);
 
-getUserInfo(`/${username}`).then(({ organized_events: response}) => {
+getUserInfo(`/${username}`).then(({ events: response}) => {
     for (const [id, event] of Object.entries(response)) {
         if (event.organiser_username === username) continue;
         let name = DOMPurify.sanitize(event.name);
