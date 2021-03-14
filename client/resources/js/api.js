@@ -41,6 +41,7 @@ async function login(username, password) {
 }
 
 async function getUserInfo(username) {
+    console.log(`${URL}/users/${username}`);
     let response = await fetch(`${URL}/users/${username}`, {
         method: "GET",
         // mode: "no-cors",

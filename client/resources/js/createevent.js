@@ -30,6 +30,7 @@ submit.addEventListener("click", async (e) => {
     if (!name || !location || !date || !description) {
         console.log("Empty inputs");
     } else {
-        createEvent(name, description, date, location, username, token);
+        await createEvent(name, description, date, location, username, token);
+        window.location.replace("myevents.html")
     }
 });

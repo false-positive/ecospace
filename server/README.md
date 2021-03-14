@@ -280,7 +280,7 @@ Status codes:
 Example response:
 
 ```json
-}
+{
     "data": {
         "name": "test2",
         "date": "2021-03-14T00:00:00",
@@ -290,6 +290,49 @@ Example response:
     "message": "edited event successfully"
 }
 
+```
+#### `PUT /events/event_id/users`
+
+Add the current user to the event.
+
+Example response:
+```json
+{
+      "data": {
+        "full_name": "grisho bot",
+        "description": "",
+        "organized_events": {},
+        "events": {
+            "2bbd34e6-9e13-4a63-a4b9-7ef235ce5efe": {
+                "name": "testing comments",
+                "date": "2021-03-14T01:28:46.330184",
+                "location": "here",
+                "organizer_username": "grisho#10",
+                "comments": {}
+            }
+        }
+    },
+    "message": "successfully started event participation"
+}
+```
+
+#### `DELETE /events/event_id/users`
+
+Remove the current user from the event
+
+Example response:
+```json
+{
+    "data": {
+        "full_name": "grisho bot",
+        "description": "",
+        "organized_events": {},
+        "events": {}
+    },
+    "message": "successfully removed event participation"
+}
+
+}
 ```
 #### `DELETE /event`
 
