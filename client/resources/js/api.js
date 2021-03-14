@@ -119,7 +119,7 @@ async function getEvent(id) {
     return data;
 }
 
-async function changeGoingEvents(id, username, token) {
+async function changeGoingEvents(id, token) {
     let response = await fetch(`${URL}/events/${id}/users`, {
         method: "PUT",
         // mode: "no-cors",
@@ -127,28 +127,16 @@ async function changeGoingEvents(id, username, token) {
             "x-access-token": token,
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({}),
     });
-    let { data } = await response.json();
+}
 
-    let arr = data.events;
-
-    arr.id = id;
-    console.log(arr);
-    // arr.push(id);
-
-    // let response = await fetch(`${URL}/events/${id}`, {
-    //     method: "PUT",
-    //     // mode: "no-cors",
-    //     headers: {
-    //         "x-access-token": token,
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //         description,
-    //         location,
-    //         organizer_username: organizer,
-    //     }),
-    // });
-    // let { data } = await response.json();
+async function removeGoingEvents(id, token) {
+    let response = await fetch(`${URL}/events/${id}/users`, {
+        method: "DELETE",
+        // mode: "no-cors",
+        headers: {
+            "x-access-token": token,
+            "Content-Type": "application/json",
+        },
+    });
 }
