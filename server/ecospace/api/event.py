@@ -9,8 +9,15 @@ from .auth import auth_token
 
 event_form_parser = reqparse.RequestParser()
 event_form_parser.add_argument('name', required=True)
+event_form_parser.add_argument('description')
 event_form_parser.add_argument('location')
 event_form_parser.add_argument('date', type=dt.datetime.fromisoformat)
+
+event_edit_parser = reqparse.RequestParser()
+event_edit_parser.add_argument('name')
+event_edit_parser.add_argument('description')
+event_edit_parser.add_argument('location')
+event_edit_parser.add_argument('date', type=dt.datetime.fromisoformat)
 
 
 def pass_event(view):
@@ -45,6 +52,7 @@ class EventList(Resource):
            public_id=str(uuid4()),
            organizer_id=current_user.id,
            name=args.get('name'),
+           description=args.get('description'),
            location=args.get('location'),
            date=args.get('date'),
         )
@@ -100,8 +108,9 @@ class Event(Resource):
     def put(self, current_user, event):
         if current_user.id != event.organizer_id:
             abort(403, message='you cannot do that')
-        args = event_form_parser.parse_args()
+        args = event_edit_parser.parse_args()
         event.name = args.get('name') or event.name
+        event.description = args.get('description') or event.description
         event.location = args.get('location') or event.location
         event.date = args.get('date') or event.date
         db.session.commit()
