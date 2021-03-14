@@ -2,7 +2,7 @@
 
 <!-- README inspired by https://github.com/nukeop/nuclear/ -->
 
-A *social network* for people, passionate about the environment.
+A *social network* for people passionate about the environment.
 
 <!-- TODO: Add the images -->
 
