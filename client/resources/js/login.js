@@ -6,5 +6,10 @@ loginBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     let username = usernameInput.value.trim();
     let password = passwordInput.value;
-    login(username, password);
+
+    if (!username || !password) {
+        console.log("Empty inputs");
+    } else {
+        login(username, password);
+    }
 });

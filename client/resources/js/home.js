@@ -22,12 +22,12 @@ getEvents().then((response) => {
                     </div>
                     <div class="third-part clearfix">
                         <h5>Date: ${date}</h5>
-                        <a href="#" class="coming-btn coming">I'm coming :)</a>
+                        <a href="#" class="coming-btn coming" onclick='changeBtn()'>I'm coming :)</a>
                     </div>
                 </div>
             </div>
             `;
 
-        section.insertAdjacentHTML("beforeend", eventBoxHtml);
+        section.insertAdjacentHTML("afterbegin", eventBoxHtml);
     }
 });

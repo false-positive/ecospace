@@ -41,28 +41,32 @@
             <form>
                 <div class="row name">
                     <label>Event name</label>
-                    <input type="text" />
+                    <input type="text" id="name" />
                 </div>
                 <div class="row">
                     <div class="location">
                         <label>Location</label>
-                        <input type="text" />
+                        <input type="text" id="location" />
                     </div>
                     <div class="date">
                         <label>Date</label>
-                        <input type="date" />
+                        <input type="date" id="date" />
                     </div>
                 </div>
                 <div class="row">
                     <label>Event description</label>
-                    <textarea rows="10" cols="50"></textarea>
+                    <textarea rows="10" cols="50" id="description"></textarea>
                 </div>
                 <div class="row">
-                    <input type="submit" value="Create event" />
+                    <input type="submit" id="submit" value="Create event" />
                 </div>
             </form>
         </section>
+        <script src="vendors/js/jwt-decode.js"></script>
+        <script src="vendors/js/purify.min.js"></script>
         <script src="resources/js/stickynav.js"></script>
+        <script src="resources/js/constants.js"></script>
+        <script src="resources/js/api.js"></script>
         <script src="resources/js/createevent.js"></script>
     </body>
 </html>

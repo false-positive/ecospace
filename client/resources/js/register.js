@@ -10,5 +10,10 @@ registerBtn.addEventListener("click", async (e) => {
     let lastname = lastnameInput.value.trim();
     let username = usernameInput.value.trim();
     let password = passwordInput.value;
-    register(firstname, lastname, username, password);
+
+    if (!firstname || !lastname || !username || !password) {
+        console.log("Empty inputs");
+    } else {
+        register(firstname, lastname, username, password);
+    }
 });
