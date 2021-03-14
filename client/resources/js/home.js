@@ -1,18 +1,24 @@
 let section = document.querySelector("section");
+let token = document.cookie.split(";")[0].split("=")[1];
+let { username } = jwt_decode(token);
 
 getEvents().then((response) => {
+    console.log(response);
     for (const [id, event] of Object.entries(response)) {
-        let name = DOMPurify.sanitize(event.name);
-        let location = DOMPurify.sanitize(event.location);
-        let date = new Date(DOMPurify.sanitize(event.date));
+        if (event.organizer_username !== username) {
+            let name = DOMPurify.sanitize(event.name);
+            let location = DOMPurify.sanitize(event.location);
+            let date = new Date(DOMPurify.sanitize(event.date));
 
-        date = date.getFullYear() + "." + date.getMonth() + "." + date.getDate();
+            date = date.getFullYear() + "." + date.getMonth() + "." + date.getDate();
 
-        // console.log(event);
+            // event.forEach((element) => {});
 
-        // let onclick = `onclick="changeBtn(this, '${newid}')`";
+            // console.log(event);
 
-        let eventBoxHtml = `
+            // let onclick = `onclick="changeBtn(this, '${newid}')`";
+
+            let eventBoxHtml = `
             <div class="row">
                 <div class="event">
                     <div class="clearfix first-part">
@@ -30,6 +36,7 @@ getEvents().then((response) => {
             </div>
             `;
 
-        section.insertAdjacentHTML("afterbegin", eventBoxHtml);
+            section.insertAdjacentHTML("afterbegin", eventBoxHtml);
+        }
     }
 });
