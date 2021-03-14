@@ -21,7 +21,7 @@ async function register(firstname, lastname, username, password) {
 async function login(username, password) {
     let response = await fetch(`${URL}/auth`, {
         method: "GET",
-        mode: "no-cors",
+        // mode: "no-cors",
         headers: {
             Authorization: `Basic ${btoa(`${username}:${password}`)}`,
         },
@@ -33,7 +33,7 @@ async function login(username, password) {
         let now = new Date();
         now.setMonth(now.getMonth() + 1);
         document.cookie = `token=${data}; expires=${now.toUTCString()}; SameSite=Strict`;
-        // window.location.replace("index.html");
+        window.location.replace("index.html");
     }
 }
 
