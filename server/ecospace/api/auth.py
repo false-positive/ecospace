@@ -29,7 +29,7 @@ class AuthResource(Resource):
         if user and check_password_hash(user.password, auth.password):
             token = jwt.encode({
                 'username': auth.username,
-                'exp': dt.datetime.utcnow() + dt.timedelta(hours=1),
+                'exp': dt.datetime.utcnow() + dt.timedelta(days=30),
             }, current_app.config['SECRET_KEY'], algorithm="HS256")
             return {
                 'data': token,
