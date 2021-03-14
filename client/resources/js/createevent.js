@@ -25,6 +25,8 @@ submit.addEventListener("click", async (e) => {
     let token = document.cookie.split(";")[0].split("=")[1];
     let { username } = jwt_decode(token);
 
+    // console.log(description);
+
     if (!name || !location || !date || !description) {
         console.log("Empty inputs");
     } else {

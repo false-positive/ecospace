@@ -66,6 +66,7 @@ function logout() {
 }
 
 async function createEvent(name, description, date, location, organizer, token) {
+    // alert(description);
     let response = await fetch(`${URL}/events`, {
         method: "POST",
         // mode: "no-cors",
@@ -76,7 +77,7 @@ async function createEvent(name, description, date, location, organizer, token) 
         body: JSON.stringify({
             name,
             date,
-            description,
+            description: "",
             location,
             organizer_username: organizer,
         }),
@@ -105,4 +106,48 @@ async function updateParticipants(name, description, date, location, organizer, 
     let data = await response.json();
     console.log(data);
     console.log(response.status);
+}
+
+async function getEvent(id) {
+    let response = await fetch(`${URL}/events/${id}`, {
+        method: "GET",
+        // mode: "no-cors",
+    });
+    let { data } = await response.json();
+
+    return data;
+}
+
+async function changeGoingEvents(id, username, token) {
+    let response = await fetch(`${URL}/events/${id}/users`, {
+        method: "PUT",
+        // mode: "no-cors",
+        headers: {
+            "x-access-token": token,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({}),
+    });
+    let { data } = await response.json();
+
+    let arr = data.events;
+
+    arr.id = id;
+    console.log(arr);
+    // arr.push(id);
+
+    // let response = await fetch(`${URL}/events/${id}`, {
+    //     method: "PUT",
+    //     // mode: "no-cors",
+    //     headers: {
+    //         "x-access-token": token,
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //         description,
+    //         location,
+    //         organizer_username: organizer,
+    //     }),
+    // });
+    // let { data } = await response.json();
 }
