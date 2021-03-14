@@ -291,7 +291,7 @@ Example response:
 }
 
 ```
-### `PUT /events/event_id/users`
+#### `PUT /events/event_id/users`
 
 Add the current user to the event.
 
@@ -316,7 +316,7 @@ Example response:
 }
 ```
 
-### `DELETE /events/event_id/users`
+#### `DELETE /events/event_id/users`
 
 Remove the current user from the event
 
