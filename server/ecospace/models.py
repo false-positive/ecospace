@@ -44,6 +44,7 @@ class EventModel(db.Model):
     public_id = db.Column(db.String(36), unique=True)
     name = db.Column(db.String(50), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
+    description = db.Column(db.String(), nullable=False, default='')
     location = db.Column(db.String(50), nullable=True)  # TODO: Maybe store coords?
     organizer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
 
@@ -51,6 +52,7 @@ class EventModel(db.Model):
         return {
             'name': self.name,
             'date': self.date.isoformat(),
+            'description': self.description,
             'location': self.location,
             'organizer_username': self.organizer.username,
             'participants': [participant.username for participant in self.participants]
