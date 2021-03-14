@@ -53,6 +53,7 @@ class EventModel(db.Model):
             'date': self.date.isoformat(),
             'location': self.location,
             'organizer_username': self.organizer.username,
+            'participants': [participant.username for participant in self.participants]
         }
 
     def __str__(self):
