@@ -14,6 +14,28 @@ $ . venv/bin/activate
 (venv) $ pip install --editable .
 ```
 
+Then you need to setup the database in possibly the most scuffed way
+
+```shell
+(venv) $ export FLASK_APP=ecospace
+(venv) $ export FLASK_ENV=development
+(venv) $ flask shell
+    ...
+>>> from ecospace.models import *
+>>> db.create_all()
+>>> exit()
+    ...
+(venv) $
+```
+
+And then you need to create a configuration file with the secret key. You can use
+
+```shell
+python -c "import os; print(f'SECRET_KEY = {str(os.urandom(25))[1:]}') > instance/config.cfg
+```
+
+> TODO: Make this waaay more user friendly and less scuffed
+
 ## Running
 
 ```shell
@@ -149,7 +171,7 @@ Optional arguments:
 
 Status codes:
 - `201 Created` - the user was edited
-- `401 Conflict` - a user with that username already exists 
+- `401 Conflict` - a user with that username already exists
 - `403 Forbidden` - unathourized attempt at editing user
 
 Example response:
@@ -231,7 +253,7 @@ Example response:
 }
 ```
 
-#### `POST /event` 
+#### `POST /event`
 
 The POST request is used to register a new event.
 Required arguments:
@@ -274,7 +296,7 @@ Optional arguments:
 
 Status codes:
 - `201 Created` - the event was edited
-- `401 Conflict` - a user with that that username is already added 
+- `401 Conflict` - a user with that that username is already added
 - `403 Forbidden` - unathourized attempt at editing event
 
 Example response:
@@ -376,7 +398,7 @@ Optional arguments:
 
 Status codes:
 - `201 Created` - the user was registered
-- `401 Conflict` - a user with that username already exists 
+- `401 Conflict` - a user with that username already exists
 
 Example response:
 
