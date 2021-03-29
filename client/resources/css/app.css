@@ -79,16 +79,6 @@ nav i {
     transition: border 0.3s;
 }
 
-.nav-btns a:hover {
-    border: 1px solid #7ab214;
-}
-
-.nav-btns a li {
-    color: inherit;
-    text-decoration: none;
-    display: inline-block;
-}
-
 .nav-btns a.active {
     color: #fff;
     background: #7ab214;
@@ -106,7 +96,15 @@ nav i {
 .nav-btns a.active:hover i {
     color: #7ab214;
 }
+.nav-btns a:hover {
+    border: 1px solid #7ab214;
+}
 
+.nav-btns a li {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+}
 .profile-btn {
     float: right;
     margin-top: 19px;
@@ -122,9 +120,9 @@ nav i {
     color: #7ab214;
     text-decoration: none;
 }
-
-/* EVENTS SECTION */
-
+/* ------------------------------ */
+/* CONTENT */
+/* ------------------------------ */
 .create-event-btn {
     margin-bottom: 70px;
 }
@@ -145,7 +143,6 @@ nav i {
 .create-event-btn a:active {
     background: #85c215;
 }
-
 .section-nearme {
     margin-top: 150px;
     text-align: center;
@@ -195,7 +192,8 @@ h5 {
     margin-top: 10px;
 }
 
-.section-nearme .event .third-part a {
+.section-nearme .event .third-part a,
+.coming-btn {
     border-radius: 7px;
     text-decoration: none;
     color: #fff;
@@ -216,4 +214,180 @@ h5 {
 }
 .not-coming:hover {
     background: #e15260;
+}
+
+/* ------------------------------ */
+/* USER INFO SECTION */
+/* ------------------------------ */
+
+.section-profile {
+    text-align: center;
+    margin-top: 120px;
+}
+
+.section-profile .row {
+    border-radius: 25px;
+    background: #fff;
+}
+
+.section-profile h1,
+h2 {
+    font-weight: 300;
+}
+
+.section-profile h1 {
+    margin-bottom: 40px;
+}
+
+.section-profile h2 {
+    margin-bottom: 20px;
+}
+
+.section-profile h3 {
+    margin-top: 190px;
+    margin-bottom: 30px;
+}
+
+.logout-btn {
+    padding: 8px 15px;
+    font-size: 100%;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #fff;
+    background: #dc3545;
+    transition: background 0.3s;
+}
+.logout-btn:hover {
+    background: #e15260;
+}
+
+/* ------------------------------ */
+/* EVENT BOX */
+/* ------------------------------ */
+
+.section-info {
+    margin-top: 200px;
+    text-align: left;
+}
+
+.section-info .row {
+    background: #fff;
+}
+.section-info .row:first-child {
+    padding-top: 60px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+.section-info .row:last-child {
+    padding-bottom: 60px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.section-info h1,
+.section-info h5 {
+    margin: 0 15%;
+    font-weight: 300;
+}
+
+.section-info h1 {
+    margin-bottom: 5px;
+    font-size: 240%;
+}
+
+.section-info h5 {
+    margin-bottom: 30px;
+}
+
+.section-info p {
+    line-height: 145%;
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.extra {
+    padding-top: 40px;
+}
+
+.section-info h3 {
+    display: inline-block;
+    font-weight: 300;
+}
+
+.section-info h3:first-child {
+    margin-left: 15%;
+    float: left;
+}
+.section-info h3:last-child {
+    margin-right: 15%;
+    float: right;
+}
+
+/* ------------------------------ */
+/* CREATE EVENT SECTION */
+/* ------------------------------ */
+
+.section-create-event {
+    color: #fff;
+    margin-top: 120px;
+    text-align: center;
+}
+
+.section-create-event label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.section-create-event input,
+.section-create-event textarea {
+    margin-bottom: 30px;
+    border-radius: 20px;
+    padding: 5px 15px;
+    border: 1px solid black;
+}
+
+.location {
+    margin-left: 25%;
+    margin-right: 3%;
+    float: left;
+    width: 27%;
+}
+
+.location input {
+    width: 100%;
+}
+
+.date {
+    margin-right: 25%;
+    float: right;
+    width: 20%;
+}
+
+.date input {
+    width: 100%;
+}
+
+.section-create-event input[type="date"] {
+    text-align: center;
+    padding-right: 0;
+}
+
+.name input,
+.section-create-event textarea {
+    width: 50%;
+}
+
+.section-create-event input[type="submit"] {
+    cursor: pointer;
+    font-size: 210%;
+    margin-top: 60px;
+    padding: 8px 35px;
+    color: #fff;
+    background: #7ab214;
+    border: 1px solid #7ab214;
+    transition: background 0.3s;
+}
+
+.section-create-event input[type="submit"]:hover {
+    background: #85c215;
 }

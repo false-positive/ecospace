@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="vendors/css/Grid.css" />
         <link rel="stylesheet" type="text/css" href="vendors/css/ionicons.min.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/moreinfo.css" />
+        <link rel="stylesheet" type="text/css" href="resources/css/app.css" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet" />
         <script src="vendors/js/jwt-decode.js"></script>
@@ -18,26 +18,24 @@
                 <div class="row">
                     <img class="logo" src="resources/img/the_circle_logo_no_circle.svg" alt="ECOspace logo" />
                     <ul class="nav-btns">
-                        <!-- TODO: fix hover effect -->
-                        <li>
-                            <a href="home.html"><i class="ion-android-home"></i> Home</a>
-                        </li>
-                        <li>
-                            <a href="myevents.html"><i class="ion-calendar"></i> My events</a>
-                        </li>
-                        <li>
-                            <a href="going.html"><i class="ion-checkmark"></i> Going</a>
-                        </li>
+                        <a href="home.html">
+                            <li><i class="ion-android-home"></i> Home</li>
+                        </a>
+                        <a href="myevents.html">
+                            <li><i class="ion-calendar"></i> My events</li>
+                        </a>
+                        <a href="going.html">
+                            <li><i class="ion-checkmark"></i> Going</li>
+                        </a>
+                        <a href="profile.html">
+                            <li><i class="ion-person"></i> Profile</li>
+                        </a>
                     </ul>
-                    <div class="profile-btn">
-                        <a href="#"><i class="ion-person"></i> Profile</a>
-                        <!-- TODO: Maybe put an image next to profile -->
-                    </div>
                 </div>
             </nav>
         </header>
 
-        <section>
+        <section class="section-info">
             <div class="row">
                 <h1>Cleaning trash</h1>
                 <h5>By John Smith</h5>
