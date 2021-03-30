@@ -26,11 +26,7 @@ def create_app():
     from .models import db
     db.init_app(app)
 
-    @app.route('/flask_test')
-    def hello():
-        return jsonify({'message': 'flask seems to work, congrats!'})
-
-    from .api import api
-    api.init_app(app)
+    from . import api
+    app.register_blueprint(api.bp)
 
     return app
