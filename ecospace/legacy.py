@@ -10,44 +10,34 @@ bp = Blueprint('legacy', __name__)
 
 @bp.route('/')
 def index():
-    return render_template('index.html')
-
-
-@bp.route('/login')
-def login():
-    return render_template('login.html')
-
-
-@bp.route('/register')
-def register():
-    return render_template('register.html')
+    return render_template('legacy/index.html')
 
 
 @bp.route('/home')
 def home():
-    return render_template('home.html')
+    return render_template('legacy/home.html')
 
 
 @bp.route('/going')
 def going():
-    return render_template('going.html')
+    return render_template('legacy/going.html')
 
 
 @bp.route('/myevents')
 def myevents():
-    return render_template('myevents.html')
+    return render_template('legacy/myevents.html')
 
 
 @bp.route('/profile')
 def profile():
-    return render_template('profile.html')
+    return render_template('legacy/profile.html')
 
 
 @bp.route('/createevent')
 def createevent():
-    return render_template('createevent.html')
+    return render_template('legacy/createevent.html')
 
 
 @bp.route('/moreinfo')
 def moreinfo():
-    return render_template('moreinfo.html')
+    return render_template('legacy/moreinfo.html')
