@@ -11,6 +11,6 @@ getEvent(id).then((response) => {
         document.querySelector("p").textContent = response.description;
         document.querySelector("h3:first-child").textContent = "Date: " + date;
         document.querySelector("h3:last-child").textContent = "Loaction: " + response.location;
-        console.log(response);
+        // console.log(response);
     }
 });

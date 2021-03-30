@@ -3,7 +3,7 @@ let token = document.cookie.split(";")[0].split("=")[1];
 let { username } = jwt_decode(token);
 
 getEvents().then((response) => {
-    console.log(response);
+    // console.log(response);
     for (const [id, event] of Object.entries(response)) {
         if (event.organizer_username !== username) {
             let name = DOMPurify.sanitize(event.name);

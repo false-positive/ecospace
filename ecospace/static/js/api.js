@@ -12,7 +12,7 @@ async function register(firstname, lastname, username, password) {
         }),
     });
     let data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (response.ok) {
         login(username, password);
     }
@@ -29,10 +29,10 @@ async function login(username, password) {
     });
     let { data } = await response.json();
 
-    console.log(data);
+    // console.log(data);
 
     if (data !== undefined) {
-        console.log(response.status);
+        // console.log(response.status);
         let now = new Date();
         now.setMonth(now.getMonth() + 1);
         document.cookie = `token=${data}; expires=${now.toUTCString()}; SameSite=Strict`;
@@ -41,7 +41,7 @@ async function login(username, password) {
 }
 
 async function getUserInfo(username) {
-    console.log(`${URL}/users/${username}`);
+    // console.log(`${URL}/users/${username}`);
     let response = await fetch(`${URL}/users/${username}`, {
         method: "GET",
         // mode: "no-cors",
@@ -84,8 +84,8 @@ async function createEvent(name, description, date, location, organizer, token) 
         }),
     });
     let data = await response.json();
-    console.log(data);
-    console.log(response.status);
+    // console.log(data);
+    // console.log(response.status);
 }
 
 async function updateParticipants(name, description, date, location, organizer, token) {
@@ -105,8 +105,8 @@ async function updateParticipants(name, description, date, location, organizer, 
         }),
     });
     let data = await response.json();
-    console.log(data);
-    console.log(response.status);
+    // console.log(data);
+    // console.log(response.status);
 }
 
 async function getEvent(id) {

@@ -24,7 +24,6 @@ loginBtn.addEventListener("mouseout", function () {
 });
 
 function stickyNav() {
-    console.log('stickiNav()');
     if (window.pageYOffset > sticky) {
         isNavSticky = true;
         navbar.classList.add("sticky");
