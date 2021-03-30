@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+{% extends 'auth/base.html' %}
 
-<html>
-    <head>
-        <title>Login</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/normalize.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/Grid.css') }}" />
-    </head>
-    <body>
-        <section class="box">
+{% block title %}Login{% endblock %}
+
+{% block style %}
+    <style>
+        html {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("{{ url_for('static', filename='img/background.login_50.jpg') }}");
+        }
+    </style>
+{% endblock %}
+
+{% block box %}
             <form action="">
                 <label>Username</label>
                 <input type="text" id="username" />
@@ -20,9 +20,8 @@
             </form>
 
             <h2>Dont have an account?<a href="{{ url_for('auth.register') }}"> Sign up!</a></h2>
-        </section>
-        <script src="{{ url_for('static', filename='js/constants.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+{% endblock %}
+
+{% block script %}
         <script src="{{ url_for('static', filename='js/login.js') }}"></script>
-    </body>
-</html>
+{% endblock %}

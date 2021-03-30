@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/normalize.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/Grid.css') }}" />
+        <meta charset="UTF-8" />
+        {% block style %}{% endblock %}
+    </head>
+    <body>
+        <section class="box">
+            {% block box %}{% endblock %}
+        </section>
+        <script src="{{ url_for('static', filename='js/constants.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+        {% block script %}{% endblock %}
+    </body>
+</html>
