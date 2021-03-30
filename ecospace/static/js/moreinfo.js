@@ -1,7 +1,7 @@
 let id = window.location.toString().split("?")[1];
 getEvent(id).then((response) => {
     if (response === undefined) {
-        window.location.replace("index.html");
+        window.location.replace("/");
     } else {
         let date = new Date(response.date);
         date = date.getFullYear() + "." + date.getMonth() + "." + date.getDate();

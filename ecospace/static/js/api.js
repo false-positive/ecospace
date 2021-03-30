@@ -36,7 +36,7 @@ async function login(username, password) {
         let now = new Date();
         now.setMonth(now.getMonth() + 1);
         document.cookie = `token=${data}; expires=${now.toUTCString()}; SameSite=Strict`;
-        window.location.replace("index.html");
+        window.location.replace("/");
     }
 }
 
@@ -63,7 +63,7 @@ async function getEvents() {
 
 function logout() {
     document.cookie = "token=; expires= Thu, 21 Aug 2014 20:00:00 UTC; SameSite=Strict";
-    window.location.replace("index.html");
+    window.location.replace("/");
 }
 
 async function createEvent(name, description, date, location, organizer, token) {

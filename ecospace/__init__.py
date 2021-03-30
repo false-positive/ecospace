@@ -29,4 +29,7 @@ def create_app():
     from . import api
     app.register_blueprint(api.bp)
 
+    from . import legacy
+    app.register_blueprint(legacy.bp)
+
     return app

@@ -3,15 +3,15 @@
 <html>
     <head>
         <title>Register</title>
-        <link rel="stylesheet" href="resources/css/auth.css" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="vendors/css/Grid.css" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/normalize.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/Grid.css') }}" />
         <meta charset="UTF-8" />
         <style>
             html {
-                background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(resources/img/background.signup2.png);
+                background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("{{ url_for('static', filename='img/background.signup2.png') }}");
             }
         </style>
     </head>
@@ -29,10 +29,10 @@
                 <input type="submit" value="Register" id="register" />
             </form>
 
-            <h2>Already have an account?<a href="login.html"> Log in!</a></h2>
+            <h2>Already have an account?<a href="{{ url_for('legacy.login') }}"> Log in!</a></h2>
         </section>
-        <script src="resources/js/constants.js"></script>
-        <script src="resources/js/api.js"></script>
-        <script src="resources/js/register.js"></script>
+        <script src="{{ url_for('static', filename='js/constants.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/register.js') }}"></script>
     </body>
 </html>

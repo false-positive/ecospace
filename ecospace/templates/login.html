@@ -3,11 +3,11 @@
 <html>
     <head>
         <title>Login</title>
-        <link rel="stylesheet" href="resources/css/auth.css" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="vendors/css/Grid.css" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/normalize.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/Grid.css') }}" />
     </head>
     <body>
         <section class="box">
@@ -19,10 +19,10 @@
                 <input type="submit" value="Log in" id="login" />
             </form>
 
-            <h2>Dont have an account?<a href="register.html"> Sign up!</a></h2>
+            <h2>Dont have an account?<a href="{{ url_for('legacy.register') }}"> Sign up!</a></h2>
         </section>
-        <script src="resources/js/constants.js"></script>
-        <script src="resources/js/api.js"></script>
-        <script src="resources/js/login.js"></script>
+        <script src="{{ url_for('static', filename='js/constants.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/login.js') }}"></script>
     </body>
 </html>

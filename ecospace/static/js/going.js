@@ -17,7 +17,7 @@ getUserInfo(`/${username}`).then(({ events: response}) => {
                 <div class="event">
                     <div class="clearfix first-part">
                         <h4>${name}</h4>
-                        <a href="moreinfo.html?${id}">More info</a>
+                        <a href="moreinfo?${id}">More info</a>
                     </div>
                     <div class="clearfix second-part">
                         <h5>Location: ${location}</h5>

@@ -3,31 +3,31 @@
 <html>
     <head>
         <title>Event name</title>
-        <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="vendors/css/Grid.css" />
-        <link rel="stylesheet" type="text/css" href="vendors/css/ionicons.min.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/app.css" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/normalize.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/Grid.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/ionicons.min.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet" />
-        <script src="vendors/js/jwt-decode.js"></script>
-        <script src="resources/js/loginrequired.js"></script>
+        <script src="{{ url_for('static', filename='vendor/js/jwt-decode.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/loginrequired.js') }}"></script>
     </head>
     <body>
         <header>
             <nav>
                 <div class="row">
-                    <img class="logo" src="resources/img/the_circle_logo_no_circle.svg" alt="ECOspace logo" />
+                    <img class="logo" src="{{ url_for('static', filename='img/the_circle_logo_no_circle.svg') }}" alt="ECOspace logo" />
                     <ul class="nav-btns">
-                        <a href="home.html">
+                        <a href="{{ url_for('legacy.home') }}">
                             <li><i class="ion-android-home"></i> Home</li>
                         </a>
-                        <a href="myevents.html">
+                        <a href="{{ url_for('legacy.myevents') }}">
                             <li><i class="ion-calendar"></i> My events</li>
                         </a>
-                        <a href="going.html">
+                        <a href="{{ url_for('legacy.going') }}">
                             <li><i class="ion-checkmark"></i> Going</li>
                         </a>
-                        <a href="profile.html">
+                        <a href="{{ url_for('legacy.profile') }}">
                             <li><i class="ion-person"></i> Profile</li>
                         </a>
                     </ul>
@@ -54,9 +54,9 @@
                 <h3>Location: Sofia, Bulgaria</h3>
             </div>
         </section>
-        <script src="resources/js/stickynav.js"></script>
-        <script src="resources/js/constants.js"></script>
-        <script src="resources/js/api.js"></script>
-        <script src="resources/js/moreinfo.js"></script>
+        <script src="{{ url_for('static', filename='js/stickynav.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/constants.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/moreinfo.js') }}"></script>
     </body>
 </html>
