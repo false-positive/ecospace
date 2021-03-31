@@ -3,25 +3,25 @@
 {% block title %}Login{% endblock %}
 
 {% block style %}
-    <style>
-        html {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("{{ url_for('static', filename='img/background.login_50.jpg') }}");
-        }
-    </style>
+<style>
+    html {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("{{ url_for('static', filename='img/background.login_50.jpg') }}");
+    }
+</style>
 {% endblock %}
 
 {% block box %}
-            <form action="">
-                <label>Username</label>
-                <input type="text" id="username" />
-                <label>Password</label>
-                <input type="password" id="password" />
-                <input type="submit" value="Log in" id="login" />
-            </form>
+<form action="">
+    <label>Username</label>
+    <input type="text" id="username" />
+    <label>Password</label>
+    <input type="password" id="password" />
+    <input type="submit" value="Log in" id="login" />
+</form>
 
-            <h2>Dont have an account?<a href="{{ url_for('auth.register') }}"> Sign up!</a></h2>
+<h2>Dont have an account?<a href="{{ url_for('auth.register') }}"> Sign up!</a></h2>
 {% endblock %}
 
 {% block script %}
-        <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
 {% endblock %}

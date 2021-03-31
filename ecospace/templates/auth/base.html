@@ -12,9 +12,7 @@
         {% block style %}{% endblock %}
     </head>
     <body>
-        <section class="box">
-            {% block box %}{% endblock %}
-        </section>
+        <section class="box">{% block box %}{% endblock %}</section>
         <script src="{{ url_for('static', filename='js/constants.js') }}"></script>
         <script src="{{ url_for('static', filename='js/api.js') }}"></script>
         {% block script %}{% endblock %}
