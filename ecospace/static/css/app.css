@@ -391,3 +391,8 @@ h2 {
 .section-create-event input[type="submit"]:hover {
     background: #85c215;
 }
+
+/* pass-through any clicks to the link, so JS handles it properly */
+a[data-link] * {
+    pointer-events: none;
+}
