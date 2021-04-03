@@ -1,6 +1,6 @@
 class AbstractView {
-    constructor() {
-        /* TODO */
+    constructor(params) {
+        this.params = params;
     }
 
     static setTitle(title) {
