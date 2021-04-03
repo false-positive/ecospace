@@ -1,8 +1,6 @@
-const formatDate = (date) => date.toLocaleDateString();
-
 class EventListView extends AbstractView {
-    constructor() {
-        super();
+    constructor(params) {
+        super(params);
         AbstractView.setTitle("Home");
     }
 

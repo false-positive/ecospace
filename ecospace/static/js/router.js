@@ -1,5 +1,5 @@
 // Convert "/events/:id" into a regular expression that captures :id
-const pathToRegex = (path) => new RegExp(`^${path.replace(/\//g, "\\/").replace(/:\w+/g, "(\\w+)")}$`);
+const pathToRegex = (path) => new RegExp(`^${path.replace(/\//g, "\\/").replace(/:\w+/g, "([^/]+)")}$`);
 
 // Map the params of a path like "/events/:id" to the values in a RegExp match
 const getParams = (match) => {
@@ -15,6 +15,7 @@ const router = async () => {
         { path: "/events/new", view: "events/new" },
         { path: "/events/going", view: "events/going" },
         { path: "/events/my", view: "events/my" },
+        { path: "/events/:id", view: EventView },
         { path: "/profile", view: "profile" },
     ];
 
