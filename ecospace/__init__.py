@@ -11,7 +11,7 @@ def create_app():
     """Create and configure an instance of a Flask app"""
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-            # TODO: Configure linter to not complaina about long lines
+            # TODO: Configure linter to not complain about long lines
             SQLALCHEMY_DATABASE_URI=f'sqlite:///{os.path.join(app.instance_path, "ecospace.sqlite")}',
     )
 
@@ -20,7 +20,7 @@ def create_app():
     CORS(app)
 
     with suppress(OSError):
-        # Create the `scifedium/server/instance` folder where the db is
+        # Create the `ecospace/instance` folder where the db is
         os.makedirs(app.instance_path)
 
     from .models import db
