@@ -1,6 +1,6 @@
 import os
 from contextlib import suppress
-from flask import Flask, jsonify, render_template
+from flask import Flask, render_template
 from flask_cors import CORS
 
 __version__ = '0.1.0'
@@ -38,5 +38,9 @@ def create_app():
 
     from . import legacy
     app.register_blueprint(legacy.bp)
+
+    # This must be registered last, so it doesn't override anything
+    from . import single_page
+    app.register_blueprint(single_page.bp)
 
     return app

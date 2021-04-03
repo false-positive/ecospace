@@ -5,7 +5,7 @@ This is depricated and will be gone earlier than you think.
 
 from flask import Blueprint, render_template
 
-bp = Blueprint('legacy', __name__)
+bp = Blueprint('legacy', __name__, url_prefix='/legacy')
 
 
 @bp.route('/home')
