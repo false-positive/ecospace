@@ -40,7 +40,7 @@ def create_app():
     app.register_blueprint(legacy.bp)
 
     # This must be registered last, so it doesn't override anything
-    from . import single_page
-    app.register_blueprint(single_page.bp)
+    from . import singlepage
+    app.register_blueprint(singlepage.bp)
 
     return app
