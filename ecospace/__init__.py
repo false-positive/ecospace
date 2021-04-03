@@ -1,6 +1,6 @@
 import os
 from contextlib import suppress
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 
 __version__ = '0.1.0'
@@ -25,6 +25,10 @@ def create_app():
 
     from .models import db
     db.init_app(app)
+
+    @app.route('/')
+    def landing():
+        return render_template('landing.html')
 
     from . import api
     app.register_blueprint(api.bp)
