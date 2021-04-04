@@ -1,7 +1,7 @@
 import functools
 import datetime as dt
 
-from flask import current_app, make_response
+from flask import make_response
 from flask_restful import abort, Resource, request, reqparse
 from werkzeug.security import check_password_hash, generate_password_hash
 import jwt
@@ -16,6 +16,7 @@ user_form_parser.add_argument('password', required=True)
 
 class AuthResource(Resource):
     """Endpoint for user authentication with JWTs"""
+
     def get(self):
         # Get username and password from HTTP Basic authentication
         # https://www.youtube.com/watch?v=VW8qJxy4XcQ
@@ -27,10 +28,7 @@ class AuthResource(Resource):
             )
         user = UserModel.query.filter_by(username=auth.username).first()
         if user and check_password_hash(user.password, auth.password):
-            token = jwt.encode({
-                'username': auth.username,
-                'exp': dt.datetime.utcnow() + dt.timedelta(days=30),
-            }, current_app.config['SECRET_KEY'], algorithm="HS256")
+            token = user.encode_auth_token()
             return {
                 'data': token,
                 'message': 'successfully logged',
@@ -74,8 +72,7 @@ def auth_token(view):
         if not token:
             abort(401, message='token is missing .-.')
         try:
-            payload = jwt.decode(token, current_app.config['SECRET_KEY'], algorithms=["HS256"])
-            user = UserModel.query.filter_by(username=payload['username']).first()
+            user = UserModel.decode_auth_token(token)
             kwargs['current_user'] = user
         except jwt.ExpiredSignatureError:
             abort(401, message='expired token')

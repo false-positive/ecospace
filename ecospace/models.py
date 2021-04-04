@@ -1,5 +1,7 @@
 import datetime as dt
 
+import jwt
+from flask import current_app
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -23,6 +25,19 @@ class UserModel(db.Model):
     organized_events = db.relationship('EventModel', backref='organizer', lazy=True)
     # https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/#many-to-many-relationships
     events = db.relationship('EventModel', secondary=events, lazy='subquery', backref=db.backref('participants', lazy=True))
+
+    def encode_auth_token(self):
+        token = jwt.encode({
+            'username': self.username,
+            'exp': dt.datetime.utcnow() + dt.timedelta(days=30),
+        }, current_app.config['SECRET_KEY'], algorithm='HS256')
+        return token
+
+    @classmethod
+    def decode_auth_token(cls, token):
+        payload = jwt.decode(token, current_app.config['SECRET_KEY'], algorithms=["HS256"])
+        user = cls.query.filter_by(username=payload['username']).first()
+        return user
 
     def get_response(self):
         return {
