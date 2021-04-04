@@ -35,6 +35,19 @@
         </header>
 
         <div id="content"></div>
+        {#
+        <!-- HACK: This is done to prevent prettier from uglifying the code ugh #}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div style="background-color: magenta; color: white; font-size: 3em; font-family: Georgia, 'Times New Roman', Times, serif;">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {# -->
+        #}
 
         <script src="{{ url_for('static', filename='vendor/js/purify.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/stickynav.js') }}"></script>

@@ -11,17 +11,22 @@
 {% endblock %}
 
 {% block box %}
-<form action="">
-    <label>Username</label>
-    <input type="text" id="username" />
-    <label>Password</label>
-    <input type="password" id="password" />
+<form action="{{ url_for('auth.login') }}" method="POST">
+    <label for="username">Username</label>
+    <input name="username" type="text" id="username" required />
+    <label for="password">Password</label>
+    <input name="password" type="password" id="password" required />
+    <input name="then" type="hidden" value="{{ request.args.get('then', '') }}" />
     <input type="submit" value="Log in" id="login" />
 </form>
 
-<h2>Dont have an account?<a href="{{ url_for('auth.register') }}"> Sign up!</a></h2>
-{% endblock %}
-
-{% block script %}
-<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+<h2>Don't have an account?
+    {% if request.args.get('then') %}
+    <a href="{{ url_for('auth.register', then=request.args['then']) }}">
+    {% else %}
+    <a href="{{ url_for('auth.register') }}">
+    {% endif %}
+         Sign up!
+    </a>
+</h2>
 {% endblock %}

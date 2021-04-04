@@ -11,21 +11,26 @@
 {% endblock %}
 
 {% block box %}
-<form action="">
-    <label>First name</label>
-    <input type="text" id="firstname" required />
-    <label>Last name</label>
-    <input type="text" id="lastname" required />
-    <label>Username</label>
-    <input type="text" id="username" required />
-    <label>Password</label>
-    <input type="password" id="password" />
+<form action="{{ url_for('auth.register') }}" method="POST">
+    <label for="firstname">First name</label>
+    <input name="firstname" type="text" id="firstname" required />
+    <label for="lastname">Last name</label>
+    <input name="lastname" type="text" id="lastname" required />
+    <label for="username">Username</label>
+    <input name="username" type="text" id="username" required />
+    <label for="password">Password</label>
+    <input name="password" type="password" id="password" />
+    <input name="then" type="hidden" value="{{ request.args.get('then', '') }}" />
     <input type="submit" value="Register" id="register" />
 </form>
 
-<h2>Already have an account?<a href="{{ url_for('auth.login') }}"> Log in!</a></h2>
-{% endblock %}
-
-{% block script %}
-<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+<h2>Already have an account?
+    {% if request.args.get('then') %}
+    <a href="{{ url_for('auth.login', then=request.args['then']) }}">
+    {% else %}
+    <a href="{{ url_for('auth.login') }}">
+    {% endif %}
+         Log in!
+    </a>
+</h2>
 {% endblock %}

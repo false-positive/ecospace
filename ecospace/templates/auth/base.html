@@ -12,9 +12,19 @@
         {% block style %}{% endblock %}
     </head>
     <body>
+        {#
+        <!-- HACK: This is done to prevent prettier from uglifying the code ugh #}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div style="background-color: magenta; color: white; font-size: 3em; font-family: Georgia, 'Times New Roman', Times, serif;">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {# -->
+        #}
         <section class="box">{% block box %}{% endblock %}</section>
-        <script src="{{ url_for('static', filename='js/constants.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/api.js') }}"></script>
-        {% block script %}{% endblock %}
     </body>
 </html>
