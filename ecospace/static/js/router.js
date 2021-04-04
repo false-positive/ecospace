@@ -12,11 +12,11 @@ const getParams = (match) => {
 const router = async () => {
     const routes = [
         { path: "/events", view: EventListView },
-        { path: "/events/new", view: "events/new" },
-        { path: "/events/going", view: "events/going" },
-        { path: "/events/my", view: "events/my" },
+        { path: "/events/new", view: NotImplementedView },
+        { path: "/events/going", view: NotImplementedView },
+        { path: "/events/my", view: NotImplementedView },
         { path: "/events/:id", view: EventView },
-        { path: "/profile", view: "profile" },
+        { path: "/profile", view: NotImplementedView },
     ];
 
     const potentialMatches = routes.map((route) => ({
