@@ -1,6 +1,6 @@
 import os
 from contextlib import suppress
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from flask_cors import CORS
 
 __version__ = '0.1.0'
@@ -11,8 +11,8 @@ def create_app():
     """Create and configure an instance of a Flask app"""
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-            # TODO: Configure linter to not complain about long lines
-            SQLALCHEMY_DATABASE_URI=f'sqlite:///{os.path.join(app.instance_path, "ecospace.sqlite")}',
+        # TODO: Configure linter to not complain about long lines
+        SQLALCHEMY_DATABASE_URI=f'sqlite:///{os.path.join(app.instance_path, "ecospace.sqlite")}',
     )
 
     app.config.from_pyfile('config.cfg', silent=True)
@@ -28,7 +28,10 @@ def create_app():
 
     @app.route('/')
     def landing():
-        return render_template('landing.html')
+        if not request.cookies.get('token'):
+            return render_template('landing.html')
+        else:
+            return redirect(url_for('singlepage.index', route='events'))
 
     from . import api
     app.register_blueprint(api.bp)
