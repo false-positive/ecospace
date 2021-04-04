@@ -12,7 +12,7 @@
         {% block style %}{% endblock %}
     </head>
     <body>
-        {#
+        {# The line below is not a comment because everything inside the {# } will get ignored
         <!-- HACK: This is done to prevent prettier from uglifying the code ugh #}
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
