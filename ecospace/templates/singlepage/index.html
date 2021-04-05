@@ -35,8 +35,6 @@
         </header>
 
         <div id="content"></div>
-        {# The line below is not a comment because everything inside the {# } will get ignored
-        <!-- HACK: This is done to prevent prettier from uglifying the code ugh #}
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
               {% for category, message in messages %}
@@ -46,8 +44,6 @@
               {% endfor %}
             {% endif %}
         {% endwith %}
-        {# -->
-        #}
 
         <script src="{{ url_for('static', filename='vendor/js/purify.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/stickynav.js') }}"></script>
