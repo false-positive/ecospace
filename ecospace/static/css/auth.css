@@ -77,3 +77,15 @@ html {
 .box h2 a:active {
     color: #85c215;
 }
+
+.message {
+    color: #fff;
+    background-color: #dc3545;
+    padding: 10px 20px;
+    position: fixed;
+    border-radius: 20px;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120%;
+}
