@@ -48,7 +48,7 @@ class UserModel(db.Model):
         }
 
     def __str__(self):
-        return f'<User @{self.username} ({self.public_id})>'
+        return f'<User @{self.username}>'
 
 
 class EventModel(db.Model):
