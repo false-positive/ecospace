@@ -3,7 +3,7 @@ from contextlib import suppress
 from flask import Flask, render_template, request, redirect, url_for
 from flask_cors import CORS
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __author__ = 'FalsePositive'
 
 
