@@ -5,12 +5,23 @@ class EventListView extends AbstractView {
     }
 
     async getHTML() {
+        currentUser = await getUserInfo(currentUser.username);
+        console.log(currentUser);
         const events = await getEvents();
         return `
             <section class="section-nearme">
                 ${Object.entries(events)
                     .reverse()
-                    .filter(([id, event]) => true) // TODO: Filter events that should not be shown
+                    .filter(([id]) => {
+                        let myid = id;
+                        for ([id] of Object.entries(currentUser.events)) {
+                            if (id == myid) return false;
+                        }
+                        for ([id] of Object.entries(currentUser.organized_events)) {
+                            if (id == myid) return false;
+                        }
+                        return true;
+                    }) // TODO: Filter events that should not be shown
                     .map(
                         ([id, { name, location, date }]) => `
                             <div class="row">
