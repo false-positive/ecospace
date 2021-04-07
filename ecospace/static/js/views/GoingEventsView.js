@@ -8,9 +8,6 @@ class GoingEventsListView extends AbstractView {
         currentUser = await getUserInfo(currentUser.username);
         return `
             <section class="section-nearme">
-                <div class="row create-event-btn">
-                    <a href="/events/new" data-link>Create an event!</a>
-                </div>
                 ${Object.entries(currentUser.events)
                     .map(
                         ([id, { name, location, date }]) => `
