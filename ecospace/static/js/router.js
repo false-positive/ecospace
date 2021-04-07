@@ -16,7 +16,7 @@ const router = async () => {
         { path: "/events/going", view: GoingEventsListView },
         { path: "/events/my", view: MyEventsView },
         { path: "/events/:id", view: EventView },
-        { path: "/profile", view: NotImplementedView },
+        { path: "/profile", view: MyProfileView },
     ];
 
     const potentialMatches = routes.map((route) => ({
