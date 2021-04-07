@@ -1,4 +1,4 @@
-class MyEventsView extends AbstractView {
+class GoingEventsListView extends AbstractView {
     constructor(params) {
         super(params);
         AbstractView.setTitle("My Events");
@@ -11,7 +11,7 @@ class MyEventsView extends AbstractView {
                 <div class="row create-event-btn">
                     <a href="/events/new" data-link>Create an event!</a>
                 </div>
-                ${Object.entries(currentUser.organized_events)
+                ${Object.entries(currentUser.events)
                     .map(
                         ([id, { name, location, date }]) => `
                             <div class="row">

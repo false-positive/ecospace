@@ -84,7 +84,7 @@ html {
     padding: 10px 20px;
     position: fixed;
     border-radius: 20px;
-    top: 7%;
+    bottom: 0;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 120%;
