@@ -1,7 +1,7 @@
 class MyProfileView extends AbstractView {
     constructor(params) {
         super(params);
-        AbstractView.setTitle("Home");
+        AbstractView.setTitle("Profile");
     }
 
     async getHTML() {

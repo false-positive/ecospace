@@ -1,7 +1,7 @@
 class GoingEventsListView extends AbstractView {
     constructor(params) {
         super(params);
-        AbstractView.setTitle("My Events");
+        AbstractView.setTitle("Going");
     }
 
     async getHTML() {
