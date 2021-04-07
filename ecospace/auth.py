@@ -5,7 +5,7 @@ The views for login and register.
 import functools
 import datetime as dt
 
-from flask import Blueprint, render_template, request, redirect, url_for, flash, make_response
+from flask import Blueprint, render_template, request, redirect, url_for, flash, make_response, g
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from .models import UserModel, db
@@ -18,14 +18,21 @@ def login_required(view):
 
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        # XXX: If invalid token is present in cookie, it will still pass through
-        # TODO: Validate token here.
-        if 'token' not in request.cookies:
+        if g.user is None:
             flash('Please Log In to continue', category='message')
             return redirect(url_for('auth.login', then=request.path))
         return view(**kwargs)
 
     return wrapped_view
+
+
+@bp.before_app_request
+def load_logged_in_user():
+    if 'token' in request.cookies:
+        # get the user
+        g.user = UserModel.decode_auth_token(request.cookies['token'])
+    else:
+        g.user = None
 
 
 @bp.route('/login', methods=('GET', 'POST'))

@@ -9,7 +9,10 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet" />
-        <script src="{{ url_for('static', filename='vendor/js/jwt-decode.js') }}"></script>
+        <!-- <script src="{{ url_for('static', filename='vendor/js/jwt-decode.js') }}"></script> -->
+        <script>
+            let currentUser = JSON.parse('{{ current_user.get_response() | tojson | safe }}');
+        </script>
     </head>
     <body>
         <header>
@@ -53,6 +56,7 @@
         <script src="{{ url_for('static', filename='js/views/EventListView.js') }}"></script>
         <script src="{{ url_for('static', filename='js/views/EventView.js') }}"></script>
         <script src="{{ url_for('static', filename='js/views/NotImplementedView.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/views/MyEventsView.js') }}"></script>
         <script src="{{ url_for('static', filename='js/router.js') }}"></script>
     </body>
 </html>
