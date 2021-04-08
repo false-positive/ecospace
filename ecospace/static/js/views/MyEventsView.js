@@ -45,20 +45,8 @@ class MyEventsView extends AbstractView {
     registerEventListeners(root) {
         const locations = root.querySelectorAll(".location-text");
         locations.forEach(async (location) => {
-            const text = await this.getAdress(location.dataset.lat, location.dataset.lng);
+            const text = await getAddress(location.dataset.lat, location.dataset.lng);
             location.textContent = text || location.dataset.fallback;
         });
-    }
-
-    async getAdress(lat, lng) {
-        let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
-        try {
-            const response = await fetch(url);
-            const { display_name } = await response.json();
-            console.log(display_name);
-            return display_name;
-        } catch (err) {
-            return null;
-        }
     }
 }
