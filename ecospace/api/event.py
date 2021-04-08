@@ -49,12 +49,12 @@ class EventList(Resource):
     def post(self, current_user):
         args = event_form_parser.parse_args()
         new_event = EventModel(
-           public_id=str(uuid4()),
-           organizer_id=current_user.id,
-           name=args.get('name'),
-           description=args.get('description'),
-           location=args.get('location'),
-           date=args.get('date'),
+            public_id=str(uuid4()),
+            organizer_id=current_user.id,
+            name=args.get('name'),
+            description=args.get('description'),
+            location=args.get('location'),
+            date=args.get('date'),
         )
         participants = args.get('participants')
         if participants:

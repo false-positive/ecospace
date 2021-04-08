@@ -1,5 +1,4 @@
 import functools
-import datetime as dt
 
 from flask import make_response
 from flask_restful import abort, Resource, request, reqparse
