@@ -12,7 +12,9 @@ class MyEventsView extends AbstractView {
                     <a href="/events/new" data-link>Create an event!</a>
                 </div>
                 ${Object.entries(currentUser.organized_events)
-                    .reverse()
+                    .sort(function (a, b) {
+                        return new Date(a[1].date) - new Date(b[1].date);
+                    })
                     .map(
                         ([id, { name, location, date }]) => `
                             <div class="row">

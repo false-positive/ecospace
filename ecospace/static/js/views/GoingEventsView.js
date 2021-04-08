@@ -10,7 +10,7 @@ class GoingEventsListView extends AbstractView {
             <section class="section-nearme">
                 ${Object.entries(currentUser.events)
                     .sort(function (a, b) {
-                        return new Date(b[1].date) - new Date(a[1].date);
+                        return new Date(a[1].date) - new Date(b[1].date);
                     })
                     .map(
                         ([id, { name, location, date }]) => `

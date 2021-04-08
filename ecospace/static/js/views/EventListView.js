@@ -9,15 +9,12 @@ class EventListView extends AbstractView {
         console.log(currentUser);
         const events = await getEvents();
 
-        // let sortedEvents =
-
         return `
             <section class="section-nearme">
                 ${Object.entries(events)
                     .sort(function (a, b) {
-                        return new Date(b[1].date) - new Date(a[1].date);
+                        return new Date(a[1].date) - new Date(b[1].date);
                     })
-                    .reverse()
                     .filter(([id]) => {
                         let myid = id;
                         for ([id] of Object.entries(currentUser.events)) {

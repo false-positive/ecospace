@@ -44,22 +44,25 @@ class CreateEventView extends AbstractView {
     }
 
     registerEventListeners(root) {
-        root.querySelector("#submit").addEventListener("click", async () => {
-            // console.log(window.location.pathname);
-            let name = DOMPurify.sanitize(document.querySelector("#name").value.trim());
-            let location = DOMPurify.sanitize(document.querySelector("#location").value.trim());
-            let date = DOMPurify.sanitize(document.querySelector("#date").value.trim());
-            let description = DOMPurify.sanitize(document.querySelector("#description").value.trim());
-            // console.log(name, location, date, description);
+        root.querySelector("#submit").addEventListener("click", this.createEventSubmit);
+    }
 
-            if (!name || !location || !date || !description) {
-                console.log("Empty inputs");
-            } else {
-                await createEvent(name, description, date, location, currentUserUsername, token);
-                // window.location.replace("myevents");
-                // window.location.pathname = 'events/my'
-                console.log("Success!");
-            }
-        });
+    async createEventSubmit() {
+        // console.log(window.location.pathname);
+        let name = DOMPurify.sanitize(document.querySelector("#name").value.trim());
+        let location = DOMPurify.sanitize(document.querySelector("#location").value.trim());
+        let date = DOMPurify.sanitize(document.querySelector("#date").value.trim());
+        let description = DOMPurify.sanitize(document.querySelector("#description").value.trim());
+        // console.log(name, location, date, description);
+
+        if (!name || !location || !date || !description) {
+            console.log("Empty inputs");
+        } else {
+            await createEvent(name, description, date, location, currentUserUsername, token);
+            // window.location.replace("myevents");
+            // window.location.pathname = "events/my";
+            navigateTo("my");
+            console.log("Success!");
+        }
     }
 }
