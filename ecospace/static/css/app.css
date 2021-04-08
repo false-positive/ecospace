@@ -20,6 +20,10 @@ html {
     text-rendering: optimizeLegibility;
 }
 
+button {
+    border: none;
+}
+
 .clearfix:after {
     content: ".";
     clear: both;

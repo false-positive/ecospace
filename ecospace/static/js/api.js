@@ -88,25 +88,20 @@ async function createEvent(name, description, date, location, organizer, token) 
     // console.log(response.status);
 }
 
-async function updateParticipants(name, description, date, location, organizer, token) {
-    let response = await fetch(`${URL}/events`, {
-        method: "POST",
-        // mode: "no-cors",
-        headers: {
-            "x-access-token": token,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            name,
-            date,
-            description,
-            location,
-            organizer_username: organizer,
-        }),
+// returns true if user gets added in event, false if he doesn't
+async function updateParticipants(eventId) {
+    const event = await getEvent(eventId);
+    if (event.organizer_username === currentUserUsername) return true; // the user is the organizer of the event
+
+    const isIn = event.participants.find((username) => username === currentUserUsername) !== undefined;
+
+    const response = await fetch(`${URL}/events/${eventId}/users`, {
+        headers: { "x-access-token": token },
+        method: isIn ? "DELETE" : "PUT",
     });
-    let data = await response.json();
-    // console.log(data);
-    // console.log(response.status);
+    if (!response.ok) return isIn;
+
+    return !isIn; // XXX: Asuming that if the response was ok, then the state is flipped
 }
 
 async function getEvent(id) {
@@ -117,26 +112,4 @@ async function getEvent(id) {
     let { data } = await response.json();
 
     return data;
-}
-
-async function changeGoingEvents(id, token) {
-    let response = await fetch(`${URL}/events/${id}/users`, {
-        method: "PUT",
-        // mode: "no-cors",
-        headers: {
-            "x-access-token": token,
-            "Content-Type": "application/json",
-        },
-    });
-}
-
-async function removeGoingEvents(id, token) {
-    let response = await fetch(`${URL}/events/${id}/users`, {
-        method: "DELETE",
-        // mode: "no-cors",
-        headers: {
-            "x-access-token": token,
-            "Content-Type": "application/json",
-        },
-    });
 }
