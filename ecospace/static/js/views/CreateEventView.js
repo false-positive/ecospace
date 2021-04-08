@@ -21,11 +21,9 @@ class CreateEventView extends AbstractView {
                         <label>Event name</label>
                         <input type="text" id="name" />
                     </div>
+                    <div id="map"></div>
+
                     <div class="row">
-                        <div class="location">
-                            <label>Location</label>
-                            <input type="text" id="location" />
-                        </div>
                         <div class="date">
                             <label>Date</label>
                             <input type="date" id="date" min="${currentDate}" />
@@ -36,7 +34,7 @@ class CreateEventView extends AbstractView {
                         <textarea rows="10" cols="50" id="description"></textarea>
                     </div>
                     <div class="row">
-                        <input type="submit" id="submit" value="Create event" data-link/>
+                        <input type="submit" id="submit" value="Create event" data-link />
                     </div>
                 </form>
             </section>
@@ -44,23 +42,58 @@ class CreateEventView extends AbstractView {
     }
 
     registerEventListeners(root) {
-        root.querySelector("#submit").addEventListener("click", this.createEventSubmit);
+        let markerLat = null;
+        let markerLng = null;
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    const { latitude } = position.coords;
+                    const { longitude } = position.coords;
+                    // console.log(`https://www.google.pt/maps/@${latitude},${longitude}`);
+
+                    const coords = [latitude, longitude];
+
+                    let map = L.map("map").setView(coords, 13);
+
+                    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    }).addTo(map);
+
+                    let marker = null;
+
+                    map.on("click", function (mapEvent) {
+                        if (marker) {
+                            marker.remove();
+                        }
+
+                        const { lat, lng } = mapEvent.latlng;
+
+                        marker = L.marker([lat, lng]).addTo(map);
+                        markerLat = lat;
+                        markerLng = lng;
+                    });
+                },
+                function () {
+                    alert("Could not get your position!");
+                }
+            );
+        }
+        root.querySelector("#submit").addEventListener("click", () => this.createEventSubmit(markerLat, markerLng));
     }
 
-    async createEventSubmit() {
+    async createEventSubmit(lat, lng) {
         // console.log(window.location.pathname);
         let name = DOMPurify.sanitize(document.querySelector("#name").value.trim());
-        let location = DOMPurify.sanitize(document.querySelector("#location").value.trim());
         let date = DOMPurify.sanitize(document.querySelector("#date").value.trim());
         let description = DOMPurify.sanitize(document.querySelector("#description").value.trim());
         // console.log(name, location, date, description);
 
-        if (!name || !location || !date || !description) {
+        if (!name || !lat || !lng || !date || !description) {
             console.log("Empty inputs");
         } else {
+            let location = lat + " " + lng;
             await createEvent(name, description, date, location, currentUserUsername, token);
-            // window.location.replace("myevents");
-            // window.location.pathname = "events/my";
             navigateTo("my");
             console.log("Success!");
         }

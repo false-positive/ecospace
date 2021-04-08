@@ -344,37 +344,30 @@ h2 {
     border-radius: 20px;
     padding: 5px 15px;
     border: 1px solid black;
+    width: 50%;
 }
 
-.location {
-    margin-left: 25%;
-    margin-right: 3%;
-    float: left;
-    width: 27%;
-}
-
-.location input {
-    width: 100%;
+#map {
+    height: 300px !important;
+    width: 50% !important;
+    margin: 0 auto 20px auto !important;
+    z-index: 0 !important;
+    border-radius: 10px !important;
 }
 
 .date {
-    margin-right: 25%;
-    float: right;
     width: 20%;
+    margin: 0 auto;
 }
 
-.date input {
+/* .date input {
     width: 100%;
-}
+} */
 
 .section-create-event input[type="date"] {
+    width: 100%;
     text-align: center;
-    padding-right: 0;
-}
-
-.name input,
-.section-create-event textarea {
-    width: 50%;
+    /* padding-left: 2px; */
 }
 
 .section-create-event input[type="submit"] {
