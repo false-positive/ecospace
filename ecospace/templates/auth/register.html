@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block box %}
-<form action="{{ url_for('auth.register') }}" method="POST">
+<form action="{{ url_for('auth.register', then=request.params.get('then')) }}" method="POST">
     <label for="firstname">First name</label>
     <input name="firstname" type="text" id="firstname" required />
     <label for="lastname">Last name</label>

@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block box %}
-<form action="{{ url_for('auth.login') }}" method="POST">
+<form action="{{ url_for('auth.login', then=request.args.get('then')) }}" method="POST">
     <label for="username">Username</label>
     <input name="username" type="text" id="username" required />
     <label for="password">Password</label>
