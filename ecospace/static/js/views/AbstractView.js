@@ -23,4 +23,7 @@ class AbstractView {
     async getHTML() {
         return "";
     }
+
+    // override in base class to register event listeners
+    registerEventListeners(root) {}
 }

@@ -16,11 +16,15 @@ class MyProfileView extends AbstractView {
                             <h2 id="fullname">Name: ${escapeHTML(currentUser.full_name)}</h2>
                         </div>
                         <div class="col span-1-of-2">
-                            <h3><a href="#" class="logout-btn" onclick="logout()">Log out</a></h3>
+                            <h3><a href="#" class="logout-btn">Log out</a></h3>
                         </div>
                     </div>
                 </div>
             </section>
         `;
+    }
+
+    registerEventListeners(root) {
+        root.querySelector(".logout-btn").addEventListener("click", logout);
     }
 }

@@ -28,8 +28,10 @@ const router = async () => {
     // TODO: handle no match
 
     const view = new match.route.view(getParams(match));
+    const content = document.querySelector("#content");
 
-    document.querySelector("#content").innerHTML = await view.getHTML();
+    content.innerHTML = await view.getHTML();
+    view.registerEventListeners(content);
 };
 
 // add the current page to the history and go to next page
