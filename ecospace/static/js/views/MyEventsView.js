@@ -23,7 +23,7 @@ class MyEventsView extends AbstractView {
                                         <h4>${escapeHTML(name)}</h4>
                                     </div>
                                     <div class="clearfix second-part">
-                                        <h5>Location: ${escapeHTML(location)}</h5>
+                                        <h5>Location: <span class="location-text" data-lat="${location.split(" ")[0]} data-lng="${location.split(" ")[1]}"></span></h5>
                                     </div>
                                     <div class="third-part clearfix">
                                         <h5>Date: ${formatDate(new Date(date))}</h5>
@@ -36,5 +36,20 @@ class MyEventsView extends AbstractView {
                     .join("")}
             </section>
         `;
+    }
+
+    registerEventListeners(root) {
+        let location = root.querySelector(".location-text");
+        location.addEventListener("DOMContentLoaded", async () => {
+            const text = await this.getAdress(location.dataset.lat, location.dataset.lng);
+            location.textContent = text;
+        });
+    }
+
+    async getAdress(lat, lng) {
+        let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+        const response = await fetch(url);
+        const { display_name } = await response.json();
+        console.log(display_name);
     }
 }

@@ -9,6 +9,10 @@ class EventListView extends AbstractView {
         console.log(currentUser);
         const events = await getEvents();
 
+        var geocodeService = L.esri.Geocoding.geocodeService({
+            apikey: apiKey, // replace with your api key - https://developers.arcgis.com
+        });
+
         return `
             <section class="section-nearme">
                 ${Object.entries(events)
@@ -47,5 +51,12 @@ class EventListView extends AbstractView {
                     .join("")}
             </section>
         `;
+    }
+
+    async getAdress(lat, lng) {
+        let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+        const response = await fetch(url);
+        const { display_name } = await response.json();
+        console.log(display_name);
     }
 }
