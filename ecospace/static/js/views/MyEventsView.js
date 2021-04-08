@@ -7,7 +7,7 @@ class MyEventsView extends AbstractView {
     async getHTML() {
         const currentUser = await getUserInfo(currentUserUsername);
         return `
-            <section class="section-nearme">
+            <section class="section-nearme section-my-events">
                 <div class="row create-event-btn">
                     <a href="/events/new" data-link>Create an event!</a>
                 </div>
@@ -23,7 +23,7 @@ class MyEventsView extends AbstractView {
                                         <h4>${escapeHTML(name)}</h4>
                                     </div>
                                     <div class="clearfix second-part">
-                                        <h5>Location: <span class="location-text" data-lat="${location.split(" ")[0]} data-lng="${location.split(" ")[1]}"></span></h5>
+                                        <h5>Location: ${location}</h5>
                                     </div>
                                     <div class="third-part clearfix">
                                         <h5>Date: ${formatDate(new Date(date))}</h5>
@@ -39,11 +39,11 @@ class MyEventsView extends AbstractView {
     }
 
     registerEventListeners(root) {
-        let location = root.querySelector(".location-text");
-        location.addEventListener("DOMContentLoaded", async () => {
-            const text = await this.getAdress(location.dataset.lat, location.dataset.lng);
-            location.textContent = text;
-        });
+        // let location = root.querySelector(".location-text");
+        // location.addEventListener("DOMContentLoaded", async () => {
+        //     const text = await this.getAdress(location.dataset.lat, location.dataset.lng);
+        //     location.textContent = text;
+        // });
     }
 
     async getAdress(lat, lng) {

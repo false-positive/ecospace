@@ -127,8 +127,10 @@ nav i {
 /* ------------------------------ */
 /* CONTENT */
 /* ------------------------------ */
+
 .create-event-btn {
     margin-bottom: 70px;
+    text-align: center;
 }
 
 .create-event-btn a:link,
@@ -149,7 +151,6 @@ nav i {
 }
 .section-nearme {
     margin-top: 150px;
-    text-align: center;
 }
 .section-nearme .event {
     border: 2px solid #7ab214;
@@ -169,6 +170,14 @@ h5 {
 .section-nearme .event h4 {
     font-size: 150%;
     float: left;
+    white-space: nowrap;
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.section-my-events .event h4 {
+    width: 100%;
 }
 
 .section-nearme .event .first-part a:link,
@@ -185,6 +194,13 @@ h5 {
 .section-nearme .event .first-part a:hover,
 .section-nearme .event .first-part a:active {
     border: 1px solid #7ab214;
+}
+
+.section-nearme .event .second-part h5 {
+    white-space: nowrap;
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .section-nearme .event h5 {
