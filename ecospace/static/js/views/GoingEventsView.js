@@ -29,21 +29,32 @@ class GoingEventsListView extends AbstractView {
                     .map(
                         ([id, { name, location, date }]) => `
                             <div data-card-id="${id}" class="row">
-                                <article class="event">
-                                    <div class="clearfix first-part">
-                                        <h4>${DOMPurify.sanitize(name)}</h4>
-                                        <a href="/events/${id}" data-link>More info</a>
-                                    </div>
-                                    <div class="clearfix second-part">
-                                        <h5>Location: ${DOMPurify.sanitize(location)}</h5>
-                                    </div>
-                                    <div class="clearfix third-part">
-                                        <h5>Date: ${formatDate(new Date(date))}</h5>
-                                        <button data-coming-id="${id}" class="coming-btn not-coming">${NOT_COMING_TEXT}</button>
-                                    </div>
-                                </article>
+                              <article class="event">
+                                <div class="clearfix first-part">
+                                  <h4>${DOMPurify.sanitize(name)}</h4>
+                                  <a href="/events/${id}" data-link>More info</a>
+                                </div>
+                                <div class="clearfix second-part">
+                                  <h5>
+                                    Location:
+                                    <span
+                                      class="location-text"
+                                      data-fallback="${location}"
+                                      data-lat="${location.split(" ")[0]}"
+                                      data-lng="${location.split(" ")[1]}"
+                                      >Loading...</span
+                                    >
+                                  </h5>
+                                </div>
+                                <div class="clearfix third-part">
+                                  <h5>Date: ${formatDate(new Date(date))}</h5>
+                                  <button data-coming-id="${id}" class="coming-btn not-coming">
+                                    ${NOT_COMING_TEXT}
+                                  </button>
+                                </div>
+                              </article>
                             </div>
-                    `
+                        `
                     )
                     .join("")}
             </section>
@@ -54,5 +65,22 @@ class GoingEventsListView extends AbstractView {
         root.querySelectorAll("button[data-coming-id]").forEach((btn) => {
             btn.addEventListener("click", this.toggleComingBtn);
         });
+        const locations = root.querySelectorAll(".location-text");
+        locations.forEach(async (location) => {
+            const text = await this.getAdress(location.dataset.lat, location.dataset.lng);
+            location.textContent = text || location.dataset.fallback;
+        });
+    }
+
+    async getAdress(lat, lng) {
+        let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+        try {
+            const response = await fetch(url);
+            const { display_name } = await response.json();
+            console.log(display_name);
+            return display_name;
+        } catch (err) {
+            return null;
+        }
     }
 }
