@@ -12,6 +12,7 @@ class MyEventsView extends AbstractView {
                     <a href="/events/new" data-link>Create an event!</a>
                 </div>
                 ${Object.entries(currentUser.organized_events)
+                    .reverse()
                     .map(
                         ([id, { name, location, date }]) => `
                             <div class="row">
