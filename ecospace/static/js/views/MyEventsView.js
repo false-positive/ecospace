@@ -5,7 +5,7 @@ class MyEventsView extends AbstractView {
     }
 
     async getHTML() {
-        currentUser = await getUserInfo(currentUser.username);
+        const currentUser = await getUserInfo(currentUserUsername);
         return `
             <section class="section-nearme">
                 <div class="row create-event-btn">

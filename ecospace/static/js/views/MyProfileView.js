@@ -5,7 +5,7 @@ class MyProfileView extends AbstractView {
     }
 
     async getHTML() {
-        currentUser = await getUserInfo(currentUser.username);
+        const currentUser = await getUserInfo(currentUserUsername);
         console.log(currentUser);
         return `
             <section class="section-profile">

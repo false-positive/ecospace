@@ -5,7 +5,7 @@ class GoingEventsListView extends AbstractView {
     }
 
     async getHTML() {
-        currentUser = await getUserInfo(currentUser.username);
+        const currentUser = await getUserInfo(currentUserUsername);
         return `
             <section class="section-nearme">
                 ${Object.entries(currentUser.events)
