@@ -23,10 +23,6 @@ class EventListView extends AbstractView {
         console.log(currentUser);
         const events = await getEvents();
 
-        var geocodeService = L.esri.Geocoding.geocodeService({
-            apikey: apiKey, // replace with your api key - https://developers.arcgis.com
-        });
-
         return `
             <section class="section-nearme">
                 ${Object.entries(events)
