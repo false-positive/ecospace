@@ -78,7 +78,7 @@ async function createEvent(name, description, date, location, organizer, token) 
         body: JSON.stringify({
             name,
             date,
-            description: "",
+            description,
             location,
             organizer_username: organizer,
         }),
