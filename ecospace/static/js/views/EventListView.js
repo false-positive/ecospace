@@ -68,11 +68,4 @@ class EventListView extends AbstractView {
             btn.addEventListener("click", this.toggleComingBtn);
         });
     }
-
-    async getAdress(lat, lng) {
-        let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
-        const response = await fetch(url);
-        const { display_name } = await response.json();
-        console.log(display_name);
-    }
 }
