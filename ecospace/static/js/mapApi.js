@@ -41,7 +41,7 @@ const getAddress = async (lat, lng) => {
     if (getAddressCache.hasOwnProperty(`${lat} ${lng}`)) {
         return getAddressCache[`${lat} ${lng}`];
     }
-    let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+    const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
     try {
         const response = await fetch(url);
         const { display_name } = await response.json();
