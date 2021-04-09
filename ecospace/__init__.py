@@ -7,6 +7,18 @@ __version__ = '0.1.1'
 __author__ = 'FalsePositive'
 
 
+def generate_config(path):
+    if os.path.exists(path):
+        return
+
+    with open(path, 'w') as file:
+        content = f'''
+            SECRET_KEY = {repr(os.urandom(25))[1:]}
+        '''.strip()
+        file.write(content)
+        print('Created config file with secret key')
+
+
 def create_app():
     """Create and configure an instance of a Flask app"""
     app = Flask(__name__, instance_relative_config=True)
@@ -15,16 +27,22 @@ def create_app():
         SQLALCHEMY_DATABASE_URI=f'sqlite:///{os.path.join(app.instance_path, "ecospace.sqlite")}',
     )
 
-    app.config.from_pyfile('config.cfg', silent=True)
-
     CORS(app)
 
     with suppress(OSError):
         # Create the `ecospace/instance` folder where the db is
         os.makedirs(app.instance_path)
 
+    generate_config(os.path.join(app.instance_path, 'config.cfg'))
+    app.config.from_pyfile('config.cfg', silent=True)
+
     from .models import db
     db.init_app(app)
+    # Create db if it doesn't exist
+    if not os.path.exists(os.path.join(app.instance_path, 'ecospace.sqlite')):
+        with app.app_context():
+            db.create_all()
+        print('Created database')
 
     @app.route('/')
     def landing():
