@@ -25,6 +25,7 @@ def create_app():
     app.config.from_mapping(
         # TODO: Configure linter to not complain about long lines
         SQLALCHEMY_DATABASE_URI=f'sqlite:///{os.path.join(app.instance_path, "ecospace.sqlite")}',
+        SQLALCHEMY_TRACK_MODIFICATIONS=False,
     )
 
     CORS(app)
