@@ -6,26 +6,41 @@ This is the backend of the `ECOspace` social media platform.
 
 You will need Python 3.7 or later to install the package and its dependencies.
 
-It is recommended that you install everything in a virtual environment, using:
+It is recommended that you install everything in a virtual environment, using the following commands. Then you need to setup the database in possibly the most scuffed way - Bojidar.
 
+### Linux setup
+Virtual environment setup 
 ```shell
-$ python -m venv venv
-$ . venv/bin/activate
-(venv) $ pip install --editable .
+python -m venv venv
+. venv/bin/activate
+pip install --editable .
 ```
-
-Then you need to setup the database in possibly the most scuffed way
-
+Database setup
 ```shell
-(venv) $ export FLASK_APP=ecospace
-(venv) $ export FLASK_ENV=development
-(venv) $ flask shell
+export FLASK_APP=ecospace
+export FLASK_ENV=development
+flask shell
     ...
->>> from ecospace.models import *
->>> db.create_all()
->>> exit()
+from ecospace.models import *
+db.create_all()
+exit()
+```
+### Windows setup
+Virtual environment setup 
+```shell
+python -m venv venv
+%CD%\venv\Scripts\activate.bin
+pip install --editable .
+```
+Database setup
+```shell
+set FLASK_APP=ecospace
+set FLASK_ENV=development
+flask shell
     ...
-(venv) $
+from ecospace.models import *
+db.create_all()
+exit()
 ```
 
 And then you need to create a configuration file with the secret key. You can use
@@ -38,10 +53,17 @@ python -c "import os; print(f'SECRET_KEY = {str(os.urandom(25))[1:]}') > instanc
 
 ## Running
 
+### Linux
 ```shell
-(venv) $ export FLASK_APP=ecospace
-(venv) $ export FLASK_ENV=development
-(venv) $ flask run
+export FLASK_APP=ecospace
+export FLASK_ENV=development
+flask run
+```
+### Windows
+```shell
+set FLASK_APP=ecospace
+set FLASK_ENV=development
+flask run
 ```
 
 ## Basic API usage
