@@ -39,9 +39,6 @@ def create_app():
     from .models import db, migrate
     db.init_app(app)
     migrate.init_app(app)
-    # Scream to the user that they haven't initialized the db
-    if not os.path.exists(os.path.join(app.instance_path, 'ecospace.sqlite')):
-        raise FileNotFoundError('Database not found. Did you forget to run `flask db upgrade`?')
 
     @app.route('/')
     def landing():
