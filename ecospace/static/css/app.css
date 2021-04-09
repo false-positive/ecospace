@@ -171,13 +171,13 @@ h5 {
     font-size: 150%;
     float: left;
     white-space: nowrap;
-    width: 80%;
+    width: 70%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .section-my-events .event h4 {
-    width: 100%;
+    width: 70%;
 }
 
 .section-nearme .event .first-part a:link,

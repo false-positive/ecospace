@@ -16,6 +16,7 @@ const router = async () => {
         { path: "/events/going", view: GoingEventsListView },
         { path: "/events/my", view: MyEventsView },
         { path: "/events/:id", view: EventView },
+        { path: "/events/:id/edit", view: EventEditView },
         { path: "/profile", view: MyProfileView },
     ];
 

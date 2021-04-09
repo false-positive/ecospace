@@ -88,6 +88,25 @@ async function createEvent(name, description, date, location, organizer, token) 
     // console.log(response.status);
 }
 
+async function editEvent(name, description, date, location, organizer, token, eventId) {
+    let response = await fetch(`${URL}/events/${eventId}`, {
+        method: "PUT",
+        // mode: "no-cors",
+        headers: {
+            "x-access-token": token,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name,
+            date,
+            description,
+            location,
+            organizer_username: organizer,
+        }),
+    });
+    let data = await response.json();
+}
+
 // returns true if user gets added in event, false if he doesn't
 async function updateParticipants(eventId) {
     const event = await getEvent(eventId);

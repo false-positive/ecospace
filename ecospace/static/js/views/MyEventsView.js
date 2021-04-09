@@ -21,11 +21,19 @@ class MyEventsView extends AbstractView {
                             <div class="event">
                                 <div class="clearfix first-part">
                                     <h4>${escapeHTML(name)}</h4>
+                                    <a href="/events/${id}/edit" data-link>Edit</a>
                                 </div>
                                 <div class="clearfix second-part">
-                                    <h5>Location: <span class="location-text" data-fallback="${location}" data-lat="${location.split(" ")[0]}" data-lng="${
-                            location.split(" ")[1]
-                        }">Loading...</span>
+                                <h5>
+                                    Location:
+                                    <span
+                                    class="location-text"
+                                    data-fallback="${location}"
+                                    data-lat="${location.split(" ")[0]}"
+                                    data-lng="${location.split(" ")[1]}"
+                                    >Loading...</span
+                                    >
+                                </h5>
                                 </div>
                                 <div class="third-part clearfix">
                                     <h5>Date: ${formatDate(new Date(date))}</h5>
