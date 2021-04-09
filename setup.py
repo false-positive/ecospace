@@ -8,7 +8,7 @@ from setuptools import setup
 setup(
     # Requirements are here, so GitHub can find them
     install_requires=[
-        "flask",
+        'flask',
         'flask-restful',
         'Flask-SQLAlchemy',
         'flask-cors',
