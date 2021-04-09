@@ -5,4 +5,13 @@ All the configuration is in `setup.cfg`
 
 from setuptools import setup
 
-setup()
+setup(
+    # Requirements are here, so GitHub can find them
+    install_requires=[
+        "flask",
+        'flask-restful',
+        'Flask-SQLAlchemy',
+        'flask-cors',
+        'PyJWT',
+    ]
+)
