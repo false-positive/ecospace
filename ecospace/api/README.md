@@ -14,27 +14,20 @@ $ . venv/bin/activate
 (venv) $ pip install --editable .
 ```
 
-Then you need to setup the database in possibly the most scuffed way
+Next you need to configure the flask environment
 
 ```shell
 (venv) $ export FLASK_APP=ecospace
 (venv) $ export FLASK_ENV=development
-(venv) $ flask shell
-    ...
->>> from ecospace.models import *
->>> db.create_all()
->>> exit()
-    ...
-(venv) $
 ```
 
-And then you need to create a configuration file with the secret key. You can use
+And finally, setup the database and apply all migrations using
 
 ```shell
-python -c "import os; print(f'SECRET_KEY = {str(os.urandom(25))[1:]}') > instance/config.cfg
+(venv) $ flask db upgrade
 ```
 
-> TODO: Make this waaay more user friendly and less scuffed
+If all goes well, you can move on to [the next section](#Running).
 
 ## Running
 
@@ -47,12 +40,14 @@ python -c "import os; print(f'SECRET_KEY = {str(os.urandom(25))[1:]}') > instanc
 ## Basic API usage
 
 From most endpoints, you can expect a json response, similar to this:
+
 ```json
 {
-  "data": "Mixed type containing the data",
-  "message": "A message, explaining what happened e.g user registered successfully"
+    "data": "Mixed type containing the data",
+    "message": "A message, explaining what happened e.g user registered successfully"
 }
 ```
+
 The `data` field may not be present if there's an error.
 
 Users and events are accessed with request arguments.
@@ -95,7 +90,8 @@ An event's data looks like this:
 Get a list of all users
 
 Status codes:
-- `200 Ok` - everything went well
+
+-   `200 Ok` - everything went well
 
 Example response:
 
@@ -131,14 +127,15 @@ Example response:
 Get a certain user by his `username`
 
 Status codes:
-- `200 OK` - everything went well
-- `404 Not Found` - a user with `username` doesn't exist
+
+-   `200 OK` - everything went well
+-   `404 Not Found` - a user with `username` doesn't exist
 
 Example response:
 
 ```json
 {
-  "data": {
+    "data": {
         "full_name": "grisho the og one",
         "description": "",
         "organized_events": {
@@ -160,19 +157,21 @@ Example response:
 The PUT request is used to edit a user's information such as full name and password.
 
 Required arguments:
-- `username`
-- `x-access-token`
+
+-   `username`
+-   `x-access-token`
 
 Optional arguments:
-- `full_name`
-- `password`
-- `description`
 
+-   `full_name`
+-   `password`
+-   `description`
 
 Status codes:
-- `201 Created` - the user was edited
-- `401 Conflict` - a user with that username already exists
-- `403 Forbidden` - unathourized attempt at editing user
+
+-   `201 Created` - the user was edited
+-   `401 Conflict` - a user with that username already exists
+-   `403 Forbidden` - unathourized attempt at editing user
 
 Example response:
 
@@ -188,17 +187,20 @@ Example response:
  "message": "edited successfully"
 
 ```
+
 #### `DELETE /users`
 
 Delete a certain user.
 
 Required arguments:
-- `username`
-- `x-access-token`
+
+-   `username`
+-   `x-access-token`
 
 Status codes:
-- `204 No Content` - the user was deleted successfully
-- `403 Forbidden` - unathourized attempt at deleting user
+
+-   `204 No Content` - the user was deleted successfully
+-   `403 Forbidden` - unathourized attempt at deleting user
 
 ### Events
 
@@ -207,7 +209,8 @@ Status codes:
 Get a list of all event
 
 Status codes:
-- `200 Ok` - everything went well
+
+-   `200 Ok` - everything went well
 
 Example response:
 
@@ -236,20 +239,21 @@ Example response:
 Get a certain event by its `public_id`
 
 Status codes:
-- `200 OK` - everything went well
-- `404 Not Found` - a event with `public_id` doesn't exist
+
+-   `200 OK` - everything went well
+-   `404 Not Found` - a event with `public_id` doesn't exist
 
 Example response:
 
 ```json
 {
-  "data": {
+    "data": {
         "name": "test2",
         "date": "2021-03-13T00:00:00",
         "location": "sofia",
         "organizer_username": "grisho2"
-   },
-   "message": "event successfully found"
+    },
+    "message": "event successfully found"
 }
 ```
 
@@ -257,26 +261,26 @@ Example response:
 
 The POST request is used to register a new event.
 Required arguments:
-- `name`
-- `participants`
-- `location`
-- `date`
+
+-   `name`
+-   `participants`
+-   `location`
+-   `date`
 
 Status codes:
-- `201 Created` - the event was registered
-- `403 Forbidden` - can't create an event without an account
-Example response:
+
+-   `201 Created` - the event was registered
+-   `403 Forbidden` - can't create an event without an account
+    Example response:
 
 ```json
 {
-  "data": {
-      "name": "testing 2:electric boogaloo",
-      "public_id": "c0a2b040-8990-4aeb-bb20-b5c00efab393",
-      "participants": [
-          "grisho"
-      ]
-  },
-  "message": "event created successfully"
+    "data": {
+        "name": "testing 2:electric boogaloo",
+        "public_id": "c0a2b040-8990-4aeb-bb20-b5c00efab393",
+        "participants": ["grisho"]
+    },
+    "message": "event created successfully"
 }
 ```
 
@@ -285,19 +289,22 @@ Example response:
 The PUT request is used to edit an event's information such as name and its participants.
 
 Required arguments:
-- `public_id`
-- `x-access-token`
+
+-   `public_id`
+-   `x-access-token`
 
 Optional arguments:
-- `name`
-- `participants`
-- `location`
-- `date`
+
+-   `name`
+-   `participants`
+-   `location`
+-   `date`
 
 Status codes:
-- `201 Created` - the event was edited
-- `401 Conflict` - a user with that that username is already added
-- `403 Forbidden` - unathourized attempt at editing event
+
+-   `201 Created` - the event was edited
+-   `401 Conflict` - a user with that that username is already added
+-   `403 Forbidden` - unathourized attempt at editing event
 
 Example response:
 
@@ -311,16 +318,17 @@ Example response:
     },
     "message": "edited event successfully"
 }
-
 ```
+
 #### `PUT /events/event_id/users`
 
 Add the current user to the event.
 
 Example response:
+
 ```json
 {
-      "data": {
+    "data": {
         "full_name": "grisho bot",
         "description": "",
         "organized_events": {},
@@ -343,6 +351,7 @@ Example response:
 Remove the current user from the event
 
 Example response:
+
 ```json
 {
     "data": {
@@ -356,17 +365,20 @@ Example response:
 
 }
 ```
+
 #### `DELETE /event`
 
 Delete a certain event.
 
 Required arguments:
-- `public_id`
-- `x-access-token`
+
+-   `public_id`
+-   `x-access-token`
 
 Status codes:
-- `204 No Content` - the event was deleted successfully
-- `403 Forbidden` - unathourized attempt at deleting event
+
+-   `204 No Content` - the event was deleted successfully
+-   `403 Forbidden` - unathourized attempt at deleting event
 
 ### Authentication
 
@@ -378,33 +390,36 @@ Example response:
 
 ```json
 {
-  "data": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImdyaXNobyIsImV4cCI6MTYxNTY0Njk4OH0.sHpYjTukwcVzpMZGFovALLrOYhGRi6hRCWpdedc7A88",
-  "message": "successfully logged"
-
+    "data": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImdyaXNobyIsImV4cCI6MTYxNTY0Njk4OH0.sHpYjTukwcVzpMZGFovALLrOYhGRi6hRCWpdedc7A88",
+    "message": "successfully logged"
 }
 ```
+
 The `data` returned is the `x-access-token`
 
 #### `POST /auth`
 
 The POST request is used to register a new user.
 Required arguments:
-- `username`
-- `full_name`
-- `password`
+
+-   `username`
+-   `full_name`
+-   `password`
 
 Optional arguments:
-- `description`
+
+-   `description`
 
 Status codes:
-- `201 Created` - the user was registered
-- `401 Conflict` - a user with that username already exists
+
+-   `201 Created` - the user was registered
+-   `401 Conflict` - a user with that username already exists
 
 Example response:
 
 ```json
 {
-  "data": {
+    "data": {
         "grisho2": {
             "full_name": "grisho #2",
             "description": "",
@@ -416,4 +431,3 @@ Example response:
 ```
 
 <!-- TODO: Document even more stuff -->
-
