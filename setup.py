@@ -12,6 +12,7 @@ setup(
         'flask-restful',
         'Flask-SQLAlchemy',
         'flask-cors',
+        'flask-migrate',
         'PyJWT',
     ]
 )

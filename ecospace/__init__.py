@@ -36,8 +36,9 @@ def create_app():
     generate_config(os.path.join(app.instance_path, 'config.cfg'))
     app.config.from_pyfile('config.cfg', silent=True)
 
-    from .models import db
+    from .models import db, migrate
     db.init_app(app)
+    migrate.init_app(app)
     # Create db if it doesn't exist
     if not os.path.exists(os.path.join(app.instance_path, 'ecospace.sqlite')):
         with app.app_context():
