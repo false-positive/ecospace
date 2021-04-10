@@ -6,7 +6,10 @@ class EventEditView extends AbstractView {
 
     async getHTML() {
         const event = await getEvent(this.params.id);
-        if (event.organizer_username !== currentUserUsername) await navigateTo(`../${this.params.id}`);
+        if (event.organizer_username !== currentUserUsername) {
+            navigateTo(`../${this.params.id}`);
+            return "";
+        }
 
         AbstractView.setTitle("Edit Event");
 
