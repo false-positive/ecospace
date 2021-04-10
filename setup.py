@@ -13,6 +13,7 @@ setup(
         'Flask-SQLAlchemy',
         'flask-cors',
         'flask-migrate',
+        'Pillow',
         'PyJWT',
     ]
 )
