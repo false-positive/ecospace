@@ -6,6 +6,7 @@ They are stored in `instance/usercontent` with optional subdirectories
 import os
 import uuid
 import imghdr
+from contextlib import suppress
 
 from flask import Blueprint, send_from_directory, current_app, abort
 from PIL import Image
@@ -42,11 +43,15 @@ def upload_image(file, path, filename=None, width=None):
     """
 
     filename = filename or f'{str(uuid.uuid4())}.jpg'
-    full_path = os.path.join(current_app['UPLOAD_PATH'], path, filename)
+    directory = os.path.join(current_app['UPLOAD_PATH'], path)
+    full_path = os.path.join(directory, filename)
 
     # Make sure that the data is in an allowed format
     if get_image_ext(file.stream) not in current_app.config['UPLOAD_EXTENSIONS']:
         abort(400)
+
+    with suppress(OSError):
+        os.makedirs(directory)
 
     # Convert the image to jpeg
     image = Image.open(file.data).convert('RGB')
@@ -58,5 +63,5 @@ def upload_image(file, path, filename=None, width=None):
 
 
 @bp.route('/<path:filepath>')
-def get_image(filepath):
-    return send_from_directory(current_app.config['UPLOAD_PATH'], filepath)
+def get_image(filename):
+    return send_from_directory(current_app.config['UPLOAD_PATH'], filename)
