@@ -4,20 +4,6 @@ class GoingEventsListView extends AbstractView {
         AbstractView.setTitle("Going");
     }
 
-    async toggleComingBtn({ target: comingBtn }) {
-        const eventId = comingBtn.dataset.comingId;
-        const isComing = await updateParticipants(eventId);
-        if (isComing) {
-            comingBtn.classList.remove("coming");
-            comingBtn.classList.add("not-coming");
-            comingBtn.innerText = NOT_COMING_TEXT;
-        } else {
-            comingBtn.classList.add("coming");
-            comingBtn.classList.remove("not-coming");
-            comingBtn.innerText = COMING_TEXT;
-        }
-    }
-
     async getHTML() {
         const currentUser = await getUserInfo(currentUserUsername);
         return `
@@ -48,9 +34,7 @@ class GoingEventsListView extends AbstractView {
                                 </div>
                                 <div class="clearfix third-part">
                                   <h5>Date: ${formatDate(new Date(date))}</h5>
-                                  <button data-coming-id="${id}" class="coming-btn not-coming">
-                                    ${NOT_COMING_TEXT}
-                                  </button>
+                                  <coming-button coming event-id="${id}"></coming-button>
                                 </div>
                               </article>
                             </div>
@@ -62,9 +46,6 @@ class GoingEventsListView extends AbstractView {
     }
 
     registerEventListeners(root) {
-        root.querySelectorAll("button[data-coming-id]").forEach((btn) => {
-            btn.addEventListener("click", this.toggleComingBtn);
-        });
         const locations = root.querySelectorAll(".location-text");
         locations.forEach(async (location) => {
             const text = await getAddress(location.dataset.lat, location.dataset.lng);

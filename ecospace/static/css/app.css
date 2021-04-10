@@ -213,6 +213,7 @@ h5 {
 }
 
 .section-nearme .event .third-part a,
+/* TODO: rename .comin-btn to something more generic */
 .coming-btn {
     border-radius: 7px;
     text-decoration: none;
