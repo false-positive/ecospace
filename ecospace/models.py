@@ -1,7 +1,7 @@
 import datetime as dt
 
 import jwt
-from flask import current_app
+from flask import current_app, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -20,6 +20,7 @@ comments = db.Table(
     db.Column('event_id', db.Integer, db.ForeignKey('event.id'), primary_key=True)
 )
 
+
 class UserModel(db.Model):
     """Database model for a registered user."""
     __tablename__ = 'user'
@@ -29,6 +30,7 @@ class UserModel(db.Model):
     full_name = db.Column(db.String(50))  # TODO: Get `username` by default
     description = db.Column(db.String(250), default='', nullable=False)
     password = db.Column(db.String(80), nullable=False)
+    avatar = db.Column(db.String(50))  # TODO: Maybe make unique??
     organized_events = db.relationship('EventModel', backref='organizer', lazy=True)
     comments = db.relationship('CommentModel', backref='author', lazy=True)
     # https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/#many-to-many-relationships
@@ -47,11 +49,17 @@ class UserModel(db.Model):
         user = cls.query.filter_by(username=payload['username']).first()
         return user
 
+    def get_avatar_url(self):
+        if self.avatar is None:
+            return url_for('static', filename='img/icak.jpg')
+        return url_for('user_content.get_image', filename=f'pfp/{self.avatar}')
+
     def get_response(self):
         return {
             'username': self.username,
             'full_name': self.full_name,
             'description': self.description,
+            'avatar_url': self.get_avatar_url(),
             'organized_events': {event.public_id: event.get_response() for event in self.organized_events},
             'events': {event.public_id: event.get_response() for event in self.events},
         }
@@ -87,6 +95,7 @@ class EventModel(db.Model):
     def __str__(self):
         return f'<Event {self.id}>'
 
+
 class CommentModel(db.Model):
     __tablename__ = 'comment'
 
@@ -108,4 +117,4 @@ class CommentModel(db.Model):
         }
 
     def __str__(self):
-        return  f'<Comment {self.id}>'
+        return f'<Comment {self.id}>'

@@ -1,5 +1,6 @@
 import os
 from contextlib import suppress
+
 from flask import Flask, render_template, request, redirect, url_for
 from flask_cors import CORS
 
@@ -40,7 +41,8 @@ def create_app():
 
     from .models import db, migrate
     db.init_app(app)
-    migrate.init_app(app)
+    # https://blog.miguelgrinberg.com/post/fixing-alter-table-errors-with-flask-migrate-and-sqlite
+    migrate.init_app(app, render_as_batch=True)
 
     from . import user_content
     app.register_blueprint(user_content.bp)
