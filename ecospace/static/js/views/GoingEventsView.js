@@ -9,9 +9,7 @@ class GoingEventsListView extends AbstractView {
         return `
             <section class="section-nearme">
                 ${Object.entries(currentUser.events)
-                    .sort(function (a, b) {
-                        return new Date(a[1].date) - new Date(b[1].date);
-                    })
+                    .sort((a, b) => new Date(a[1].date) - new Date(b[1].date))
                     .map(
                         ([id, { name, location, date, organizer_username }]) => `
                             <div data-card-id="${id}" class="row">

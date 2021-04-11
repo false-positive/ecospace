@@ -12,19 +12,9 @@ class EventListView extends AbstractView {
         return `
             <section class="section-nearme">
                 ${Object.entries(events)
-                    .sort(function (a, b) {
-                        return new Date(a[1].date) - new Date(b[1].date);
-                    })
-                    .filter(([id]) => {
-                        let myid = id;
-                        for ([id] of Object.entries(currentUser.events)) {
-                            if (id == myid) return false;
-                        }
-                        for ([id] of Object.entries(currentUser.organized_events)) {
-                            if (id == myid) return false;
-                        }
-                        return true;
-                    })
+                    .sort((a, b) => new Date(a[1].date) - new Date(b[1].date))
+                    .filter(([_, { organizer_username }]) => currentUserUsername !== organizer_username)
+                    .filter(([_, { participants }]) => !participants.includes(currentUserUsername))
                     .map(
                         ([id, { name, location, date, organizer_username }]) => `
                             <div class="row">
