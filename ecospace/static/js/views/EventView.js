@@ -8,11 +8,18 @@ class EventView extends AbstractView {
         const event = await getEvent(this.params.id);
         AbstractView.setTitle(event.name);
 
+        // this view is very ugly
+        //
+        // please forgive me for this abomination
+        // this view will see better days,
+        //
+        // i promise
+        // ~ bozhidar
         return `
             <section class="section-info">
                 <div class="row">
                     <h1>${escapeHTML(event.name)}</h1>
-                    <h5>By ${escapeHTML(event.organizer_username)}</h5>
+                    <user-card username="${event.organizer_username}"></user-card>
                 </div>
                 <div class="row">
                     <p>${DOMPurify.sanitize(event.description)}</p>
