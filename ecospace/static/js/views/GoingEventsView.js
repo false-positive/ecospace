@@ -13,13 +13,14 @@ class GoingEventsListView extends AbstractView {
                         return new Date(a[1].date) - new Date(b[1].date);
                     })
                     .map(
-                        ([id, { name, location, date }]) => `
+                        ([id, { name, location, date, organizer_username }]) => `
                             <div data-card-id="${id}" class="row">
                               <article class="event">
                                 <div class="clearfix first-part">
                                   <h4>${DOMPurify.sanitize(name)}</h4>
                                   <a href="/events/${id}" data-link>More info</a>
                                 </div>
+                                <user-card username="${organizer_username}"></user-card>
                                 <div class="clearfix second-part">
                                     <location-label
                                         lat="${location.split(" ")[0]}"
