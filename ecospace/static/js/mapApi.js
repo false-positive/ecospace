@@ -33,22 +33,21 @@ const getGeolocation = () => {
     }
 };
 
-// the results of getAddress are memoized for speed
-// TODO: find a better way of caching this stuff that persists after refreshes and stuff
-const getAddressCache = {};
+// the results of getAddress are cached in localStorage for speed and also so we don't get banned from the OSM api
 const getAddress = async (lat, lng) => {
-    if (!lat || !lng || lat === "undefined" || lng === "undefined") return null;
-    if (getAddressCache.hasOwnProperty(`${lat} ${lng}`)) {
-        return getAddressCache[`${lat} ${lng}`];
+    if (!lat || !lng) return null;
+    const cachedAddress = localStorage.getItem(`getAddress(${lat},${lng})`);
+    if (cachedAddress) {
+        return cachedAddress;
     }
     const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
     try {
         const response = await fetch(url);
         const { display_name } = await response.json();
-        getAddressCache[`${lat} ${lng}`] = display_name;
+        localStorage.setItem(`getAddress(${lat},${lng})`, display_name);
         return display_name;
     } catch (err) {
-        getAddressCache[`${lat} ${lng}`] = null;
+        localStorage.setItem(`getAddress(${lat},${lng})`, null);
         return null;
     }
 };
