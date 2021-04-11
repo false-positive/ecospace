@@ -24,16 +24,11 @@ class MyEventsView extends AbstractView {
                                     <a href="/events/${id}/edit" data-link>Edit</a>
                                 </div>
                                 <div class="clearfix second-part">
-                                <h5>
-                                    Location:
-                                    <span
-                                    class="location-text"
-                                    data-fallback="${location}"
-                                    data-lat="${location.split(" ")[0]}"
-                                    data-lng="${location.split(" ")[1]}"
-                                    >Loading...</span
-                                    >
-                                </h5>
+                                    <location-label
+                                        lat="${location.split(" ")[0]}"
+                                        lng="${location.split(" ")[1]}"
+                                        fallback="${location}"
+                                    ></location-label>
                                 </div>
                                 <div class="third-part clearfix">
                                     <date-label iso-date="${date}"></date-label>
@@ -48,13 +43,5 @@ class MyEventsView extends AbstractView {
                     .join("")}
             </section>
         `;
-    }
-
-    registerEventListeners(root) {
-        const locations = root.querySelectorAll(".location-text");
-        locations.forEach(async (location) => {
-            const text = await getAddress(location.dataset.lat, location.dataset.lng);
-            location.textContent = text || location.dataset.fallback;
-        });
     }
 }

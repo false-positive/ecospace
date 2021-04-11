@@ -34,17 +34,12 @@ class EventListView extends AbstractView {
                                         <a href="/events/${id}" data-link>More info</a>
                                     </div>
                                     <div class="clearfix second-part">
-                                    <h5>
-                                        Location:
-                                        <span
-                                        class="location-text"
-                                        data-fallback="${location}"
-                                        data-lat="${location.split(" ")[0]}"
-                                        data-lng="${location.split(" ")[1]}"
-                                        >Loading...</span
-                                        >
-                                    </h5>
-                                </div>
+                                        <location-label
+                                            lat="${location.split(" ")[0]}"
+                                            lng="${location.split(" ")[1]}"
+                                            fallback="${location}"
+                                        ></location-label>
+                                    </div>
                                     <div class="clearfix third-part">
                                         <date-label iso-date="${date}"></date-label>
                                         <coming-button event-id="${id}"></coming-button>
@@ -56,13 +51,5 @@ class EventListView extends AbstractView {
                     .join("")}
             </section>
         `;
-    }
-
-    registerEventListeners(root) {
-        const locations = root.querySelectorAll(".location-text");
-        locations.forEach(async (location) => {
-            const text = await getAddress(location.dataset.lat, location.dataset.lng);
-            location.textContent = text || location.dataset.fallback;
-        });
     }
 }

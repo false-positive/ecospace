@@ -19,38 +19,14 @@ class EventView extends AbstractView {
                 </div>
                 <div class="row extra">
                     <date-label use-tag="h3" iso-date="${event.date}"></date-label>
-                    <h3>
-                        Location:
-                        <span
-                        class="location-text"
-                        data-fallback="${event.location}"
-                        data-lat="${event.location.split(" ")[0]}"
-                        data-lng="${event.location.split(" ")[1]}"
-                        >Loading...</span
-                        >
-                    </h3>
+                    <location-label
+                        use-tag="h3"
+                        lat="${event.location.split(" ")[0]}"
+                        lng="${event.location.split(" ")[1]}"
+                        fallback="${event.location}"
+                    ></location-label>
                 </div>
             </section>
         `;
-    }
-
-    registerEventListeners(root) {
-        const locations = root.querySelectorAll(".location-text");
-        locations.forEach(async (location) => {
-            const text = await this.getAdress(location.dataset.lat, location.dataset.lng);
-            location.textContent = text || location.dataset.fallback;
-        });
-    }
-
-    async getAdress(lat, lng) {
-        let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
-        try {
-            const response = await fetch(url);
-            const { display_name } = await response.json();
-            console.log(display_name);
-            return display_name;
-        } catch (err) {
-            return null;
-        }
     }
 }
