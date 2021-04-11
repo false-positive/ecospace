@@ -4,7 +4,7 @@ class EventLabel extends HTMLElement {
 
         const date = new Date(this.getAttribute("iso-date"));
         const tag = document.createElement(this.getAttribute("use-tag") || "h5");
-        tag.innerText = this.getText();
+        tag.innerHTML = `<i class="${this.getIcon()}" style="margin-right: 8px"></i>`;
         this.span = document.createElement("span");
         this.span.innerText = "Loading...";
         this.span.className = "location-text";
@@ -14,6 +14,6 @@ class EventLabel extends HTMLElement {
     }
 
     async connectedCallback() {
-        this.span.innerHTML = await this.getSpanHTML();
+        this.span.innerHTML = await this.getSpanText();
     }
 }

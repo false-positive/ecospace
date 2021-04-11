@@ -4,10 +4,10 @@ class DateLabel extends EventLabel {
         this.isoDate = this.getAttribute("iso-date");
     }
 
-    getText() {
-        return "Date: ";
+    getIcon() {
+        return "ion-calendar";
     }
-    async getSpanHTML() {
+    async getSpanText() {
         const date = new Date(this.isoDate);
         return date.toLocaleDateString();
     }

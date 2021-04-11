@@ -8,10 +8,10 @@ class LocationLabel extends EventLabel {
         this.fallback = this.getAttribute("fallback");
     }
 
-    getText() {
-        return "Location: ";
+    getIcon() {
+        return "ion-location";
     }
-    async getSpanHTML() {
+    async getSpanText() {
         // if locaitonName was provided, just use that
         if (this.locationName) {
             return this.locationName;
