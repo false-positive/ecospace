@@ -25,8 +25,13 @@ const router = async () => {
         result: window.location.pathname.match(pathToRegex(route.path)),
     }));
 
-    const match = potentialMatches.find(({ result }) => result !== null);
-    // TODO: handle no match
+    let match = potentialMatches.find(({ result }) => result !== null);
+    if (!match) {
+        match = {
+            route: { path: window.location.pathname, view: NotFoundView },
+            result: [null, window.location.pathname],
+        };
+    }
 
     const view = new match.route.view(getParams(match));
     const content = document.querySelector("#content");

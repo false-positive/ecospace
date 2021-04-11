@@ -6,6 +6,9 @@ class EventView extends AbstractView {
 
     async getHTML() {
         const event = await getEvent(this.params.id);
+        if (!event) {
+            return await new NotFoundView().getHTML();
+        }
         AbstractView.setTitle(event.name);
 
         // this view is very ugly
