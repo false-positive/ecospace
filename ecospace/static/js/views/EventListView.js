@@ -46,7 +46,7 @@ class EventListView extends AbstractView {
                                     </h5>
                                 </div>
                                     <div class="clearfix third-part">
-                                        <h5>Date: ${formatDate(new Date(date))}</h5>
+                                        <date-label iso-date="${date}"></date-label>
                                         <coming-button event-id="${id}"></coming-button>
                                     </div>
                                 </article>

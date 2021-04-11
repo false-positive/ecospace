@@ -18,7 +18,7 @@ class EventView extends AbstractView {
                     <p>${DOMPurify.sanitize(event.description)}</p>
                 </div>
                 <div class="row extra">
-                    <h3>Date: ${formatDate(new Date(event.date))}</h3>
+                    <date-label use-tag="h3" iso-date="${event.date}"></date-label>
                     <h3>
                         Location:
                         <span

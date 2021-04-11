@@ -1,5 +1,3 @@
-const formatDate = (date) => date.toLocaleDateString();
-
 const escapeHTML = (unsafe) => {
     const p = document.createElement("p");
     p.textContent = unsafe;

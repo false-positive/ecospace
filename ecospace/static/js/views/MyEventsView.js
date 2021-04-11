@@ -36,7 +36,7 @@ class MyEventsView extends AbstractView {
                                 </h5>
                                 </div>
                                 <div class="third-part clearfix">
-                                    <h5>Date: ${formatDate(new Date(date))}</h5>
+                                    <date-label iso-date="${date}"></date-label>
                                     <a href="/events/${id}" class="coming-btn coming" data-link
                                         >More info</a
                                     >
