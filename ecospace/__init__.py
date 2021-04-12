@@ -54,6 +54,10 @@ def create_app():
         else:
             return redirect(url_for('singlepage.index', route='events'))
 
+    @app.route('/favicon.ico')
+    def favicon():
+        return redirect(url_for('static', filename='img/logo.svg'))
+
     from . import api
     app.register_blueprint(api.bp)
 
