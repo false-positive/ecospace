@@ -44,6 +44,12 @@ span {
     position: fixed;
     top: 0;
     width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid black;
+}
+
+.sticky .nav-btns a:first-child {
+    background-color: #7ab214;
 }
 
 /* HEADINGS */

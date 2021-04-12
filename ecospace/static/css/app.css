@@ -109,6 +109,12 @@ nav i {
     text-decoration: none;
     display: inline-block;
 }
+
+.sticky {
+    background: #fff;
+    border-bottom: 1px solid #7ab214;
+}
+
 .profile-btn {
     float: right;
     margin-top: 19px;
