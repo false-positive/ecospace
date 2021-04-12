@@ -12,3 +12,13 @@ function stickyNav() {
         navbar.classList.remove("sticky");
     }
 }
+
+const updateNavActiveLink = () => {
+    navbar.querySelectorAll("a").forEach((link) => {
+        if (window.location.href === link.href) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    });
+};

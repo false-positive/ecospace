@@ -33,6 +33,8 @@ const router = async () => {
         };
     }
 
+    updateNavActiveLink();
+
     const view = new match.route.view(getParams(match));
     const content = document.querySelector("#content");
 
