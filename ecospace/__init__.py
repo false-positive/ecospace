@@ -64,9 +64,6 @@ def create_app():
     from . import auth
     app.register_blueprint(auth.bp)
 
-    from . import legacy
-    app.register_blueprint(legacy.bp)
-
     # This must be registered last, so it doesn't override anything
     from . import singlepage
     app.register_blueprint(singlepage.bp)
