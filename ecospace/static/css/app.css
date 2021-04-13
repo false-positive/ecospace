@@ -294,6 +294,7 @@ h2 {
 
 .section-info {
     margin-top: 200px;
+    margin-bottom: 50px;
     text-align: left;
 }
 
@@ -305,7 +306,7 @@ h2 {
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
-.section-info .comments .row:last-child {
+.section-info .last-row {
     padding-bottom: 60px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -333,6 +334,7 @@ h2 {
 
 .section-info h1,
 .section-info h5,
+.section-info h3,
 .section-info h2,
 .section-info p {
     word-wrap: break-word;
@@ -380,6 +382,34 @@ h2 {
 .section-info h3:last-child {
     margin-right: 15%;
     float: left;
+}
+
+.section-info form {
+    margin: 0 15%;
+}
+
+.section-info form textarea {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    border: 0.1px solid gray;
+    padding: 10px;
+    height: 80px;
+}
+
+.section-info form input[type="submit"] {
+    margin: 10px 0;
+    padding: 11px 24px;
+    border-radius: 50px;
+    color: #fff;
+    background: #7ab214;
+    transition: background 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.section-info form input[type="submit"]:hover {
+    background: #85c215;
 }
 
 /* ------------------------------ */

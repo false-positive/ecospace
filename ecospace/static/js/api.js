@@ -132,3 +132,17 @@ async function getEvent(id) {
 
     return data;
 }
+
+async function createComment(eventId, content) {
+    let response = await fetch(`${URL}/events/${eventId}/comments`, {
+        method: "POST",
+        // mode: "no-cors",
+        headers: {
+            "x-access-token": token,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            content,
+        }),
+    });
+}

@@ -44,18 +44,44 @@ class EventView extends AbstractView {
                     <div class="row">
                         <h2>Comments (${event.comments.length}):</h2>
                     </div>
-                    ${event.comments
-                        .map(
-                            ({ author, content }) => `
-                                <div class="row">
-                                    <user-card username="${author}" class="author"></user-card>
-                                    <p>${content}</p>
-                                </div>
-                            `
-                        )
-                        .join("")}
+                    <div class="row">
+                        <form class="create-comment">
+                            <textarea name="content" required></textarea>
+                            <input type="submit" value="Create Comment" id="create-comment" />
+                        </form>
+                    </div>
+                    <div class="comments-content">
+                        ${event.comments
+                            .reverse()
+                            .map(
+                                ({ author, content }) => `
+                                    <div class="row">
+                                        <user-card username="${author}" class="author"></user-card>
+                                        <p>${content}</p>
+                                    </div>
+                                `
+                            )
+                            .join("")}
+                    </div>
                 </div>
+                <div class="row last-row"></div>
             </section>
         `;
+    }
+
+    registerEventListeners(root) {
+        root.querySelector(".create-comment").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const content = DOMPurify.sanitize(new FormData(e.target).get("content"));
+            await createComment(this.params.id, content);
+            document.querySelector(".comments-content").insertAdjacentHTML(
+                "afterbegin",
+                `<div class="row">
+                    <user-card username="${currentUserUsername}" class="author"></user-card>
+                    <p>${content}</p>
+                </div>`
+            );
+            navigateTo("");
+        });
     }
 }
