@@ -19,7 +19,7 @@ class MyEventsView extends AbstractView {
                             <div class="event">
                                 <div class="clearfix first-part">
                                     <h4>${escapeHTML(name)}</h4>
-                                    <a href="/events/${id}/edit" data-link>Edit</a>
+                                    <a href="/events/${id}" data-link>More info</a>
                                 </div>
                                 <div class="clearfix second-part">
                                     <location-label
@@ -30,8 +30,8 @@ class MyEventsView extends AbstractView {
                                 </div>
                                 <div class="third-part clearfix">
                                     <date-label iso-date="${date}"></date-label>
-                                    <a href="/events/${id}" class="coming-btn coming" data-link
-                                        >More info</a
+                                    <a href="/events/${id}/edit" class="coming-btn coming" data-link
+                                        >Edit</a
                                     >
                                 </div>
                             </div>
