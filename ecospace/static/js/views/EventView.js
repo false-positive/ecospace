@@ -22,7 +22,7 @@ class EventView extends AbstractView {
             <section class="section-info">
                 <div class="row">
                     <h1>${escapeHTML(event.name)}</h1>
-                    <user-card username="${event.organizer_username}"></user-card>
+                    <user-card username="${event.organizer_username}" class="author"></user-card>
                 </div>
                 <div class="row">
                     <p>${DOMPurify.sanitize(event.description)}</p>

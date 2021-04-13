@@ -8,7 +8,7 @@ template_.innerHTML = `
             width: 300px;
             margin: 12px 6px 0 0;
             padding-left: 5px;
-            border-left: 3px solid #7ab214;
+            // border-left: 3px solid #7ab214;
         }
         .user-card img {
             width: 100%;

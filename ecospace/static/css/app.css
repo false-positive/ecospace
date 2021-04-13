@@ -310,6 +310,13 @@ h2 {
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }
+
+.section-info .author {
+    margin: 0 15%;
+    display: block;
+    margin-bottom: 50px;
+}
+
 .section-info h1,
 .section-info h5 {
     margin: 0 15%;
@@ -317,7 +324,7 @@ h2 {
 }
 
 .section-info h1 {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: 240%;
 }
 
@@ -336,6 +343,9 @@ h2 {
     padding-top: 40px;
 }
 
+.extra date-label {
+}
+
 .section-info h3 {
     display: inline-block;
     font-weight: 300;
@@ -344,10 +354,11 @@ h2 {
 .section-info h3:first-child {
     margin-left: 15%;
     float: left;
+    margin-bottom: 10px;
 }
 .section-info h3:last-child {
     margin-right: 15%;
-    float: right;
+    float: left;
 }
 
 /* ------------------------------ */
