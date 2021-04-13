@@ -50,7 +50,7 @@ class CommentList(Resource):
             'data': result,
             'message': 'comments listed successfully',
         }
-    '''@pass_event
+    @pass_event
     @auth_token
     def post(self, current_user, event):
         args = comment_form_parser.parse_args()
@@ -65,7 +65,7 @@ class CommentList(Resource):
         return{
             'data': {new_comment.public_id: new_comment.get_response()},
             'message': 'comment successfully posted',
-        }'''
+        }
 
 class Comment(Resource):
     @pass_comment

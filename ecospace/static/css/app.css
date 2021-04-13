@@ -300,12 +300,12 @@ h2 {
 .section-info .row {
     background: #fff;
 }
-.section-info .row:first-child {
+.section-info .event-info .row:first-child {
     padding-top: 60px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
-.section-info .row:last-child {
+.section-info .comments .row:last-child {
     padding-bottom: 60px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -314,13 +314,28 @@ h2 {
 .section-info .author {
     margin: 0 15%;
     display: block;
+}
+
+.section-info .event-info .author {
     margin-bottom: 50px;
 }
 
+.section-info .comments .author {
+    margin-bottom: 10px;
+}
+
 .section-info h1,
-.section-info h5 {
+.section-info h5,
+.section-info h2 {
     margin: 0 15%;
     font-weight: 300;
+}
+
+.section-info h1,
+.section-info h5,
+.section-info h2,
+.section-info p {
+    word-wrap: break-word;
 }
 
 .section-info h1 {
@@ -339,11 +354,17 @@ h2 {
     width: 70%;
 }
 
-.extra {
-    padding-top: 40px;
+.section-info .comments p {
+    margin-bottom: 40px;
 }
 
-.extra date-label {
+.comments h2 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.extra {
+    padding-top: 40px;
 }
 
 .section-info h3 {
