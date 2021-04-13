@@ -16,7 +16,7 @@ class EventListView extends AbstractView {
                     .filter(([_, { organizer_username }]) => currentUserUsername !== organizer_username)
                     .filter(([_, { participants }]) => !participants.includes(currentUserUsername))
                     .map(
-                        ([id, { name, location, date, organizer_username }]) => `
+                        ([id, { name, location, date, organizer_username, participants }]) => `
                             <div class="row">
                                 <article class="event">
                                     <div class="clearfix first-part">
@@ -33,6 +33,9 @@ class EventListView extends AbstractView {
                                     </div>
                                     <div class="clearfix third-part">
                                         <date-label iso-date="${date}"></date-label>
+                                        <div class="participants-margin">
+                                            <participants-label participants="${Object.keys(participants).length}"></participants-label>
+                                        </div>
                                         <coming-button event-id="${id}"></coming-button>
                                     </div>
                                 </article>

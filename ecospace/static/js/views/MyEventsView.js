@@ -14,7 +14,7 @@ class MyEventsView extends AbstractView {
                 ${Object.entries(currentUser.organized_events)
                     .sort((a, b) => new Date(a[1].date) - new Date(b[1].date))
                     .map(
-                        ([id, { name, location, date }]) => `
+                        ([id, { name, location, date, participants }]) => `
                         <div class="row">
                             <div class="event">
                                 <div class="clearfix first-part">
@@ -30,6 +30,9 @@ class MyEventsView extends AbstractView {
                                 </div>
                                 <div class="third-part clearfix">
                                     <date-label iso-date="${date}"></date-label>
+                                    <div class="participants-margin">
+                                        <participants-label participants="${Object.keys(participants).length}"></participants-label>
+                                    </div>
                                     <a href="/events/${id}/edit" class="coming-btn coming" data-link
                                         >Edit</a
                                     >
