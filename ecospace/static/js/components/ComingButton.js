@@ -70,15 +70,16 @@ class ComingButton extends HTMLElement {
         // if the request goes wrong, it will change color back
         this.setComing(!this.coming);
         const coming = await updateParticipants(this.eventId);
-        this.setComing;
-        this.comingEvent = new CustomEvent("going", {
+        this.setComing(coming);
+
+        const comingEvent = new CustomEvent("coming", {
             bubbles: true,
             detail: {
-                coming,
                 eventId: this.eventId,
+                coming,
             },
         });
-        document.dispatchEvent(this.comingEvent);
+        this.dispatchEvent(comingEvent);
     }
 
     connectedCallback() {

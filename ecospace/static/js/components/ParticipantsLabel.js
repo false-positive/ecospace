@@ -1,14 +1,18 @@
 class ParticipantsLabel extends EventLabel {
     constructor() {
         super();
-        document.addEventListener("coming", () => console.log("hello"));
+        this.eventId = this.getAttribute("event-id");
+        document.addEventListener("coming", async (e) => {
+            if (e.detail.eventId !== this.eventId) return;
+            this.span.innerText = await this.getSpanText();
+        });
     }
-
     getIcon() {
         return "ion-android-people";
     }
     async getSpanText() {
-        return `${this.getAttribute("participants")} Participants`;
+        const { participants } = await getEvent(this.eventId);
+        return `${participants.length} Participants`;
     }
 }
 

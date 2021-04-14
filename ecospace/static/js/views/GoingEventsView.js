@@ -42,7 +42,7 @@ class GoingEventsListView extends AbstractView {
                                 <div class="clearfix third-part">
                                   <date-label iso-date="${date}"></date-label>
                                   <div class="participants-margin">
-                                      <participants-label participants="${Object.keys(participants).length}"></participants-label>
+                                      <participants-label event-id="${id}"></participants-label>
                                   </div>
                                   <coming-button coming event-id="${id}"></coming-button>
                                 </div>
