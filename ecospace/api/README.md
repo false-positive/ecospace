@@ -56,17 +56,15 @@ An user's data looks like this:
 
 ```json
 {
-    "full_name": "grisho the og one",
-    "description": "",
-    "organized_events": {
-        "fca3aaac-c9cd-4da5-be80-fabd5c5a4794": {
-            "name": "test",
-            "date": "2021-03-13T00:00:00",
-            "location": "sofia",
-            "organizer_username": "grisho"
-        }
+    "data": {
+        "username": "asdf",
+        "full_name": "aeasfd sdfasdf",
+        "description": "",
+        "avatar_url": "/static/img/icak.jpg",
+        "organized_events": {},
+        "events": {}
     },
-    "events": {}
+    "message": "user found successfully"
 }
 ```
 
@@ -74,10 +72,33 @@ An event's data looks like this:
 
 ```json
 {
-    "name": "test2",
-    "date": "2021-03-13T00:00:00",
-    "location": "sofia",
-    "organizer_username": "grisho2"
+    "data": {
+        "name": "test",
+        "date": "2021-04-20T00:00:00",
+        "description": "test",
+        "location": "42.69593648936457 23.32225551494975",
+        "organizer_username": "test",
+        "participants": [
+            "yes"
+        ],
+        "comments": [
+            {
+                "public_id": "4cc90b90-142f-408a-a62d-8ab4309fc9d4",
+                "date": "2021-04-13T16:20:27.136154",
+                "content": "F O O",
+                "author": "yes",
+                "child_comments": []
+            },
+            {
+                "public_id": "b7b423a7-a617-4627-8275-87749115b046",
+                "date": "2021-04-14T14:13:58.858937",
+                "content": "B A R",
+                "author": "asdf",
+                "child_comments": []
+            }
+        ]
+    },
+    "message": "event successfully found"
 }
 ```
 
@@ -98,23 +119,102 @@ Example response:
 ```json
 {
     "data": {
-        "grisho": {
-            "full_name": "grisho the og one",
+        "test": {
+            "username": "test",
+            "full_name": "test testov",
             "description": "",
+            "avatar_url": "/static/img/icak.jpg",
             "organized_events": {
-                "fca3aaac-c9cd-4da5-be80-fabd5c5a4794": {
+                "4f9b6f0d-f944-4afe-91a6-ecab402e3eaa": {
                     "name": "test",
-                    "date": "2021-03-13T00:00:00",
-                    "location": "sofia",
-                    "organizer_username": "grisho"
+                    "date": "2021-04-20T00:00:00",
+                    "description": "test",
+                    "location": "42.69593648936457 23.32225551494975",
+                    "organizer_username": "test",
+                    "participants": [
+                        "yes"
+                    ],
+                    "comments": [
+                        {
+                            "public_id": "4cc90b90-142f-408a-a62d-8ab4309fc9d4",
+                            "date": "2021-04-13T16:20:27.136154",
+                            "content": "F O O",
+                            "author": "yes",
+                            "child_comments": []
+                        },
+                        {
+                            "public_id": "b7b423a7-a617-4627-8275-87749115b046",
+                            "date": "2021-04-14T14:13:58.858937",
+                            "content": "B A R",
+                            "author": "asdf",
+                            "child_comments": []
+                        }
+                    ]
                 }
             },
             "events": {}
         },
-        "grisho2": {
-            "full_name": "grisho #2",
+        "yes": {
+            "username": "yes",
+            "full_name": "testing comments & things",
             "description": "",
-            "organized_events": {},
+            "avatar_url": "/static/img/icak.jpg",
+            "organized_events": {
+                "7814afe3-c533-45b4-8420-b10c0469a5af": {
+                    "name": "yes",
+                    "date": "2021-04-22T00:00:00",
+                    "description": "an event",
+                    "location": "42.684959189788664 23.31522109692683",
+                    "organizer_username": "yes",
+                    "participants": [],
+                    "comments": []
+                }
+            },
+            "events": {
+                "4f9b6f0d-f944-4afe-91a6-ecab402e3eaa": {
+                    "name": "test",
+                    "date": "2021-04-20T00:00:00",
+                    "description": "test",
+                    "location": "42.69593648936457 23.32225551494975",
+                    "organizer_username": "test",
+                    "participants": [
+                        "yes"
+                    ],
+                    "comments": [
+                        {
+                            "public_id": "4cc90b90-142f-408a-a62d-8ab4309fc9d4",
+                            "date": "2021-04-13T16:20:27.136154",
+                            "content": "F O O",
+                            "author": "yes",
+                            "child_comments": []
+                        },
+                        {
+                            "public_id": "b7b423a7-a617-4627-8275-87749115b046",
+                            "date": "2021-04-14T14:13:58.858937",
+                            "content": "B A R",
+                            "author": "asdf",
+                            "child_comments": []
+                        }
+                    ]
+                }
+            }
+        },
+        "asdf": {
+            "username": "asdf",
+            "full_name": "aeasfd sdfasdf",
+            "description": "",
+            "avatar_url": "/static/img/icak.jpg",
+            "organized_events": {
+                "d5b2a41d-5d0e-48a0-ad18-d42572cad2ae": {
+                    "name": "sample event",
+                    "date": "2021-04-23T00:00:00",
+                    "description": "sample text",
+                    "location": "42.69126821974304 23.323971226662657",
+                    "organizer_username": "asdf",
+                    "participants": [],
+                    "comments": []
+                }
+            },
             "events": {}
         }
     },
@@ -136,16 +236,11 @@ Example response:
 ```json
 {
     "data": {
-        "full_name": "grisho the og one",
+        "username": "asdf",
+        "full_name": "aeasfd sdfasdf",
         "description": "",
-        "organized_events": {
-            "fca3aaac-c9cd-4da5-be80-fabd5c5a4794": {
-                "name": "test",
-                "date": "2021-03-13T00:00:00",
-                "location": "sofia",
-                "organizer_username": "grisho"
-            }
-        },
+        "avatar_url": "/static/img/icak.jpg",
+        "organized_events": {},
         "events": {}
     },
     "message": "user found successfully"
@@ -176,16 +271,17 @@ Status codes:
 Example response:
 
 ```json
- "data": {
-        "grisho2": {
-            "full_name": "grisho #2",
-            "description": "time to finish that documentation(not tommorow)",
-            "organized_events": {},
-            "events": {}
-        }
+ {
+    "data": {
+        "username": "asdf",
+        "full_name": "aeasfd sdfasdf",
+        "description": "",
+        "avatar_url": "/static/img/icak.jpg",
+        "organized_events": {},
+        "events": {}
     },
- "message": "edited successfully"
-
+    "message": "user edited successfully"
+}
 ```
 
 #### `DELETE /users`
@@ -217,17 +313,57 @@ Example response:
 ```json
 {
     "data": {
-        "fca3aaac-c9cd-4da5-be80-fabd5c5a4794": {
+        "4f9b6f0d-f944-4afe-91a6-ecab402e3eaa": {
             "name": "test",
-            "date": "2021-03-13T00:00:00",
-            "location": "sofia",
-            "organizer_username": "grisho"
+            "date": "2021-04-20T00:00:00",
+            "description": "test",
+            "location": "42.69593648936457 23.32225551494975",
+            "organizer_username": "test",
+            "participants": [
+                "yes"
+            ],
+            "comments": [
+                {
+                    "public_id": "4cc90b90-142f-408a-a62d-8ab4309fc9d4",
+                    "date": "2021-04-13T16:20:27.136154",
+                    "content": "F O O",
+                    "author": "yes",
+                    "child_comments": []
+                },
+                {
+                    "public_id": "b7b423a7-a617-4627-8275-87749115b046",
+                    "date": "2021-04-14T14:13:58.858937",
+                    "content": "B A R",
+                    "author": "asdf",
+                    "child_comments": []
+                }
+            ]
         },
-        "b6f6af57-8742-4acd-b1fd-5cc881c109be": {
-            "name": "test2",
-            "date": "2021-03-13T00:00:00",
-            "location": "sofia",
-            "organizer_username": "grisho2"
+        "7814afe3-c533-45b4-8420-b10c0469a5af": {
+            "name": "yes",
+            "date": "2021-04-22T00:00:00",
+            "description": "event",
+            "location": "42.684959189788664 23.31522109692683",
+            "organizer_username": "yes",
+            "participants": [],
+            "comments": [
+                {
+                    "public_id": "714caaf7-bb38-403f-bbf0-c1fa81f420b6",
+                    "date": "2021-04-13T16:12:07.555857",
+                    "content": "testing",
+                    "author": "yes",
+                    "child_comments": []
+                }
+            ]
+        },
+        "d5b2a41d-5d0e-48a0-ad18-d42572cad2ae": {
+            "name": "sample event",
+            "date": "2021-04-23T00:00:00",
+            "description": "sample text",
+            "location": "42.69126821974304 23.323971226662657",
+            "organizer_username": "asdf",
+            "participants": [],
+            "comments": []
         }
     },
     "message": "events listed successfully"
@@ -248,10 +384,21 @@ Example response:
 ```json
 {
     "data": {
-        "name": "test2",
-        "date": "2021-03-13T00:00:00",
-        "location": "sofia",
-        "organizer_username": "grisho2"
+        "name": "yes",
+        "date": "2021-04-22T00:00:00",
+        "description": "event",
+        "location": "42.684959189788664 23.31522109692683",
+        "organizer_username": "yes",
+        "participants": [],
+        "comments": [
+            {
+                "public_id": "714caaf7-bb38-403f-bbf0-c1fa81f420b6",
+                "date": "2021-04-13T16:12:07.555857",
+                "content": "testing",
+                "author": "yes",
+                "child_comments": []
+            }
+        ]
     },
     "message": "event successfully found"
 }
@@ -276,9 +423,13 @@ Status codes:
 ```json
 {
     "data": {
-        "name": "testing 2:electric boogaloo",
-        "public_id": "c0a2b040-8990-4aeb-bb20-b5c00efab393",
-        "participants": ["grisho"]
+        "name": "sample event",
+        "date": "2021-04-23T00:00:00",
+        "description": "sample text",
+        "location": "42.69126821974304 23.323971226662657",
+        "organizer_username": "asdf",
+        "participants": [],
+        "comments": []
     },
     "message": "event created successfully"
 }
@@ -311,12 +462,15 @@ Example response:
 ```json
 {
     "data": {
-        "name": "test2",
-        "date": "2021-03-14T00:00:00",
-        "location": "sofia",
-        "organizer_username": "grisho2"
+        "name": "sample event",
+        "date": "2021-04-23T00:00:00",
+        "description": "sample text",
+        "location": "42.69126821974304 23.323971226662657",
+        "organizer_username": "asdf",
+        "participants": [],
+        "comments": []
     },
-    "message": "edited event successfully"
+    "message": "event edited successfully"
 }
 ```
 
@@ -329,20 +483,52 @@ Example response:
 ```json
 {
     "data": {
-        "full_name": "grisho bot",
+        "username": "asdf",
+        "full_name": "aeasfd sdfasdf",
         "description": "",
-        "organized_events": {},
+        "avatar_url": "/static/img/icak.jpg",
+        "organized_events": {
+            "d5b2a41d-5d0e-48a0-ad18-d42572cad2ae": {
+                "name": "sample event",
+                "date": "2021-04-23T00:00:00",
+                "description": "sample text",
+                "location": "42.69126821974304 23.323971226662657",
+                "organizer_username": "asdf",
+                "participants": [],
+                "comments": []
+            }
+        },
         "events": {
-            "2bbd34e6-9e13-4a63-a4b9-7ef235ce5efe": {
-                "name": "testing comments",
-                "date": "2021-03-14T01:28:46.330184",
-                "location": "here",
-                "organizer_username": "grisho#10",
-                "comments": {}
+            "4f9b6f0d-f944-4afe-91a6-ecab402e3eaa": {
+                "name": "test",
+                "date": "2021-04-20T00:00:00",
+                "description": "test",
+                "location": "42.69593648936457 23.32225551494975",
+                "organizer_username": "test",
+                "participants": [
+                    "yes",
+                    "asdf"
+                ],
+                "comments": [
+                    {
+                        "public_id": "4cc90b90-142f-408a-a62d-8ab4309fc9d4",
+                        "date": "2021-04-13T16:20:27.136154",
+                        "content": "F O O",
+                        "author": "yes",
+                        "child_comments": []
+                    },
+                    {
+                        "public_id": "b7b423a7-a617-4627-8275-87749115b046",
+                        "date": "2021-04-14T14:13:58.858937",
+                        "content": "B A R",
+                        "author": "asdf",
+                        "child_comments": []
+                    }
+                ]
             }
         }
     },
-    "message": "successfully started event participation"
+    "message": "succsessfully started event participation"
 }
 ```
 
@@ -355,14 +541,24 @@ Example response:
 ```json
 {
     "data": {
-        "full_name": "grisho bot",
+        "username": "asdf",
+        "full_name": "aeasfd sdfasdf",
         "description": "",
-        "organized_events": {},
+        "avatar_url": "/static/img/icak.jpg",
+        "organized_events": {
+            "d5b2a41d-5d0e-48a0-ad18-d42572cad2ae": {
+                "name": "sample event",
+                "date": "2021-04-23T00:00:00",
+                "description": "sample text",
+                "location": "42.69126821974304 23.323971226662657",
+                "organizer_username": "asdf",
+                "participants": [],
+                "comments": []
+            }
+        },
         "events": {}
     },
-    "message": "successfully removed event participation"
-}
-
+    "message": "successfully stopped event participation"
 }
 ```
 
@@ -379,7 +575,9 @@ Status codes:
 
 -   `204 No Content` - the event was deleted successfully
 -   `403 Forbidden` - unathourized attempt at deleting event
+### Comments
 
+#### `GET /comment`
 ### Authentication
 
 #### `GET /auth`
@@ -420,14 +618,15 @@ Example response:
 ```json
 {
     "data": {
-        "grisho2": {
-            "full_name": "grisho #2",
-            "description": "",
-            "organized_events": {}
-        }
+        "username": "asdf",
+        "full_name": "aeasfd sdfasdf",
+        "description": "",
+        "avatar_url": "/static/img/icak.jpg",
+        "organized_events": {},
+        "events": {}
     },
     "message": "user registered successfully"
 }
 ```
-
+<!-- TODO: Actually document comments, man am i lazy - Kala -->
 <!-- TODO: Document even more stuff -->
