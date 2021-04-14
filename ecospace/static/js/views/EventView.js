@@ -11,14 +11,17 @@ class EventView extends AbstractView {
         }
         AbstractView.setTitle(event.name);
 
-        const { events, organized_events } = await getUserInfo(currentUserUsername);
         let editOrGoingButton;
-        if (Object.entries(organized_events).find(({ id }) => id === this.params.id)) {
-            editOrGoingButton = '<a href="/edit" data-link>Edit</a>';
+        if (event.organizer_username === currentUserUsername) {
+            editOrGoingButton = `<a href="/events/${this.params.id}/edit" data-link>Edit</a>`;
         } else {
-            editOrGoingButton = `<coming-button event-id="${this.params.id}" ${
-                events.find(({ id }) => id === this.params.id) ? "going" : ""
-            } font-size="125%"></coming-button>`;
+            editOrGoingButton = `
+                <coming-button
+                    event-id="${this.params.id}"
+                    ${event.participants.find((username) => username === currentUserUsername)}
+                    font-size="125%"
+                ></coming-button>
+            `;
         }
 
         // this view is very ugly
