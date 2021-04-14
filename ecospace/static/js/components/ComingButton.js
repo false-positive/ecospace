@@ -45,6 +45,7 @@ class ComingButton extends HTMLElement {
         this.attachShadow({ mode: "open" });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
         this.setComing(this.coming); // force update the text and color
+        this.shadowRoot.querySelector("button").style.fontSize = this.getAttribute("font-size") || "100%";
     }
 
     setComing(value) {

@@ -11,6 +11,16 @@ class EventView extends AbstractView {
         }
         AbstractView.setTitle(event.name);
 
+        const { events, organized_events } = await getUserInfo(currentUserUsername);
+        let editOrGoingButton;
+        if (Object.entries(organized_events).find(({ id }) => id === this.params.id)) {
+            editOrGoingButton = '<a href="/edit" data-link>Edit</a>';
+        } else {
+            editOrGoingButton = `<coming-button event-id="${this.params.id}" ${
+                events.find(({ id }) => id === this.params.id) ? "going" : ""
+            } font-size="125%"></coming-button>`;
+        }
+
         // this view is very ugly
         //
         // please forgive me for this abomination
@@ -24,6 +34,7 @@ class EventView extends AbstractView {
             <section class="section-info">
                 <div class="event-info">
                     <div class="row">
+			${editOrGoingButton}
                         <h1>${escapeHTML(event.name)}</h1>
                         <user-card username="${event.organizer_username}" class="author"></user-card>
                     </div>
