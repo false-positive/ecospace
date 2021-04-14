@@ -51,7 +51,7 @@ class UserModel(db.Model):
 
     def get_avatar_url(self):
         if self.avatar is None:
-            return url_for('static', filename='img/icak.jpg')
+            return url_for('static', filename='img/avatar.png')
         return url_for('user_content.get_image', filename=f'pfp/{self.avatar}')
 
     def get_response(self):
