@@ -31,7 +31,7 @@ class MyEventsView extends AbstractView {
                                 <div class="third-part clearfix">
                                     <date-label iso-date="${date}"></date-label>
                                     <div class="participants-margin">
-                                        <participants-label participants="${Object.keys(participants).length}"></participants-label>
+                                        <participants-label event-id="${id}"></participants-label>
                                     </div>
                                     <a href="/events/${id}/edit" class="coming-btn coming" data-link
                                         >Edit</a

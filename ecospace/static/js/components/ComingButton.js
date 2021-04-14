@@ -64,11 +64,21 @@ class ComingButton extends HTMLElement {
         }
     }
 
-    handleClick() {
+    async handleClick() {
         // flip the value, so it feels faster
         // if the request goes wrong, it will change color back
         this.setComing(!this.coming);
-        updateParticipants(this.eventId).then((coming) => this.setComing(coming));
+        const coming = await updateParticipants(this.eventId);
+        this.setComing(coming);
+
+        const comingEvent = new CustomEvent("coming", {
+            bubbles: true,
+            detail: {
+                eventId: this.eventId,
+                coming,
+            },
+        });
+        this.dispatchEvent(comingEvent);
     }
 
     connectedCallback() {
