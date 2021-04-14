@@ -6,10 +6,10 @@ class GoingEventsListView extends AbstractView {
 
     async getHTML() {
         const currentUser = await getUserInfo(currentUserUsername);
-        const events = Object.entries(currentUser.events).sort((a, b) => new Date(a[1].date) - new Date(b[1].date));
+        const events = Object.entries(currentUser.events);
         if (events.length === 0) {
             return `
-			<section class="section-info">
+			<section class="section-info empty-page">
 				<div class="row">
 					<h3>You aren't going to any events</h3>
 				</div>

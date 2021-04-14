@@ -47,6 +47,7 @@ class ComingButton extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
         this.setComing(this.coming); // force update the text and color
         this.shadowRoot.querySelector("button").style.fontSize = this.getAttribute("font-size") || "100%";
+        this.addEventListener("coming", console.log);
     }
 
     setComing(value) {
@@ -64,11 +65,20 @@ class ComingButton extends HTMLElement {
         }
     }
 
-    handleClick() {
+    async handleClick() {
         // flip the value, so it feels faster
         // if the request goes wrong, it will change color back
         this.setComing(!this.coming);
-        updateParticipants(this.eventId).then((coming) => this.setComing(coming));
+        const coming = await updateParticipants(this.eventId);
+        this.setComing;
+        this.comingEvent = new CustomEvent("going", {
+            bubbles: true,
+            detail: {
+                coming,
+                eventId: this.eventId,
+            },
+        });
+        document.dispatchEvent(this.comingEvent);
     }
 
     connectedCallback() {

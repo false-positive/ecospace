@@ -104,7 +104,7 @@ class EventEditView extends AbstractView {
         } else {
             let location = lat + " " + lng;
             await editEvent(name, description, date, location, currentUserUsername, token, this.params.id);
-            navigateTo("../my");
+            navigateTo(`../${this.params.id}`);
             console.log("Success!");
         }
     }

@@ -1,4 +1,9 @@
 class ParticipantsLabel extends EventLabel {
+    constructor() {
+        super();
+        document.addEventListener("coming", () => console.log("hello"));
+    }
+
     getIcon() {
         return "ion-android-people";
     }

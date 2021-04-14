@@ -15,7 +15,7 @@ class EventListView extends AbstractView {
 
         if (eventsFiltered.length === 0) {
             return `
-		    	<section class="section-info">
+		    	<section class="section-info empty-page">
 				<div class="row">
 					<h3>No Events Found</h3>
 				</div>

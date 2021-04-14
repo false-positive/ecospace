@@ -308,12 +308,24 @@ h2 {
 .section-info .row {
     background: #fff;
 }
-.section-info .event-info .row:first-child {
+
+.section-info.empty-page a {
+    color: inherit;
+    transition: color 0.3s;
+}
+
+.section-info.empty-page a:hover {
+    color: #7ab214;
+}
+
+.section-info .event-info .row:first-child,
+.section-info.empty-page .row:first-child {
     padding-top: 60px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
-.section-info .last-row {
+.section-info .last-row,
+.section-info.empty-page .row:last-child {
     padding-bottom: 60px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
