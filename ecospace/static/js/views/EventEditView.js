@@ -6,7 +6,9 @@ class EventEditView extends AbstractView {
 
     async getHTML() {
         const event = await getEvent(this.params.id);
-        if (event.organizer_username !== currentUserUsername) {
+        if (!event) {
+            return await new NotFoundView().getHTML();
+        } else if (event.organizer_username !== currentUserUsername) {
             navigateTo(`../${this.params.id}`);
             return "";
         }
