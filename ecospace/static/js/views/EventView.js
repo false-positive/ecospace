@@ -46,7 +46,7 @@ class EventView extends AbstractView {
                     </div>
                     <div class="row">
                         <form class="create-comment">
-                            <textarea name="content" required></textarea>
+                            <textarea name="content" maxlength = "500" required></textarea>
                             <input type="submit" value="Create Comment" id="create-comment" />
                         </form>
                     </div>
