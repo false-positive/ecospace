@@ -16,6 +16,7 @@ template.innerHTML = `
             padding: 5px 10px;
             float: right;
             transition: background 0.3s;
+            cursor: pointer;
         }
 
         .coming {

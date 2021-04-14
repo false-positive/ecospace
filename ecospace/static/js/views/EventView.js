@@ -13,7 +13,7 @@ class EventView extends AbstractView {
 
         let editOrGoingButton;
         if (event.organizer_username === currentUserUsername) {
-            editOrGoingButton = `<a href="/events/${this.params.id}/edit" data-link>Edit</a>`;
+            editOrGoingButton = `<a class="edit-btn" href="/events/${this.params.id}/edit" data-link>Edit</a>`;
         } else {
             editOrGoingButton = `
                 <coming-button
@@ -37,7 +37,6 @@ class EventView extends AbstractView {
             <section class="section-info">
                 <div class="event-info">
                     <div class="row">
-			${editOrGoingButton}
                         <h1>${escapeHTML(event.name)}</h1>
                         <user-card username="${event.organizer_username}" class="author"></user-card>
                     </div>
@@ -52,6 +51,9 @@ class EventView extends AbstractView {
                             lng="${event.location.split(" ")[1]}"
                             fallback="${event.location}"
                         ></location-label>
+                    </div>
+                    <div class="row">
+			            ${editOrGoingButton}
                     </div>
                 </div>
                 <div class="comments">
