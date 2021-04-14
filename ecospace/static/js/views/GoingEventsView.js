@@ -6,11 +6,23 @@ class GoingEventsListView extends AbstractView {
 
     async getHTML() {
         const currentUser = await getUserInfo(currentUserUsername);
+	const events = Object.entries(currentUser.events) .sort((a, b) => new Date(a[1].date) - new Date(b[1].date));
+	if (events.length === 0) {
+		return `
+			<section class="section-info">
+				<div class="row">
+					<h3>You aren't going to any events</h3>
+				</div>
+				<div class="row">
+					<p>Find some events in <a href="/events" data-link>your feed</a>.</p>
+				</div>
+			</section>
+		`;
+	}
+
         return `
             <section class="section-nearme">
-                ${Object.entries(currentUser.events)
-                    .sort((a, b) => new Date(a[1].date) - new Date(b[1].date))
-                    .map(
+                ${events.map(
                         ([id, { name, location, date, organizer_username, participants }]) => `
                             <div data-card-id="${id}" class="row">
                               <article class="event">
