@@ -27,7 +27,7 @@ template_.innerHTML = `
     </style>
     
     <div class="user-card">
-        <img src="/static/img/icak.jpg" />
+        <img src="/static/img/avatar.png" />
         <div class="user-info">
             <h5></h5>
             <p></p>
