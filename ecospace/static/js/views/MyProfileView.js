@@ -12,8 +12,8 @@ class MyProfileView extends AbstractView {
                 <div class="content">
                     <div class="row">
                         <div class="col span-1-of-2">
-                            <h1 id="username">Username: ${escapeHTML(currentUser.username)}</h1>
-                            <h2 id="fullname">Name: ${escapeHTML(currentUser.full_name)}</h2>
+                            <h1 id="username">Username: ${escapeHTML(currentUser.username)}<a href="#" class="edit-icon"><i class="ion-edit"></i></a></h1>
+                            <h2 id="fullname">Name: ${escapeHTML(currentUser.full_name)}<a href="#" class="edit-icon"><i class="ion-edit"></i></a></h2>
                         </div>
                         <div class="col span-1-of-2">
                             <img class="profile-image" src="/static/img/icak.jpg" alt="Profile Image">

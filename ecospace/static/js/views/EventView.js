@@ -13,7 +13,7 @@ class EventView extends AbstractView {
 
         let editOrGoingButton;
         if (event.organizer_username === currentUserUsername) {
-            editOrGoingButton = `<a class="edit-btn" href="/events/${this.params.id}/edit" data-link>Edit</a>`;
+            editOrGoingButton = `<a class="edit-btn" href="/events/${this.params.id}/edit" data-link><i class="ion-edit"></i> Edit</a>`;
         } else {
             editOrGoingButton = `
                 <coming-button
@@ -51,6 +51,7 @@ class EventView extends AbstractView {
                             lng="${event.location.split(" ")[1]}"
                             fallback="${event.location}"
                         ></location-label>
+                        <div id="map" data-lat="${event.location.split(" ")[0]}" data-lng="${event.location.split(" ")[1]}"></div>
                     </div>
                     <div class="row">
 			            ${editOrGoingButton}
@@ -99,5 +100,17 @@ class EventView extends AbstractView {
             );
             navigateTo("");
         });
+
+        let mapElement = document.querySelector("#map");
+
+        const coords = [Number(mapElement.dataset.lat), Number(mapElement.dataset.lng)];
+
+        let map = L.map("map").setView(coords, 13);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        L.marker(coords).addTo(map);
     }
 }

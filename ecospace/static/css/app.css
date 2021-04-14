@@ -130,6 +130,7 @@ nav i {
     color: #7ab214;
     text-decoration: none;
 }
+
 /* ------------------------------ */
 /* CONTENT */
 /* ------------------------------ */
@@ -275,6 +276,15 @@ h2 {
     margin-bottom: 30px;
 }
 
+.section-profile .edit-icon {
+    margin-left: 3%;
+    color: #7ab214;
+    transition: color 0.3s;
+}
+.section-profile .edit-icon:hover {
+    color: #85c215;
+}
+
 .section-profile .profile-image {
     margin-top: 20px;
     border-radius: 10%;
@@ -412,6 +422,10 @@ h2 {
     padding-top: 40px;
 }
 
+.extra #map {
+    width: 70% !important;
+}
+
 .section-info h3 {
     display: inline-block;
     font-weight: 300;
@@ -481,7 +495,7 @@ h2 {
 
 #map {
     height: 300px !important;
-    width: 50% !important;
+    width: 50%;
     margin: 0 auto 20px auto !important;
     z-index: 0 !important;
     border-radius: 10px !important;

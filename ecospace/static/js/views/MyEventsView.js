@@ -34,7 +34,7 @@ class MyEventsView extends AbstractView {
                                         <participants-label event-id="${id}"></participants-label>
                                     </div>
                                     <a href="/events/${id}/edit" class="coming-btn coming" data-link
-                                        >Edit</a
+                                        ><i class="ion-edit"></i> Edit</a
                                     >
                                 </div>
                             </div>
