@@ -52,6 +52,7 @@ class EventView extends AbstractView {
                             fallback="${event.location}"
                         ></location-label>
                         <div id="map" data-lat="${event.location.split(" ")[0]}" data-lng="${event.location.split(" ")[1]}"></div>
+                        <participants-label event-id="${this.params.id}"></participants-label>
                     </div>
                     <div class="row">
 			            ${editOrGoingButton}

@@ -16,7 +16,7 @@ class MyProfileView extends AbstractView {
                             <h2 id="fullname">Name: ${escapeHTML(currentUser.full_name)}<a href="#" class="edit-icon"><i class="ion-edit"></i></a></h2>
                         </div>
                         <div class="col span-1-of-2">
-                            <img class="profile-image" src="/static/img/icak.jpg" alt="Profile Image">
+                            <img class="profile-image" src="${currentUser.avatar_url}" alt="Profile Image">
                             <h3><a href="#" class="logout-btn">Log out</a></h3>
                         </div>
                     </div>
