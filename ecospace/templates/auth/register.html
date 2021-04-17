@@ -1,0 +1,36 @@
+{% extends 'auth/base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block style %}
+<style>
+    html {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("{{ url_for('static', filename='img/background.signup2.png') }}");
+    }
+</style>
+{% endblock %}
+
+{% block box %}
+<form action="{{ url_for('auth.register', then=request.args.get('then')) }}" method="POST">
+    <label for="firstname">First name</label>
+    <input name="firstname" type="text" id="firstname" required />
+    <label for="lastname">Last name</label>
+    <input name="lastname" type="text" id="lastname" required />
+    <label for="username">Username</label>
+    <input name="username" type="text" id="username" required />
+    <label for="password">Password</label>
+    <input name="password" type="password" id="password" />
+    <input name="then" type="hidden" value="{{ request.args.get('then', '') }}" />
+    <input type="submit" value="Register" id="register" />
+</form>
+
+<h2>Already have an account?
+    {% if request.args.get('then') %}
+    <a href="{{ url_for('auth.login', then=request.args['then']) }}">
+    {% else %}
+    <a href="{{ url_for('auth.login') }}">
+    {% endif %}
+         Log in!
+    </a>
+</h2>
+{% endblock %}

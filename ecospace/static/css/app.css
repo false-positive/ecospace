@@ -1,0 +1,541 @@
+/* ----------------------- */
+/* BASIC SETUP */
+/* ----------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/arborct_homeslider_10.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    color: #555;
+    font-family: "Lato", "Raleway", "Arial", sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+
+button {
+    border: none;
+}
+
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* REUSABLE CONTENT */
+
+.row {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+nav {
+    z-index: 1;
+    transition: background 0.3s, border-bottom 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav .row {
+    text-align: center;
+}
+
+nav i {
+    display: inline-block;
+    color: #7ab214;
+    font-size: 130%;
+}
+
+.logo {
+    margin-top: 10px;
+    height: 60px;
+    width: auto;
+    float: left;
+}
+
+.nav-btns {
+    font-size: 110%;
+    margin-top: 15px;
+    list-style: none;
+    display: inline-block;
+}
+.nav-btns a {
+    display: inline-block;
+    margin-left: 104px;
+    margin-right: 50px;
+    color: #7ab214;
+    border: 1px solid transparent;
+    padding: 4px 12px;
+    border-radius: 10px;
+    transition: border 0.3s;
+}
+
+.nav-btns a.active {
+    color: #fff;
+    background: #7ab214;
+    transition: color 0.3s, background 0.3s;
+}
+.nav-btns a.active i {
+    color: #fff;
+    transition: color 0.3s, background 0.3s;
+}
+
+.nav-btns a.active:hover {
+    color: #7ab214;
+    background: #fff;
+}
+.nav-btns a.active:hover i {
+    color: #7ab214;
+}
+.nav-btns a:hover {
+    border: 1px solid #7ab214;
+}
+
+.nav-btns a li {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.sticky {
+    background: #fff;
+    border-bottom: 1px solid #7ab214;
+}
+
+.profile-btn {
+    float: right;
+    margin-top: 19px;
+    border: 1px solid transparent;
+    padding: 4px 12px;
+    border-radius: 10px;
+    transition: border 0.3s;
+}
+.profile-btn:hover {
+    border: 1px solid #7ab214;
+}
+.profile-btn a {
+    color: #7ab214;
+    text-decoration: none;
+}
+
+/* ------------------------------ */
+/* CONTENT */
+/* ------------------------------ */
+
+.create-event-btn {
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+.create-event-btn a:link,
+.create-event-btn a:visited {
+    padding: 11px 24px;
+    border-radius: 50px;
+    color: #fff;
+    background: #7ab214;
+    text-decoration: none;
+    font-size: 200%;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.create-event-btn a:hover,
+.create-event-btn a:active {
+    background: #85c215;
+}
+.section-nearme {
+    margin-top: 150px;
+}
+.section-nearme .event {
+    border: 2px solid #7ab214;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 3px 3px 3px -1px gray;
+    margin: 0 auto 40px auto;
+    border-radius: 10px;
+    width: 50%;
+}
+
+h4,
+h5 {
+    font-weight: 300;
+}
+
+.section-nearme .event h4 {
+    font-size: 150%;
+    float: left;
+    white-space: nowrap;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.section-my-events .event h4 {
+    width: 70%;
+}
+
+.section-nearme .event .first-part a:link,
+.section-nearme .event .first-part a:visited {
+    border-radius: 7px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    color: #7ab214;
+    padding: 5px 10px;
+    float: right;
+    transition: border 0.3s;
+}
+
+.section-nearme .event .first-part a:hover,
+.section-nearme .event .first-part a:active {
+    border: 1px solid #7ab214;
+}
+
+.section-nearme .event .second-part h5 {
+    white-space: nowrap;
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.section-nearme .event h5 {
+    margin-top: 15px;
+    float: left;
+}
+
+.section-nearme .event .third-part h5 {
+    margin-top: 10px;
+}
+
+.section-nearme .event .third-part a,
+/* TODO: rename .comin-btn to something more generic */
+.coming-btn {
+    border-radius: 7px;
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    float: right;
+}
+
+.coming {
+    background: #7ab214;
+    transition: background 0.3s;
+}
+.coming:hover {
+    background: #85c215;
+}
+.not-coming {
+    background: #dc3545;
+    transition: background 0.3s;
+}
+.not-coming:hover {
+    background: #e15260;
+}
+
+/* ------------------------------ */
+/* USER INFO SECTION */
+/* ------------------------------ */
+
+.section-profile {
+    text-align: center;
+    margin-top: 120px;
+}
+
+.section-profile .row {
+    border-radius: 25px;
+    background: #fff;
+}
+
+.section-profile h1,
+h2 {
+    font-weight: 300;
+}
+
+.section-profile h1 {
+    margin-bottom: 40px;
+}
+
+.section-profile h2 {
+    margin-bottom: 20px;
+}
+
+.section-profile h3 {
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+.section-profile .edit-icon {
+    margin-left: 3%;
+    color: #7ab214;
+    transition: color 0.3s;
+}
+.section-profile .edit-icon:hover {
+    color: #85c215;
+}
+
+.section-profile .profile-image {
+    margin-top: 20px;
+    border-radius: 10%;
+    width: 50%;
+    height: auto;
+}
+
+.logout-btn {
+    padding: 8px 15px;
+    font-size: 100%;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #fff;
+    background: #dc3545;
+    transition: background 0.3s;
+}
+.logout-btn:hover {
+    background: #e15260;
+}
+
+/* ------------------------------ */
+/* MORE INFO */
+/* ------------------------------ */
+
+.section-info {
+    margin-top: 200px;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.section-info .row {
+    background: #fff;
+}
+
+.section-info.empty-page a {
+    color: inherit;
+    transition: color 0.3s;
+}
+
+.section-info.empty-page a:hover {
+    color: #7ab214;
+}
+
+.section-info .event-info .row:first-child,
+.section-info.empty-page .row:first-child {
+    padding-top: 60px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+.section-info .last-row,
+.section-info.empty-page .row:last-child {
+    padding-bottom: 60px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.section-info .author {
+    margin: 0 15%;
+    display: block;
+}
+
+.section-info .event-info .author {
+    margin-bottom: 50px;
+}
+
+.section-info .comments .author {
+    margin-bottom: 10px;
+}
+
+.section-info h1,
+.section-info h5,
+.section-info h2 {
+    margin: 0 15%;
+    font-weight: 300;
+}
+
+.section-info h1,
+.section-info h5,
+.section-info h3,
+.section-info h2,
+.section-info p {
+    word-wrap: break-word;
+}
+
+.section-info h1 {
+    margin-bottom: 10px;
+    font-size: 240%;
+}
+
+.section-info h5 {
+    margin-bottom: 30px;
+}
+
+.section-info p {
+    line-height: 145%;
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.section-info .event-info .row:last-child {
+    padding-top: 10px;
+}
+
+.section-info .event-info .row:last-child coming-button {
+    float: left;
+    margin-left: 15%;
+}
+
+.section-info .edit-btn {
+    border-radius: 7px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    color: #7ab214;
+    padding: 5px 10px;
+    transition: border 0.3s;
+    font-size: 125%;
+    margin-left: 15%;
+}
+
+.section-info .edit-btn:hover {
+    border: 1px solid #7ab214;
+}
+
+.section-info .comments p {
+    margin-bottom: 40px;
+}
+
+.comments h2 {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.extra {
+    padding-top: 40px;
+}
+
+.extra #map {
+    width: 70% !important;
+}
+
+.section-info h3 {
+    display: inline-block;
+    font-weight: 300;
+}
+
+.section-info h3:first-child {
+    margin-left: 15%;
+    float: left;
+    margin-bottom: 10px;
+}
+.section-info h3:last-child {
+    margin-right: 15%;
+    float: left;
+}
+
+.section-info form {
+    margin: 0 15%;
+}
+
+.section-info form textarea {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    border: 0.1px solid gray;
+    padding: 10px;
+    height: 80px;
+}
+
+.section-info form input[type="submit"] {
+    margin: 10px 0;
+    padding: 11px 24px;
+    border-radius: 50px;
+    color: #fff;
+    background: #7ab214;
+    transition: background 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.section-info form input[type="submit"]:hover {
+    background: #85c215;
+}
+
+/* ------------------------------ */
+/* CREATE EVENT SECTION */
+/* ------------------------------ */
+
+.section-create-event {
+    color: #fff;
+    margin-top: 120px;
+    text-align: center;
+}
+
+.section-create-event label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.section-create-event input,
+.section-create-event textarea {
+    margin-bottom: 30px;
+    border-radius: 20px;
+    padding: 5px 15px;
+    border: 1px solid black;
+    width: 50%;
+}
+
+#map {
+    height: 300px !important;
+    width: 50%;
+    margin: 0 auto 20px auto !important;
+    z-index: 0 !important;
+    border-radius: 10px !important;
+}
+
+.date {
+    width: 20%;
+    margin: 0 auto;
+}
+
+/* .date input {
+    width: 100%;
+} */
+
+.section-create-event input[type="date"] {
+    width: 100%;
+    text-align: center;
+    /* padding-left: 2px; */
+}
+
+.section-create-event input[type="submit"] {
+    cursor: pointer;
+    font-size: 210%;
+    margin-top: 60px;
+    padding: 8px 35px;
+    color: #fff;
+    background: #7ab214;
+    border: 1px solid #7ab214;
+    transition: background 0.3s;
+}
+
+.section-create-event input[type="submit"]:hover {
+    background: #85c215;
+}
+
+/* pass-through any clicks to the link, so JS handles it properly */
+a[data-link] * {
+    pointer-events: none;
+}
+
+.participants-margin h5 {
+    margin-left: 15%;
+}

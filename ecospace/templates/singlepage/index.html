@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>ECOspace</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/normalize.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/Grid.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css/ionicons.min.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300&display=swap" rel="stylesheet">
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+            crossorigin=""
+        />
+        <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@3.0.0/dist/esri-leaflet-geocoder.css"
+        integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
+        crossorigin="">
+        <script>
+            const currentUserUsername = "{{ current_user.username }}";
+        </script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="row">
+                    <img class="logo" src="{{ url_for('static', filename='img/logo.svg') }}" alt="ECOspace logo" />
+                    <ul class="nav-btns">
+                        <a href="/events" data-link>
+                            <li><i class="ion-android-home"></i> Home</li>
+                        </a>
+                        <a href="/events/my" data-link>
+                            <li><i class="ion-calendar"></i> My events</li>
+                        </a>
+                        <a href="/events/going" data-link>
+                            <li><i class="ion-checkmark"></i> Going</li>
+                        </a>
+                        <a href="/profile" data-link>
+                            <li><i class="ion-person"></i> Profile</li>
+                        </a>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div id="content"></div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="{{ category }}" style="background-color: magenta; color: white; font-size: 3em; font-family: Georgia, 'Times New Roman', Times, serif;">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <script
+            src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""
+        ></script>
+        <script src="https://unpkg.com/esri-leaflet@3.0.1/dist/esri-leaflet.js"
+         integrity="sha512-JmpptMCcCg+Rd6x0Dbg6w+mmyzs1M7chHCd9W8HPovnImG2nLAQWn3yltwxXRM7WjKKFFHOAKjjF2SC4CgiFBg=="
+         crossorigin=""></script>
+        <script src="https://unpkg.com/esri-leaflet-geocoder@3.0.0/dist/esri-leaflet-geocoder.js"
+        integrity="sha512-vZbMwAf1/rpBExyV27ey3zAEwxelsO4Nf+mfT7s6VTJPUbYmD2KSuTRXTxOFhIYqhajaBU+X5PuFK1QJ1U9Myg=="
+        crossorigin=""></script>
+        <script src="{{ url_for('static', filename='js/mapApi.js') }}"></script>
+        <script src="{{ url_for('static', filename='vendor/js/purify.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/stickynav.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/constants.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/components/ComingButton.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/components/EventLabel.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/components/DateLabel.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/components/ParticipantsLabel.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/components/LocationLabel.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/components/UserCard.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/views/AbstractView.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/views/EventListView.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/views/NotFoundView.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/views/EventView.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/views/MyEventsView.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/views/CreateEventView.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/views/EventEditView.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/views/GoingEventsView.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/views/MyProfileView.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/router.js') }}"></script>
+    </body>
+</html>

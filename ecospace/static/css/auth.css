@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #fff;
+    color: #555;
+    font-family: "Lato", "Arial", sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    /* BG Image HAS to be defined in the HTML file */
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background.login_50.jpg); */
+    background-size: cover;
+    background-position: center;
+}
+
+.box form {
+    padding-top: 30px;
+}
+
+.box label {
+    text-align: center;
+    padding-top: 40px;
+    margin: 0 auto 20px auto;
+    display: block;
+    height: 10%;
+    font-size: 220%;
+    color: #fff;
+}
+
+.box input {
+    margin: 0 auto;
+    display: block;
+    border: none;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+    font-size: 140%;
+    height: 45px;
+    width: 30%;
+}
+.box input[type="submit"] {
+    cursor: pointer;
+    font-size: 210%;
+    margin-top: 60px;
+    padding: 8px 35px;
+    color: #fff;
+    background: #7ab214;
+    transition: background 0.3s;
+}
+
+.box input[type="submit"]:hover {
+    background: #85c215;
+}
+
+.box h2 {
+    font-size: 110%;
+    color: #fff;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.box h2 a:link,
+.box h2 a:visited {
+    text-decoration: none;
+    color: #7ab214;
+    transition: color 0.3s;
+}
+
+.box h2 a:hover,
+.box h2 a:active {
+    color: #85c215;
+}
+
+.message {
+    color: #fff;
+    background-color: #dc3545;
+    padding: 10px 20px;
+    position: fixed;
+    border-radius: 20px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120%;
+}
