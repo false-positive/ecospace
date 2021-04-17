@@ -91,9 +91,6 @@ Here's a list of libraries and projects that are used in this codebase:
 ![home page](./assets/home.png)
 ![my events page](./assets/my_events.png)
 ![going page](./assets/going.png)
-
-<!-- ![profile page](./assets/profile.png) <!-- add when profile page looks good -->
-
 ![event details page](./assets/event.png)
 ![comments section](./assets/comments.png)
 ![create event page](./assets/create_event.png)
