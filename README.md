@@ -77,14 +77,14 @@ $ . venv/bin/activate  # Активирайте виртуалната сред�
 
 Ето списък с библиотеки и проекти, използвани в тази кодова база:
 
--   [Flask](https://github.com/pallets/flask), лицензиран(а) под BSD-3-Clause лиценз
--   [FlaskRESTful](https://github.com/flask-restful/flask-restful), лицензиран(а) под BSD-3-Clause лиценз
--   [FlaskSQLAlchemy](https://github.com/pallets/flask-sqlalchemy), лицензиран(а) под BSD-3-Clause лиценз
--   [PyJWT](https://github.com/jpadilla/pyjwt), лицензиран(а) под MIT лиценз
--   [Leaflet](https://github.com/Leaflet/Leaflet), лицензиран(а) под BSD-2-Clause лиценз
--   [DOMPurify](https://github.com/cure53/DOMPurify), лицензиран(а) под двоен лиценз от Apache-2.0 и MPL-2.0
--   [Ionicons](https://github.com/ionic-team/ionicons), лицензиран(а) под MIT лиценз
--   [normalize.css](https://github.com/necolas/normalize.css/), лицензиран(а) под MIT лиценз
+-   [Flask](https://github.com/pallets/flask), лицензиран(а) под BSD-3-Clause лиценза
+-   [FlaskRESTful](https://github.com/flask-restful/flask-restful), лицензиран(а) под BSD-3-Clause лиценза
+-   [FlaskSQLAlchemy](https://github.com/pallets/flask-sqlalchemy), лицензиран(а) под BSD-3-Clause лиценза
+-   [PyJWT](https://github.com/jpadilla/pyjwt), лицензиран(а) под MIT лиценза
+-   [Leaflet](https://github.com/Leaflet/Leaflet), лицензиран(а) под BSD-2-Clause лиценза
+-   [DOMPurify](https://github.com/cure53/DOMPurify), лицензиран(а) под двоен лиценз от Apache-2.0 и MPL-2.0а
+-   [Ionicons](https://github.com/ionic-team/ionicons), лицензиран(а) под MIT лиценза
+-   [normalize.css](https://github.com/necolas/normalize.css/), лицензиран(а) под MIT лиценза
 
 ## Снимки
 
