@@ -2,63 +2,65 @@
 
 <!-- README inspired by https://github.com/nukeop/nuclear/ -->
 
-> A _social network_ for people passionate about the environment.
+> _Социална мрежа_ за хора, заинтересувани от околната среда.
 
-![ECOspace landing page](./assets/landing.png)
+![целевата страница на ECOspace](./assets/landing.png)
 
-# Links
+> If you're looking for the English translation, [it's here](https://github.com/false-positive/ecospace/blob/b6004ebf4515278669edcc9e143b5549bb6c23e7/README.md)
+
+# Линкове
 
 [Wiki](https://github.com/false-positive/ecospace/wiki)
 
 [ECOspace Trello Board](https://trello.com/b/FBcRwvkN/ecospace)
 
-## What is ECOspace?
+## Какво е ECOspace?
 
-ECOspace is _social network_ designed to ease the organization of groups of volunteers who want to help the conservation of their local natural sights and reduce the global pollution. This happens by creating events in which every user can participate.
+ECOspace е _социална мрежа_, предназначена да улесни организирането на групи от доброволци със желание да помогнат с опазването на своите местни природни забележителности и да намалят глобалното замърсяване. Това се случва чрез създаване на събития, в които всеки потребител може да участва.
 
-### Features
+### Функции
 
--   Robust and efficient event creation system
--   Easy to use map for selecting and viewing events' locations
--   Per-event comment section
--   Lots of pictures of green plants
+-   Здрава и ефективна система за организиране на събития
+-   Лесна за използване карта за гледане и избиране на местоположенията на събития
+-   Раздел за коментари под всяко събитие
+-   Много снимки на зелени растения
 
-## Installation and Running
+## Инсталация и стартиране
 
-You will need to have git and Python 3.7+ installed and they have to be accessible from the commandline.
+За да стартирате ECOspace от Вашия компютър, трябва да имате git and Python 3.7+ инсталирани и достъпни от командния ред.
 
-### Installation
+### Инсталация
 
-Clone the source code and install all the dependencies. It is recommended that you install them inside a virtual environment.
+Клонирайте кода и инсталирайте всичките негови зависимости. Препоръчително е да ги инсталирате в Python виртуална среда.
 
-> It is assumed that you are running these commands in a POSIX-compliant shell.
-> If you're on a Windows command prompt, most of the commands work the same way, but there are some differences, which are noted below.
+> Допускаме, че Вие изпълнявате тези команди в POSIX-compliant shell (пр. bash) на Linux.
+> Ако работите от Windows, повечето команди работят по същия начин, но има няколко разлики, които са отбелязани по-долу.
 
 ```shell
 $ git clone https://github.com/false-positive/ecospace
 $ cd ecospace/
-$ python -m venv venv  # Create a virtual environment
-$ . venv/bin/activate  # Activate the virtual environment
+$ python -m venv venv  # Създайте виртуалната среда
+$ . venv/bin/activate  # Активирайте виртуалната среда
 (venv) $
 ```
 
-> If you're on windows, run `.\venv\Scripts\activate.bat` to activate the virtual environment
+> Под Windows, използвайте `.\venv\Scripts\activate.bat` за да активирате виртуалната среда.
 
-Once you have activated the venv, you can install ECOspace inside of it, along with all its dependencies using:
+След като виртуалната Python среда е активирана, можете да инсталирате ECOspace, заедно със зависимостите си, използвайки:
 
 ```shell
 (venv) $ pip install -e .
 ```
 
-### Running
+### Стартиране
 
-To run ECOspace, there are 3 steps involved:
+Процеса на стартиране на ECOspace включва 3 стъпки:
 
-1. Configure your environment by setting some variables
-2. Initialize the database
-3. Run ECOspace
+1. Конфигуриране на Вашата среда със задаване на променливи на средата
+2. Инициализиране на базата данни (необходимо само при първото изпълнение)
+3. Стартиране на ECOspace
 
-That is done by running the following commands:
+Това става със следните команди
 
 ```shell
 (venv) $ export FLASK_APP=ecospace
@@ -67,40 +69,40 @@ That is done by running the following commands:
 (venv) $ flask run
 ```
 
-> On Windows, replace `export` with `set`
+> Под Windows, заменете `export` със `set`
 
-And then you can open <http://localhost:5000> in your browser to see ECOspace in action.
+И тогава можете да отворите <http://localhost:5000> за да видите ECOspace в действие.
 
-## Attributions
+## Технологии
 
-Here's a list of libraries and projects that are used in this codebase:
+Ето списък с библиотеки и проекти, използвани в тази кодова база:
 
--   [Flask](https://github.com/pallets/flask), Licensed under the BSD-3-Clause License
--   [FlaskRESTful](https://github.com/flask-restful/flask-restful), Licensed under the BSD-3-Clause License
--   [FlaskSQLAlchemy](https://github.com/pallets/flask-sqlalchemy), Licensed under the BSD-3-Clause License
--   [PyJWT](https://github.com/jpadilla/pyjwt), Licensed under the MIT License
--   [Leaflet](https://github.com/Leaflet/Leaflet), Licensed under the BSD-2-Clause License
--   [DOMPurify](https://github.com/cure53/DOMPurify), Licensed under a dual license of Apache-2.0 and MPL-2.0
--   [Ionicons](https://github.com/ionic-team/ionicons), Licensed under the MIT License
--   [normalize.css](https://github.com/necolas/normalize.css/), Licensed under the MIT License
+-   [Flask](https://github.com/pallets/flask), лицензиран(а) под BSD-3-Clause лиценз
+-   [FlaskRESTful](https://github.com/flask-restful/flask-restful), лицензиран(а) под BSD-3-Clause лиценз
+-   [FlaskSQLAlchemy](https://github.com/pallets/flask-sqlalchemy), лицензиран(а) под BSD-3-Clause лиценз
+-   [PyJWT](https://github.com/jpadilla/pyjwt), лицензиран(а) под MIT лиценз
+-   [Leaflet](https://github.com/Leaflet/Leaflet), лицензиран(а) под BSD-2-Clause лиценз
+-   [DOMPurify](https://github.com/cure53/DOMPurify), лицензиран(а) под двоен лиценз от Apache-2.0 и MPL-2.0
+-   [Ionicons](https://github.com/ionic-team/ionicons), лицензиран(а) под MIT лиценз
+-   [normalize.css](https://github.com/necolas/normalize.css/), лицензиран(а) под MIT лиценз
 
-## Screenshots
+## Снимки
 
-![register page](./assets/register.png)
-![login page](./assets/login.png)
-![home page](./assets/home.png)
-![my events page](./assets/my_events.png)
-![going page](./assets/going.png)
-![event details page](./assets/event.png)
-![comments section](./assets/comments.png)
-![create event page](./assets/create_event.png)
-![edit event page](./assets/edit_event.png)
+![страница за регистриране](./assets/register.png)
+![страница за влизане в профил](./assets/login.png)
+![начална страница](./assets/home.png)
+![страница с мои събития](./assets/my_events.png)
+![страница със събития, на които съм записан](./assets/going.png)
+![страница с детайли за събитие](./assets/event.png)
+![секция с коментари](./assets/comments.png)
+![страница за създаване на събитие](./assets/create_event.png)
+![страница за редактиране на събитие](./assets/edit_event.png)
 
-## License
+## Лиценз
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-See [LICENSE](./LICENSE) for more details.
+Прочетете [LICENSE](./LICENSE) за повече детайли.
