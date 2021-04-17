@@ -82,7 +82,7 @@ $ . venv/bin/activate  # Активирайте виртуалната сред�
 -   [FlaskSQLAlchemy](https://github.com/pallets/flask-sqlalchemy), лицензиран(а) под BSD-3-Clause лиценза
 -   [PyJWT](https://github.com/jpadilla/pyjwt), лицензиран(а) под MIT лиценза
 -   [Leaflet](https://github.com/Leaflet/Leaflet), лицензиран(а) под BSD-2-Clause лиценза
--   [DOMPurify](https://github.com/cure53/DOMPurify), лицензиран(а) под двоен лиценз от Apache-2.0 и MPL-2.0а
+-   [DOMPurify](https://github.com/cure53/DOMPurify), лицензиран(а) под двоен лиценз от Apache-2.0 и MPL-2.0
 -   [Ionicons](https://github.com/ionic-team/ionicons), лицензиран(а) под MIT лиценза
 -   [normalize.css](https://github.com/necolas/normalize.css/), лицензиран(а) под MIT лиценза
 
