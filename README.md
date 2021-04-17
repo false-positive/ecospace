@@ -8,6 +8,7 @@
 
 # Links
 
+[Wiki](https://github.com/false-positive/ecospace/wiki)
 [ECOspace Trello Board](https://trello.com/b/FBcRwvkN/ecospace)
 
 ## What is ECOspace?
