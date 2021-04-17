@@ -267,6 +267,11 @@ h2 {
     margin-bottom: 40px;
 }
 
+.section-profile h1 span {
+    color: black;
+    font-family: "Lato", "Raleway", "Arial", sans-serif;
+}
+
 .section-profile h2 {
     margin-bottom: 20px;
 }
@@ -276,8 +281,27 @@ h2 {
     margin-bottom: 30px;
 }
 
-.section-profile .edit-icon {
+.section-profile input {
+    font-family: "Lato", "Raleway", "Arial", sans-serif;
+    font-weight: 300;
+    text-align: center;
+    border: 1px solid #c4c4c4;
+    border-radius: 10px;
+    transition: border 0.3s;
+}
+
+.section-profile input[readonly] {
+    background: transparent;
+    border: 1px solid transparent;
+    text-align: center;
+}
+
+.section-profile button {
     margin-left: 3%;
+    background: transparent;
+}
+
+.section-profile .edit-icon {
     color: #7ab214;
     transition: color 0.3s;
 }
