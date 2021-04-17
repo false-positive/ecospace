@@ -242,3 +242,7 @@ footer ul {
 footer ul li {
     margin-bottom: 8px;
 }
+
+footer a {
+    color: #fff;
+}

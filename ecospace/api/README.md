@@ -8,33 +8,58 @@ You will need Python 3.7 or later to install the package and its dependencies.
 
 It is recommended that you install everything in a virtual environment, using:
 
+### Linux
+
 ```shell
 $ python -m venv venv
 $ . venv/bin/activate
 (venv) $ pip install --editable .
 ```
 
-Next you need to configure the flask environment
-
 ```shell
 (venv) $ export FLASK_APP=ecospace
 (venv) $ export FLASK_ENV=development
 ```
 
-And finally, setup the database and apply all migrations using
-
 ```shell
 (venv) $ flask db upgrade
+```
+
+### Windows
+
+```shell
+python -m venv venv
+.\venv\Scripts\activate.bat
+(venv) pip install --editable .
+```
+
+```shell
+(venv) set FLASK_APP=ecospace
+(venv) set FLASK_ENV=development
+```
+
+```shell
+(venv) flask db upgrade
 ```
 
 If all goes well, you can move on to [the next section](#Running).
 
 ## Running
 
+### Linux
+
 ```shell
 (venv) $ export FLASK_APP=ecospace
 (venv) $ export FLASK_ENV=development
 (venv) $ flask run
+```
+
+### Windows
+
+```shell
+(venv) set FLASK_APP=ecospace
+(venv) set FLASK_ENV=development
+(venv) flask run
 ```
 
 ## Basic API usage
@@ -106,7 +131,7 @@ An event's data looks like this:
 
 ### Users
 
-#### `GET /users`
+#### `GET api/users`
 
 Get a list of all users
 
@@ -222,7 +247,7 @@ Example response:
 }
 ```
 
-#### `GET /users/:username`
+#### `GET api/users/:username`
 
 Get a certain user by his `username`
 
@@ -247,7 +272,7 @@ Example response:
 }
 ```
 
-#### `PUT /users`
+#### `PUT api/users`
 
 The PUT request is used to edit a user's information such as full name and password.
 
@@ -284,7 +309,7 @@ Example response:
 }
 ```
 
-#### `DELETE /users`
+#### `DELETE api/users`
 
 Delete a certain user.
 
@@ -300,7 +325,7 @@ Status codes:
 
 ### Events
 
-#### `GET /events`
+#### `GET api/events`
 
 Get a list of all event
 
@@ -370,7 +395,7 @@ Example response:
 }
 ```
 
-#### `GET /event/:public_id`
+#### `GET api/events/:public_id`
 
 Get a certain event by its `public_id`
 
@@ -404,7 +429,7 @@ Example response:
 }
 ```
 
-#### `POST /event`
+#### `POST api/events`
 
 The POST request is used to register a new event.
 Required arguments:
@@ -435,7 +460,7 @@ Status codes:
 }
 ```
 
-#### `PUT /event`
+#### `PUT api/events/:public_id`
 
 The PUT request is used to edit an event's information such as name and its participants.
 
@@ -474,7 +499,7 @@ Example response:
 }
 ```
 
-#### `PUT /events/event_id/users`
+#### `PUT /events/:event_id/users`
 
 Add the current user to the event.
 
@@ -532,7 +557,7 @@ Example response:
 }
 ```
 
-#### `DELETE /events/event_id/users`
+#### `DELETE /events/:event_id/users`
 
 Remove the current user from the event
 
@@ -562,7 +587,7 @@ Example response:
 }
 ```
 
-#### `DELETE /event`
+#### `DELETE api/events/:event_id`
 
 Delete a certain event.
 
@@ -575,12 +600,171 @@ Status codes:
 
 -   `204 No Content` - the event was deleted successfully
 -   `403 Forbidden` - unathourized attempt at deleting event
+
 ### Comments
 
-#### `GET /comment`
+#### `GET api/events/:event_id/comments`
+
+Get a list of all comments on event with event_id
+
+Example response:
+
+```json
+{
+    "data": [
+        {
+            "public_id": "cc297dee-eb11-4b01-9c89-6f4f8cef1f39",
+            "date": "2021-04-17T08:31:13.416252",
+            "content": "testing comments\r\n",
+            "author": "asdf",
+            "child_comments": []
+        },
+        {
+            "public_id": "730e4582-450d-4535-b47c-6bf2e31c8ee2",
+            "date": "2021-04-17T08:31:20.501292",
+            "content": "testing comments even more",
+            "author": "asdf",
+            "child_comments": []
+        },
+        {
+            "public_id": "0246ccd5-5b7d-42e0-97cb-9096c930c28c",
+            "date": "2021-04-17T08:31:25.467035",
+            "content": "and more",
+            "author": "asdf",
+            "child_comments": []
+        }
+    ],
+    "message": "comments listed successfully"
+}
+```
+
+#### `GET api/events/:event_id/comments/:comment_id`
+
+Get a comment with comment_id and its child comments 
+
+Example response:
+```json
+{
+    "data": {
+        "public_id": "cc297dee-eb11-4b01-9c89-6f4f8cef1f39",
+        "date": "2021-04-17T08:31:13.416252",
+        "content": "testing comments\r\n",
+        "author": "asdf",
+        "child_comments": []
+    },
+    "message": "comment successfully found"
+}
+
+```
+
+#### `POST api/events/:event_id/comments/new`
+
+Create a new comment under event with event_id
+Required arguments:
+
+- `content`
+- `x-access-token`
+
+Status codes:
+
+-   `201 Created` - the comment was created
+
+Example response:
+
+```json
+{
+    "data": {
+        "d22f0085-ff69-4e86-abd4-6498c20cd545": {
+            "public_id": "d22f0085-ff69-4e86-abd4-6498c20cd545",
+            "date": "2021-04-17T08:09:41.670102",
+            "content": "test",
+            "author": "asdf",
+            "child_comments": []
+        }
+    },
+    "message": "comment successfully posted"
+}
+```
+
+#### Currently under-development
+
+##### `POST api/events/:event_id/comments/:comment_id`
+
+Create a new comment under comment with comment_id
+
+Required arguments:
+
+- `content`
+- `x-access-token`
+
+Status codes:
+
+-   `201 Created` - the comment was created
+
+Example response:
+
+```json
+{
+    "data": {
+        "9a69ee35-27e4-4504-bc6e-69af5d1e259c": {
+            "public_id": "9a69ee35-27e4-4504-bc6e-69af5d1e259c",
+            "date": "2021-04-17T09:39:58.590543",
+            "content": "testing child comments",
+            "author": "asdf",
+            "child_comments": []
+        }
+    },
+    "message": "comment successfully posted"
+}
+```
+#### `PUT api/events/:event_id/comments/:comment_id`
+
+Edit comment with comment_id
+
+Required arguments:
+
+- `x-access-token`
+- `content`
+
+Status codes:
+
+- `200 - OK` - the comment was edited
+- `403 Forbidden` - unathourized attempt at editing comment
+
+Example response:
+
+```json
+{
+    "data": {
+        "d22f0085-ff69-4e86-abd4-6498c20cd545": {
+            "public_id": "d22f0085-ff69-4e86-abd4-6498c20cd545",
+            "date": "2021-04-17T08:09:41.670102",
+            "content": "edited",
+            "author": "asdf",
+            "child_comments": []
+        }
+    },
+    "message": "comment edited successfully"
+}
+```
+
+#### `DELETE api/events/:event_id/comments/:comment_id`
+
+Delete comment with comment_id
+
+Required arguments:
+
+-   `public_id`
+-   `x-access-token`
+
+Status codes:
+
+-   `204 No Content` - the event was deleted successfully
+-   `403 Forbidden` - unathourized attempt at deleting event
+
 ### Authentication
 
-#### `GET /auth`
+#### `GET api/auth`
 
 Login to selected account with `username` and `password`. After the login it returns a `x-access-token`.
 
@@ -595,7 +779,7 @@ Example response:
 
 The `data` returned is the `x-access-token`
 
-#### `POST /auth`
+#### `POST api/auth`
 
 The POST request is used to register a new user.
 Required arguments:
@@ -628,5 +812,5 @@ Example response:
     "message": "user registered successfully"
 }
 ```
-<!-- TODO: Actually document comments, man am i lazy - Kala -->
+
 <!-- TODO: Document even more stuff -->
