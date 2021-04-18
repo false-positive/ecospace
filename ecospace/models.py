@@ -27,7 +27,8 @@ class UserModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), unique=True)
-    full_name = db.Column(db.String(50))  # TODO: Get `username` by default
+    first_name = db.Column(db.String(50), nullable=True)
+    last_name = db.Column(db.String(50), nullable=True)
     description = db.Column(db.String(250), default='', nullable=False)
     password = db.Column(db.String(80), nullable=False)
     avatar = db.Column(db.String(50))  # TODO: Maybe make unique??
@@ -49,6 +50,10 @@ class UserModel(db.Model):
         user = cls.query.filter_by(username=payload['username']).first()
         return user
 
+    @property
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
+
     def get_avatar_url(self):
         if self.avatar is None:
             return url_for('static', filename='img/avatar.png')
@@ -57,6 +62,8 @@ class UserModel(db.Model):
     def get_response(self):
         return {
             'username': self.username,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
             'full_name': self.full_name,
             'description': self.description,
             'avatar_url': self.get_avatar_url(),
