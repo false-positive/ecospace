@@ -1,12 +1,17 @@
 import functools
 
 from flask import make_response
-from flask_restful import abort, Resource, request
+from flask_restful import abort, Resource, request, reqparse
 from werkzeug.security import check_password_hash, generate_password_hash
 import jwt
 
 from ..models import UserModel, db
-from .user import user_form_parser
+
+user_form_parser = reqparse.RequestParser()
+user_form_parser.add_argument('username', required=True)
+user_form_parser.add_argument('first_name')
+user_form_parser.add_argument('last_name')
+user_form_parser.add_argument('password', required=True)
 
 
 class AuthResource(Resource):

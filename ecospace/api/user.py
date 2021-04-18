@@ -6,13 +6,6 @@ from werkzeug.security import generate_password_hash
 from ..models import UserModel, db
 from .auth import auth_token
 
-user_form_parser = reqparse.RequestParser()
-user_form_parser.add_argument('username', required=True)
-user_form_parser.add_argument('first_name')
-user_form_parser.add_argument('last_name')
-user_form_parser.add_argument('password', required=True)
-
-
 user_edit_form_parser = reqparse.RequestParser()
 user_edit_form_parser.add_argument('first_name', type=str)
 user_edit_form_parser.add_argument('last_name', type=str)
