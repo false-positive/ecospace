@@ -80,7 +80,8 @@ def register():
             user = UserModel(
                 username=username,
                 password=generate_password_hash(password),
-                full_name=f'{first_name.strip()} {last_name.strip()}',
+                first_name=first_name.strip(),
+                last_name=last_name.strip(),
             )
             db.session.add(user)
             db.session.commit()
