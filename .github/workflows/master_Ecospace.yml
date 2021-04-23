@@ -59,6 +59,6 @@ jobs:
             - name: "Deploy to Azure Web App"
               uses: azure/webapps-deploy@v2
               with:
-                  app-name: "ecospace"
+                  app-name: "Ecospace"
                   slot-name: "production"
                   publish-profile: ${{ secrets.AzureAppService_PublishProfile_34426d2d046a475f95c7bfcf9cd0ac29 }}
