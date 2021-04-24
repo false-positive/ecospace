@@ -1,12 +1,12 @@
 import functools
 from uuid import uuid4
+import datetime as dt
 
 from flask_restful import abort, Resource, reqparse
 
-from ..models import CommentModel, db
+from ..models import EventModel, CommentModel, db
 from .auth import auth_token
 from .event import pass_event
-
 
 def pass_comment(view):
     """Decorator to pass a parameter to a view"""
@@ -24,7 +24,6 @@ def pass_comment(view):
 
     return wrapped_view
 
-
 def pass_parent_comment(view):
     """Decorator to pass a parameter to a view"""
 
@@ -39,21 +38,18 @@ def pass_parent_comment(view):
 
     return wrapped_view
 
-
 comment_form_parser = reqparse.RequestParser()
 comment_form_parser.add_argument('content', required=True)
 
-
 class CommentList(Resource):
     @pass_event
-    def get(self, event):
+    def get(self,event):
         comments = event.comments
         result = [comment.get_response() for comment in comments]
         return {
             'data': result,
             'message': 'comments listed successfully',
         }
-
     @pass_event
     @auth_token
     def post(self, current_user, event):
@@ -70,7 +66,6 @@ class CommentList(Resource):
             'data': {new_comment.public_id: new_comment.get_response()},
             'message': 'comment successfully posted',
         }
-
 
 class Comment(Resource):
     @pass_comment

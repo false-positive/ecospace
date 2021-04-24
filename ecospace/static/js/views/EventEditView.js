@@ -54,34 +54,45 @@ class EventEditView extends AbstractView {
         let markerLat = null;
         let markerLng = null;
 
-        // console.log(`https://www.google.pt/maps/@${latitude},${longitude}`);
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    const { latitude } = position.coords;
+                    const { longitude } = position.coords;
+                    // console.log(`https://www.google.pt/maps/@${latitude},${longitude}`);
 
-        let mapElement = document.querySelector("#map");
+                    let mapElement = document.querySelector("#map");
 
-        const coords = [Number(mapElement.dataset.lat), Number(mapElement.dataset.lng)];
+                    const coords = [Number(mapElement.dataset.lat), Number(mapElement.dataset.lng)];
 
-        let map = L.map("map").setView(coords, 13);
+                    let map = L.map("map").setView(coords, 13);
 
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(map);
+                    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    }).addTo(map);
 
-        let marker = L.marker(coords).addTo(map);
+                    let marker = L.marker(coords).addTo(map);
 
-        markerLat = coords[0];
-        markerLng = coords[1];
+                    markerLat = coords[0];
+                    markerLng = coords[1];
 
-        map.on("click", function (mapEvent) {
-            if (marker) {
-                marker.remove();
-            }
+                    map.on("click", function (mapEvent) {
+                        if (marker) {
+                            marker.remove();
+                        }
 
-            const { lat, lng } = mapEvent.latlng;
+                        const { lat, lng } = mapEvent.latlng;
 
-            marker = L.marker([lat, lng]).addTo(map);
-            markerLat = lat;
-            markerLng = lng;
-        });
+                        marker = L.marker([lat, lng]).addTo(map);
+                        markerLat = lat;
+                        markerLng = lng;
+                    });
+                },
+                function () {
+                    alert("Could not get your position!");
+                }
+            );
+        }
         root.querySelector("#submit").addEventListener("click", () => this.createEventSubmit(markerLat, markerLng));
     }
 

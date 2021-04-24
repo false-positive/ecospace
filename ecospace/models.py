@@ -1,7 +1,6 @@
 import datetime as dt
 
 import jwt
-import sqlalchemy as sa
 from flask import current_app, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -28,13 +27,11 @@ class UserModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), unique=True)
-    first_name = db.Column(db.String(50), nullable=True)
-    last_name = db.Column(db.String(50), nullable=True)
+    full_name = db.Column(db.String(50))  # TODO: Get `username` by default
     description = db.Column(db.String(250), default='', nullable=False)
     password = db.Column(db.String(80), nullable=False)
     avatar = db.Column(db.String(50))  # TODO: Maybe make unique??
     organized_events = db.relationship('EventModel', backref='organizer', lazy=True)
-    trusted = db.Column(db.Boolean, server_default=sa.true(), nullable=True)
     comments = db.relationship('CommentModel', backref='author', lazy=True)
     # https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/#many-to-many-relationships
     events = db.relationship('EventModel', secondary=events, lazy='subquery', backref=db.backref('participants', lazy=True))
@@ -52,10 +49,6 @@ class UserModel(db.Model):
         user = cls.query.filter_by(username=payload['username']).first()
         return user
 
-    @property
-    def full_name(self):
-        return f'{self.first_name} {self.last_name}'
-
     def get_avatar_url(self):
         if self.avatar is None:
             return url_for('static', filename='img/avatar.png')
@@ -64,8 +57,6 @@ class UserModel(db.Model):
     def get_response(self):
         return {
             'username': self.username,
-            'first_name': self.first_name,
-            'last_name': self.last_name,
             'full_name': self.full_name,
             'description': self.description,
             'avatar_url': self.get_avatar_url(),
@@ -98,7 +89,7 @@ class EventModel(db.Model):
             'location': self.location,
             'organizer_username': self.organizer.username,
             'participants': [participant.username for participant in self.participants],
-            'comments': [comment.get_response() for comment in self.comments if comment.author.trusted]
+            'comments': [comment.get_response() for comment in self.comments]
         }
 
     def __str__(self):
