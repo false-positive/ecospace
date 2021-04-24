@@ -147,7 +147,7 @@ async function createComment(eventId, content) {
     });
 }
 
-async function updateUser(fullname) {
+async function updateUser({ first_name, last_name }) {
     let response = await fetch(`${URL}/users/${currentUserUsername}`, {
         method: "PUT",
         // mode: "no-cors",
@@ -156,7 +156,8 @@ async function updateUser(fullname) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            full_name: fullname,
+            first_name,
+            last_name,
         }),
     });
     let { data } = await response.json();
