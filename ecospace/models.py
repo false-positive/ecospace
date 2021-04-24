@@ -1,6 +1,7 @@
 import datetime as dt
 
 import jwt
+import sqlalchemy as sa
 from flask import current_app, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -33,6 +34,7 @@ class UserModel(db.Model):
     password = db.Column(db.String(80), nullable=False)
     avatar = db.Column(db.String(50))  # TODO: Maybe make unique??
     organized_events = db.relationship('EventModel', backref='organizer', lazy=True)
+    trusted = db.Column(db.Boolean, server_default=sa.true(), nullable=True)
     comments = db.relationship('CommentModel', backref='author', lazy=True)
     # https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/#many-to-many-relationships
     events = db.relationship('EventModel', secondary=events, lazy='subquery', backref=db.backref('participants', lazy=True))
