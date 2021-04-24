@@ -19,7 +19,6 @@ def generate_config(path):
         file.write(content)
         print('Created config file with secret key')
 
-
 def create_app():
     """Create and configure an instance of a Flask app"""
     app = Flask(__name__, instance_relative_config=True)
@@ -67,5 +66,4 @@ def create_app():
     # This must be registered last, so it doesn't override anything
     from . import singlepage
     app.register_blueprint(singlepage.bp)
-
     return app
