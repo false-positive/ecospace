@@ -39,7 +39,7 @@ def pass_event(view):
 
 class EventList(Resource):
     def get(self):
-        events = EventModel.query.all()
+        events = EventModel.query.filter(EventModel.organizer.has(trusted=True)).all()
         return {
             'data': {event.public_id: event.get_response() for event in events},
             'message': 'events listed successfully',

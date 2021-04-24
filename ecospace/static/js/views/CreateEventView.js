@@ -46,10 +46,12 @@ class CreateEventView extends AbstractView {
         let markerLng = null;
 
         if (navigator.geolocation) {
+            let latitude = 42.7339;
+            let longitude = 25.4858;
             navigator.geolocation.getCurrentPosition(
                 function (position) {
-                    const { latitude } = position.coords;
-                    const { longitude } = position.coords;
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
                     // console.log(`https://www.google.pt/maps/@${latitude},${longitude}`);
 
                     const coords = [latitude, longitude];
@@ -75,7 +77,27 @@ class CreateEventView extends AbstractView {
                     });
                 },
                 function () {
-                    alert("Could not get your position!");
+                    const coords = [latitude, longitude];
+
+                    let map = L.map("map").setView(coords, 13);
+
+                    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    }).addTo(map);
+
+                    let marker = null;
+
+                    map.on("click", function (mapEvent) {
+                        if (marker) {
+                            marker.remove();
+                        }
+
+                        const { lat, lng } = mapEvent.latlng;
+
+                        marker = L.marker([lat, lng]).addTo(map);
+                        markerLat = lat;
+                        markerLng = lng;
+                    });
                 }
             );
         }

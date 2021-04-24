@@ -6,13 +6,9 @@ from werkzeug.security import generate_password_hash
 from ..models import UserModel, db
 from .auth import auth_token
 
-user_form_parser = reqparse.RequestParser()
-user_form_parser.add_argument('username')
-user_form_parser.add_argument('full_name')
-user_form_parser.add_argument('password', required=True)
-
 user_edit_form_parser = reqparse.RequestParser()
-user_edit_form_parser.add_argument('full_name', type=str)
+user_edit_form_parser.add_argument('first_name', type=str)
+user_edit_form_parser.add_argument('last_name', type=str)
 user_edit_form_parser.add_argument('description', type=str)
 user_edit_form_parser.add_argument('password', type=str)
 
@@ -60,7 +56,8 @@ class User(Resource):
             abort(403, message='cannot edit that user')
 
         args = user_edit_form_parser.parse_args()
-        user.full_name = args.get('full_name') or user.full_name
+        user.first_name = args.get('first_name') or user.first_name
+        user.last_name = args.get('last_name') or user.last_name
         password = args.get('password')
         if password:
             user.password = generate_password_hash(password)

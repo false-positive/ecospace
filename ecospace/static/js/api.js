@@ -146,3 +146,20 @@ async function createComment(eventId, content) {
         }),
     });
 }
+
+async function updateUser({ first_name, last_name }) {
+    let response = await fetch(`${URL}/users/${currentUserUsername}`, {
+        method: "PUT",
+        // mode: "no-cors",
+        headers: {
+            "x-access-token": token,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            first_name,
+            last_name,
+        }),
+    });
+    let { data } = await response.json();
+    return data;
+}

@@ -9,7 +9,8 @@ from ..models import UserModel, db
 
 user_form_parser = reqparse.RequestParser()
 user_form_parser.add_argument('username', required=True)
-user_form_parser.add_argument('full_name')
+user_form_parser.add_argument('first_name')
+user_form_parser.add_argument('last_name')
 user_form_parser.add_argument('password', required=True)
 
 
@@ -47,7 +48,8 @@ class AuthResource(Resource):
 
         new_user = UserModel(
             username=username,
-            full_name=args.get('full_name'),
+            first_name=args.get('first_name'),
+            last_name=args.get('last_name'),
             password=generate_password_hash(args.get('password'))
         )
         db.session.add(new_user)
