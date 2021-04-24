@@ -98,7 +98,7 @@ class EventModel(db.Model):
             'location': self.location,
             'organizer_username': self.organizer.username,
             'participants': [participant.username for participant in self.participants],
-            'comments': [comment.get_response() for comment in self.comments]
+            'comments': [comment.get_response() for comment in self.comments if comment.author.trusted]
         }
 
     def __str__(self):
