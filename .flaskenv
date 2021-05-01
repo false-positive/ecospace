@@ -1,0 +1,2 @@
+FLASK_APP=ecospace
+FLASK_ENV=development

@@ -15,5 +15,6 @@ setup(
         'flask-migrate',
         'Pillow',
         'PyJWT',
+        'python-dotenv',
     ]
 )
