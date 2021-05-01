@@ -5,7 +5,8 @@ The views for login and register.
 import functools
 import datetime as dt
 
-from flask import Blueprint, render_template, request, redirect, url_for, flash, make_response, g
+import jwt
+from flask import Blueprint, render_template, request, after_this_request, redirect, url_for, flash, make_response, g
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from .models import UserModel, db
@@ -28,11 +29,18 @@ def login_required(view):
 
 @bp.before_app_request
 def load_logged_in_user():
-    if 'token' in request.cookies:
-        # get the user
+    try:
+        # Get the user
         g.user = UserModel.decode_auth_token(request.cookies['token'])
-    else:
+    except KeyError:
         g.user = None
+    except jwt.InvalidTokenError:
+        g.user = None
+
+        @after_this_request
+        def remove_token_cookie(response):
+            response.delete_cookie('token')
+            return response
 
 
 @bp.route('/login', methods=('GET', 'POST'))

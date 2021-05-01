@@ -1,7 +1,7 @@
 import os
 from contextlib import suppress
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, g
 from flask_cors import CORS
 
 __version__ = '0.2.0'
@@ -49,7 +49,7 @@ def create_app():
 
     @app.route('/')
     def landing():
-        if not request.cookies.get('token'):
+        if not g.user:
             return render_template('landing.html')
         else:
             return redirect(url_for('singlepage.index', route='events'))
