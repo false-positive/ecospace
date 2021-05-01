@@ -6,7 +6,7 @@ import functools
 import datetime as dt
 
 import jwt
-from flask import Blueprint, render_template, request, after_this_request, redirect, url_for, flash, make_response, g
+from flask import Blueprint, render_template, request, after_this_request, redirect, url_for, flash, make_response, g, current_app
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from .models import UserModel, db
@@ -55,7 +55,11 @@ def login():
         else:
             route = request.form.get('then') or 'events'
             response = make_response(redirect(url_for('singlepage.index', route=route)))
-            response.set_cookie('token', user.encode_auth_token(), expires=dt.datetime.now() + dt.timedelta(days=30), samesite='strict')
+            response.set_cookie(
+                'token', user.encode_auth_token(),
+                expires=dt.datetime.now() + dt.timedelta(days=current_app.config['TOKEN_EXPIRE_DAYS']),
+                samesite='strict',
+            )
             return response
 
     return render_template('auth/login.html')

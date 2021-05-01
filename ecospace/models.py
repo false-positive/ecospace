@@ -42,7 +42,7 @@ class UserModel(db.Model):
     def encode_auth_token(self):
         token = jwt.encode({
             'username': self.username,
-            'exp': dt.datetime.utcnow() + dt.timedelta(days=30),
+            'exp': dt.datetime.utcnow() + dt.timedelta(days=current_app.config['TOKEN_EXPIRE_DAYS']),
         }, current_app.config['SECRET_KEY'], algorithm='HS256')
         return token
 

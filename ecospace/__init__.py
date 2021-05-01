@@ -24,6 +24,7 @@ def create_app():
     """Create and configure an instance of a Flask app"""
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
+        TOKEN_EXPIRE_DAYS=30,
         UPLOAD_PATH=os.path.join(app.instance_path, 'usercontent'),
         UPLOAD_EXTENSIONS={'.jpg', '.png', '.gif'},  # TODO: Allow more image extensions
         SQLALCHEMY_DATABASE_URI=f'sqlite:///{os.path.join(app.instance_path, "ecospace.sqlite")}',
