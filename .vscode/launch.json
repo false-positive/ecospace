@@ -9,10 +9,6 @@
             "type": "python",
             "request": "launch",
             "module": "flask",
-            "env": {
-                "FLASK_APP": "ecospace",
-                "FLASK_ENV": "development"
-            },
             "args": [
                 "run",
                 "--no-debugger"
