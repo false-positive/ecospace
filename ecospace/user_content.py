@@ -43,7 +43,7 @@ def upload_image(file, path, filename=None, width=None):
     """
 
     filename = filename or f'{str(uuid.uuid4())}.jpg'
-    directory = os.path.join(current_app['UPLOAD_PATH'], path)
+    directory = os.path.join(current_app.config['UPLOAD_PATH'], path)
     full_path = os.path.join(directory, filename)
 
     # Make sure that the data is in an allowed format
