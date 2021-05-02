@@ -27,6 +27,18 @@ def login_required(view):
     return wrapped_view
 
 
+def logout_required(view):
+    """View decorator that redirects registered users to the events page."""
+
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.user is not None:
+            return redirect(url_for('singlepage.index', route='/events'))
+        return view(**kwargs)
+
+    return wrapped_view
+
+
 @bp.before_app_request
 def load_logged_in_user():
     try:
@@ -44,6 +56,7 @@ def load_logged_in_user():
 
 
 @bp.route('/login', methods=('GET', 'POST'))
+@logout_required
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -66,6 +79,7 @@ def login():
 
 
 @bp.route('/register', methods=('GET', 'POST'))
+@logout_required
 def register():
     if request.method == 'POST':
         print(request.form)

@@ -1,7 +1,7 @@
 import os
 from contextlib import suppress
 
-from flask import Flask, render_template, redirect, url_for, g
+from flask import Flask, render_template, redirect, url_for
 from flask_cors import CORS
 
 __version__ = '0.2.0'
@@ -48,13 +48,6 @@ def create_app():
     from . import user_content
     app.register_blueprint(user_content.bp)
 
-    @app.route('/')
-    def landing():
-        if not g.user:
-            return render_template('landing.html')
-        else:
-            return redirect(url_for('singlepage.index', route='events'))
-
     @app.route('/favicon.ico')
     def favicon():
         return redirect(url_for('static', filename='img/logo.svg'))
@@ -64,6 +57,11 @@ def create_app():
 
     from . import auth
     app.register_blueprint(auth.bp)
+
+    @app.route('/')
+    @auth.logout_required
+    def landing():
+        return render_template('landing.html')
 
     # This must be registered last, so it doesn't override anything
     from . import singlepage
