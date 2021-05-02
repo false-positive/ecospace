@@ -18,7 +18,7 @@ class EventView extends AbstractView {
             editOrGoingButton = `
                 <coming-button
                     event-id="${this.params.id}"
-                    ${event.participants.find((username) => username === currentUserUsername)}
+                    ${event.participants.find((username) => username === currentUserUsername) ? "coming" : ""}
                     font-size="125%"
                 ></coming-button>
             `;

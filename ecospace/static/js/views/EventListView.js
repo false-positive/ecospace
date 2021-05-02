@@ -32,7 +32,7 @@ class EventListView extends AbstractView {
             <section class="section-nearme">
                 ${eventsFiltered
                     .map(
-                        ([id, { name, location, date, organizer_username, participants }]) => `
+                        ([id, { name, location, date, organizer_username }]) => `
                             <div class="row">
                                 <article class="event">
                                     <div class="clearfix first-part">
